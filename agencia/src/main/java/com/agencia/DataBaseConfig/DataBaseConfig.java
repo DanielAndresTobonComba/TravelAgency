@@ -21,6 +21,7 @@ public class DataBaseConfig {
     private static DataBaseConfig connection = new DataBaseConfig();
 
     private DataBaseConfig () {
+        
         try {
             configProperties = new FileInputStream("./agencia/src/main/java/com/agencia/Resources/Config.properties");
             Properties properties = new Properties();
