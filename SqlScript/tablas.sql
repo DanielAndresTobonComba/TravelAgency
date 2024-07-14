@@ -230,7 +230,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Aerolinea`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Aerolinea` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -250,7 +250,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Rol`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Rol` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -260,7 +260,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`TipoDocumento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`TipoDocumento` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -357,7 +357,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Tarifa`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Tarifa` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(20) NULL,
   `detalles` VARCHAR(45) NULL,
   `precioBase` DECIMAL NULL,
@@ -370,8 +370,8 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Cliente` (
-  `id` INT NOT NULL,
-  `nombre` VARCHAR(30) NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(50) NULL,
   `edad` INT NULL,
   `TipoDocumento_id` INT NULL,
   `usuario` VARCHAR(25) NULL,
@@ -390,7 +390,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`MetodoPago`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`MetodoPago` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -449,7 +449,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`TarjetaCliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`TarjetaCliente` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `titular` VARCHAR(45) NULL,
   `codigoSeguridad` VARCHAR(25) NULL,
   `numeroTarjeta` VARCHAR(25) NULL,
