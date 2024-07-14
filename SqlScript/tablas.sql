@@ -270,7 +270,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Empleado`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Empleado` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `fechaIngreso` DATE NULL,
   `Ciudad_id` INT NULL,
