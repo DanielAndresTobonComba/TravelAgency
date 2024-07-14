@@ -48,7 +48,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Aeropuerto` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(50) NOT NULL,
+  `nombre` VARCHAR(100) NOT NULL,
   `Ciudad_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Aeropuerto_Ciudad1_idx` (`Ciudad_id` ASC) VISIBLE,
