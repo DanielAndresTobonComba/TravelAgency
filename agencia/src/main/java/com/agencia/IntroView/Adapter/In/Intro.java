@@ -30,7 +30,7 @@ public class Intro {
 
         for (Funcionalidad funcionIntro : this.lstFuncionesIntro) {
             int numItem = lstFuncionesIntro.indexOf(funcionIntro) + 1;
-            System.out.println(numItem + ". " + funcionIntro.enunciado);
+            System.out.println(numItem + ". " + funcionIntro.enunciado + "\n");
         }
 
         System.out.println("------------------------------");

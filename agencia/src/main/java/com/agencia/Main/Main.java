@@ -31,6 +31,6 @@ public class Main {
 
         controladorCrearAeropuerto adaptador = new controladorCrearAeropuerto(crearAeropuerto);
 
-        adaptador.tomarDatosAeropuerto();
+        //adaptador.tomarDatosAeropuerto();
     }
 }
