@@ -19,9 +19,9 @@ public class CheckInt {
                 System.out.println("\n********************************");
                 System.out.println("Debe ingresar un número entero: ");
                 System.out.println("********************************\n");
-                System.out.println("\n. . . . . . . . . . . . . .");
+                System.out.println("\n. . . . . . . . . . . . . . . . .");
                 System.out.println(String.format("  %s", msj));
-                System.out.println(". . . . . . . . . . . . . .");
+                System.out.println(". . . . . . . . . . . . . . . . .");
                 System.out.print(">>> ");
                 scanner.next();
             }
