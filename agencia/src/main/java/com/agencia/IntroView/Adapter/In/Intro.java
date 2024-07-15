@@ -22,18 +22,18 @@ public class Intro {
     public  void start() {
         int opcion;
 
-        System.out.println("\n-----------------------------");
+        System.out.println("\n------------------------------");
         System.out.println("   T R A V E L  A G E N C Y");
-        System.out.println("=============================");
+        System.out.println("==============================");
         System.out.println("            Menú");
-        System.out.println("=============================");
+        System.out.println("==============================");
 
         for (Funcionalidad funcionIntro : this.lstFuncionesIntro) {
             int numItem = lstFuncionesIntro.indexOf(funcionIntro) + 1;
             System.out.println(numItem + ". " + funcionIntro.enunciado);
         }
 
-        System.out.println("-----------------------------");
+        System.out.println("------------------------------");
 
         System.out.println("\n\n. . . . . . . . . .");
         System.out.println("¿Qué deseas realizar?");
