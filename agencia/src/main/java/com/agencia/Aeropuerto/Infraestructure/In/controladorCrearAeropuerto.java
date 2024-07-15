@@ -1,13 +1,14 @@
-package Aeropuerto.Infraestructure.In;
+package com.agencia.Aeropuerto.Infraestructure.In;
 
 import java.util.Scanner;
 
-import com.agencia.Utilities.CheckInt;
-import com.agencia.Utilities.CheckString;
-
-import Aeropuerto.Application.crearAeropuerto;
-import Aeropuerto.Domain.Entity.Aeropuerto;
-import Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
+import com.agencia.Aeropuerto.Application.crearAeropuerto;
+import com.agencia.Aeropuerto.Domain.Entity.Aeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
+//import com.agencia.Utilities.CheckInt;
+//import com.agencia.Utilities.CheckString;
+import com.agencia.Verifiers.CheckInt;
+import com.agencia.Verifiers.CheckString;
 
 public class controladorCrearAeropuerto {
 
@@ -29,7 +30,7 @@ public class controladorCrearAeropuerto {
             String nombreAeropuerto = CheckString.check("Digita de nuevo el nombre del aeropuerto");
 
             System.out.println("Digite el codigo de la ciudad");
-            int idCiudad = CheckInt.check();
+            int idCiudad = CheckInt.check("Ingrese de nuevo el código");
 
             Aeropuerto aeropuerto = new Aeropuerto(); 
 

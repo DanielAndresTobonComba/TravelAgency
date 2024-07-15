@@ -1,6 +1,6 @@
-package Aeropuerto.Domain.Service;
+package com.agencia.Aeropuerto.Domain.Service;
 
-import Aeropuerto.Domain.Entity.Aeropuerto;
+import com.agencia.Aeropuerto.Domain.Entity.Aeropuerto;
 
 public interface interfazCrearAeropuerto {
 
