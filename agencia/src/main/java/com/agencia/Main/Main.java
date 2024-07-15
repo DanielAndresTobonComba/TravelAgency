@@ -7,6 +7,12 @@ import com.agencia.CasesListController.CasesListController;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.IntroView.Adapter.In.Intro;
 
+import Aeropuerto.Application.crearAeropuerto;
+import Aeropuerto.Domain.Entity.Aeropuerto;
+import Aeropuerto.Domain.Service.interfazCrearAeropuerto;
+import Aeropuerto.Infraestructure.In.controladorCrearAeropuerto;
+import Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
+
 public class Main {
     public static void main(String[] args) {
         
@@ -20,6 +26,12 @@ public class Main {
         intro.start();
 
 
+        interfazCrearAeropuerto servicio = new repositorioCrearAeropuerto();
 
+        crearAeropuerto crearAeropuerto = new crearAeropuerto(servicio);
+
+        controladorCrearAeropuerto adaptador = new controladorCrearAeropuerto(crearAeropuerto);
+
+        adaptador.tomarDatosAeropuerto();
     }
 }
