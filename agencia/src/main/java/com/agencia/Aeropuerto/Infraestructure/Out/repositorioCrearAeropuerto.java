@@ -1,4 +1,4 @@
-package Aeropuerto.Infraestructure.Out;
+package com.agencia.Aeropuerto.Infraestructure.Out;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,10 +7,9 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
+import com.agencia.Aeropuerto.Domain.Entity.Aeropuerto;
+import com.agencia.Aeropuerto.Domain.Service.interfazCrearAeropuerto;
 import com.agencia.DataBaseConfig.DataBaseConfig;
-
-import Aeropuerto.Domain.Entity.Aeropuerto;
-import Aeropuerto.Domain.Service.interfazCrearAeropuerto;
 
 public class repositorioCrearAeropuerto implements interfazCrearAeropuerto {
 

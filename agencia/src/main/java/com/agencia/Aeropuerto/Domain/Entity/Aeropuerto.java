@@ -1,4 +1,4 @@
-package Aeropuerto.Domain.Entity;
+package com.agencia.Aeropuerto.Domain.Entity;
 
 public class Aeropuerto {
 
