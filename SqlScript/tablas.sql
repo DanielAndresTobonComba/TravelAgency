@@ -600,4 +600,60 @@ INSERT INTO `mydb`.`Aeropuerto` (`nombre`, `Ciudad_id`, `numeroAeropuerto`) VALU
 ('Aeropuerto Internacional de Narita', 9, 'NRT9'),
 ('Aeropuerto Internacional de Kansai', 10, 'KIX0');
 
+-- Insertar en la tabla Rol
+INSERT INTO Rol (nombre)
+VALUES ("Administrador");
+
+INSERT INTO Rol (nombre)
+VALUES ("Agente de ventas");
+
+INSERT INTO Rol (nombre)
+VALUES ("Tecnico de mantenimiento");
+
+-- Insertar en la tabla TipoDocumento
+INSERT INTO TipoDocumento (nombre)
+VALUES ("Pasaporte");
+
+
+
+-- Insertar en la tabla Aerolinea
+INSERT INTO Aerolinea  (nombre) VALUES 
+("Ninguno"); 
+
+
+
+-- Insertar datos en la tabla Empleado
+INSERT INTO Empleado (name, fechaIngreso, Ciudad_id,  Aerolinia_id, TripulacionRol_id, TipoDocumento_id, usuario, contraseña)
+VALUES ("Carlos Jhoan Aguilar Galvis", "2020-01-01", 5, 1, 1, 1, "admin123", "240BE518FABD2724DDB6F04EEB1DA5967448D7E831C08C8FA822809F74C720A9");
+
+
+
+-- PROCEDURES
+DROP PROCEDURE if EXISTS  ObtainEMpleado;
+
+delimiter &&
+
+CREATE PROCEDURE ObtainEmpleado (IN nombreUsuario VARCHAR(45), IN rolNombre VARCHAR(45))
+BEGIN
+
+	SELECT e.id, e.name AS nombreEmpleado, e.fechaIngreso, c.nombre AS ciudadNombre, a.nombre AS aerolinea, r.nombre AS rolNombre, d.nombre AS tipodocumentoNombre, e.usuario, e.contraseña
+	FROM Empleado AS  e, Ciudad AS c, TipoDocumento AS d, Rol AS r, Aerolinea AS a
+	WHERE c.id = e.Ciudad_id AND
+			d.id = e.TipoDocumento_id AND 
+			r.id = e.TripulacionRol_id AND
+			a.id = e.Aerolinia_id AND
+			e.usuario = nombreUsuario AND 
+			r.nombre = rolNombre;
+		
+END &&
+delimiter ;
+
+delimiter &&
+CREATE PROCEDURE ObtainRol()
+BEGIN
+	SELECT  nombre
+	FROM Rol;
+END &&
+delimiter ;
+
 

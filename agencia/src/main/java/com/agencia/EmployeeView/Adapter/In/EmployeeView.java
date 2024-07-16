@@ -23,12 +23,16 @@ public class EmployeeView {
 
         List<Funcionalidad> listEmployeeFunctions = this.generatedMenu.generate(this.empleado.getRol());
         int itemFunction = 0;
-        int optcionMenu = 0;
         int markedOption = 0;
         boolean correctOption = false;
         List<Funcionalidad> listaFuncionesIntro = CasesListController.getController().lstIntro;
 
         if (listEmployeeFunctions.size() == 0) {
+
+            System.out.println("\n********************************************");
+            System.out.println("  NO HAY FUNCIONES DISPONIBLES PARA TU ROL");
+            System.out.println("********************************************");
+
 
         } else {
 

@@ -12,7 +12,7 @@ public class RegistrarAvion  extends Funcionalidad{
 
     @Override
     public void ejecutar() {
-        System.out.println("Aquí se va a registrar un avión");;
+        System.out.println("Aquí se va a registrar un avión");
     }
 
 }
