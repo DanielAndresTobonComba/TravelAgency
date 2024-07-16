@@ -18,8 +18,6 @@ public class repositorioCrearAeropuerto implements interfazCrearAeropuerto {
 
         String sql = "INSERT INTO Aeropuerto (nombre , Ciudad_id , numeroAeropuerto) VALUES (?,?,?)";
 
-
-
         DataBaseConfig.getConnection();
         try (Connection connection = DataBaseConfig.DBconnection;
             PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS))
@@ -30,11 +28,21 @@ public class repositorioCrearAeropuerto implements interfazCrearAeropuerto {
 
             statement.executeUpdate();
 
-            
-
             System.out.println("Aeropuerto creado exitosamente");
-            
+
+            System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+");
+            System.out.printf("| %-45s | %-10s | %-25s |\n", "Nombre", "Ciudad ID", "Número de Aeropuerto");
+            System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+");
+
+
+            String nombre = aeropuerto.getNombre();
+            int ciudadId = aeropuerto.getIdCiudad();
+            String numero = aeropuerto.getNumAeropuerto();
+
+            System.out.printf("| %-45s | %-10d | %-25s |\n", nombre, ciudadId, numero);
+
         } catch (SQLIntegrityConstraintViolationException  b) {
+            
             String errorMessage = b.getMessage();
             
                 if (errorMessage.contains("nombre")) {

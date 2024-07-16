@@ -50,6 +50,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Aeropuerto`
 -- -----------------------------------------------------
+
+
+
 CREATE TABLE IF NOT EXISTS `mydb`.`Aeropuerto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(100) NOT NULL unique,
@@ -65,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Aeropuerto` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+CREATE INDEX serialAeropuerto ON mydb.Aeropuerto (numeroAeropuerto);
 select * from Aeropuerto;
 
 -- -----------------------------------------------------
@@ -548,3 +552,52 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+/* INSERCIONES DE DATOS */
+
+-- Insertar datos en la tabla `Pais`
+INSERT INTO `mydb`.`Pais` (`nombre`) VALUES
+('Estados Unidos'),
+('México'),
+('Argentina'),
+('España'),
+('Japón');
+
+-- Insertar datos en la tabla `Ciudad`
+INSERT INTO `mydb`.`Ciudad` (`nombre`, `Pais_id`) VALUES
+-- Ciudades en Estados Unidos (id = 1)
+('Nueva York', 1),
+('Los Ángeles', 1),
+-- Ciudades en México (id = 2)
+('Ciudad de México', 2),
+('Guadalajara', 2),
+-- Ciudades en Argentina (id = 3)
+('Buenos Aires', 3),
+('Córdoba', 3),
+-- Ciudades en España (id = 4)
+('Madrid', 4),
+('Barcelona', 4),
+-- Ciudades en Japón (id = 5)
+('Tokio', 5),
+('Osaka', 5);
+
+-- Insertar datos en la tabla `Aeropuerto`
+INSERT INTO `mydb`.`Aeropuerto` (`nombre`, `Ciudad_id`, `numeroAeropuerto`) VALUES
+-- Aeropuertos en ciudades de Estados Unidos
+('Aeropuerto Internacional John F. Kennedy', 1, 'JFK1'),
+('Aeropuerto Internacional de Los Ángeles', 2, 'LAX2'),
+-- Aeropuertos en ciudades de México
+('Aeropuerto Internacional de la Ciudad de México', 3, 'MEX3'),
+('Aeropuerto Internacional de Guadalajara', 4, 'GDL4'),
+-- Aeropuertos en ciudades de Argentina
+('Aeropuerto Internacional Ministro Pistarini', 5, 'EZE5'),
+('Aeropuerto Internacional Ingeniero Ambrosio L.V. Taravella', 6, 'COR6'),
+-- Aeropuertos en ciudades de España
+('Aeropuerto Adolfo Suárez Madrid-Barajas', 7, 'MAD7'),
+('Aeropuerto de Barcelona-El Prat', 8, 'BCN8'),
+-- Aeropuertos en ciudades de Japón
+('Aeropuerto Internacional de Narita', 9, 'NRT9'),
+('Aeropuerto Internacional de Kansai', 10, 'KIX0');
+
+
