@@ -1,4 +1,4 @@
-package com.agencia.Aeropuerto.Infraestructure.In;
+package com.agencia.com.agencia.Aeropuerto.Infraestructure.In;
 
 import java.util.Scanner;
 
