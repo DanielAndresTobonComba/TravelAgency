@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.agencia.AbstractClasses.Funcionalidad;
 import com.agencia.CasesListController.CasesListController;
+import com.agencia.EmployeeView.MainEmployeeView.MainEmployeeView;
 import com.agencia.IntroView.Adapter.In.Intro;
 import com.agencia.LogIn.Application.CheckEmployee;
 import com.agencia.LogIn.Application.SearchRols;
@@ -66,7 +67,7 @@ public class LogInView {
         }
 
         itemRol += 1;
-        System.out.println(itemRol + ". Cancelar" );
+        System.out.println(itemRol + ". Cancelar Inicio de Sesión" );
         System.out.println("----------------------------");
 
         
@@ -136,6 +137,8 @@ public class LogInView {
                     System.out.println("   INGRESO AUTENTICADO");
                     System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-");
                     Empleado employee = new Empleado(idEmployee, nameEployee, cityEMployee, aerolinea, rolExtracted, document, usuarioEmpleado, passwordExtracted, fechaIngreso);
+                    MainEmployeeView.mainEmployeeView(employee);
+                
                 } else {
                     System.out.println("\nxxxxxxxxxxxxxxxxxxxxxxxxxxx");
                     System.out.println("x  CONTRASEÑA INCORRECTA  x");
