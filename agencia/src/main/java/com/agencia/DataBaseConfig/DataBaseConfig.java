@@ -38,7 +38,7 @@ public class DataBaseConfig {
 
         try {
             DBconnection = DriverManager.getConnection(URL, USER, PASSWORD);
-            verifyConnection = true;
+            verifyConnection = true;/*  */
 
             msjConnection = "\n:: :: :: :: :: :: :: :: :: :: :: ::\n:: Conectado a la Base de Datos  ::\n:: :: :: :: :: :: :: :: :: :: :: ::\n";
         
