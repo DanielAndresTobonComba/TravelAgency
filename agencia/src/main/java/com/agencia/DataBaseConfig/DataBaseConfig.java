@@ -15,12 +15,15 @@ public class DataBaseConfig {
     private static String PASSWORD;
     public static Connection DBconnection;
     public static String msjConnection;
+    public static boolean verifyConnection;
 
     private static InputStream configProperties;
 
     private static DataBaseConfig connection = new DataBaseConfig();
 
     private DataBaseConfig () {
+
+        verifyConnection = false;
         
         try {
             configProperties = new FileInputStream("./agencia/src/main/java/com/agencia/Resources/Config.properties");
@@ -35,11 +38,13 @@ public class DataBaseConfig {
 
         try {
             DBconnection = DriverManager.getConnection(URL, USER, PASSWORD);
+            verifyConnection = true;
 
             msjConnection = "\n:: :: :: :: :: :: :: :: :: :: :: ::\n:: Conectado a la Base de Datos  ::\n:: :: :: :: :: :: :: :: :: :: :: ::\n";
         
         } catch (SQLException msj) {
-            msj.printStackTrace();
+            msjConnection = "\n:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::\n:: ERROR AL CONECTAR! Cambie los parámetros  ::\n:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::\n";
+
         }
         
         

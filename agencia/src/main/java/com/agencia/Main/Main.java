@@ -21,8 +21,12 @@ public class Main {
         // Lanzar la aplicación
         List<Funcionalidad> listaFuncionesIntro = CasesListController.getController().lstIntro;
         Intro intro = new Intro(listaFuncionesIntro);
+
+        if (DataBaseConfig.getConnection().verifyConnection) {
+            intro.start();
+        }
         
-        intro.start();
+        
 
 
         interfazCrearAeropuerto servicio = new repositorioCrearAeropuerto();
