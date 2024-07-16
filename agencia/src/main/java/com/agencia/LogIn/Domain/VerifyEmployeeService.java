@@ -1,7 +1,9 @@
 package com.agencia.LogIn.Domain;
 
+import java.sql.ResultSet;
+
 public interface VerifyEmployeeService {
 
-    boolean verifyEmployee(String rol, String usuario, String password);
+    ResultSet extractEmployee(String rol, String usuario);
 
 }

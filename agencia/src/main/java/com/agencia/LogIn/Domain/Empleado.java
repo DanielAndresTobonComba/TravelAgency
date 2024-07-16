@@ -5,13 +5,13 @@ import java.sql.Date;
 public class Empleado {
 
     private int id;
-    private String name, ciudad, aerolinea, rol, tipoDocumento, usuario, password;
-    private Date fechaIngreso;
+    private String name, fechaIngreso, ciudad, aerolinea, rol, tipoDocumento, usuario, password;
+ 
 
     public Empleado() {}
 
     public Empleado(int id, String name, String ciudad, String aerolinea, String rol, String tipoDocumento,
-            String usuario, String password, Date fechaIngreso) {
+            String usuario, String password, String fechaIngreso) {
         this.id = id;
         this.name = name;
         this.ciudad = ciudad;
@@ -27,6 +27,10 @@ public class Empleado {
         return id;
     }
 
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -84,11 +88,11 @@ public class Empleado {
         this.password = password;
     }
 
-    public Date getFechaIngreso() {
+    public String getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(Date fechaIngreso) {
+    public void setFechaIngreso(String fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
  
