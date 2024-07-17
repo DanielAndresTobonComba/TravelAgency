@@ -617,6 +617,88 @@ SELECT * FROM TipoDocumento;
 
 -- FALTAN LOS PROCEDURES QUE ESTAN EN MI CODIGO EN LA CASA 
 
+
+
+-- PROCEDIMIENTOS ALMACENADOS
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS eliminarAeropuerto $$
+CREATE PROCEDURE eliminarAeropuerto
+   (IN numAeropuerto VARCHAR(12))
+BEGIN
+    -- Seleccionar los datos del aeropuerto antes de eliminarlo
+    SELECT  nombre , ciudad_id , numeroAeropuerto FROM Aeropuerto WHERE numeroAeropuerto = numAeropuerto;
+    
+    -- Eliminar el aeropuerto
+    DELETE FROM Aeropuerto WHERE numeroAeropuerto = numAeropuerto;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS consultarAeropuerto $$
+CREATE PROCEDURE consultarAeropuerto
+   (IN numAeropuerto VARCHAR(12))
+BEGIN
+    -- Seleccionar los datos del aeropuerto 
+    SELECT nombre , ciudad_id , numeroAeropuerto FROM Aeropuerto WHERE numeroAeropuerto = numAeropuerto;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarNombreAeropuerto $$
+CREATE PROCEDURE actualizarNombreAeropuerto
+   (IN num VARCHAR(12) , IN nuevoNombre varchar(50))
+BEGIN
+
+		UPDATE Aeropuerto
+		SET nombre = nuevoNombre
+		where numeroAeropuerto = num;
+        
+		SELECT nombre , ciudad_id , numeroAeropuerto FROM Aeropuerto WHERE numeroAeropuerto = num;
+        
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarCiudad $$
+CREATE PROCEDURE actualizarCiudad
+   (IN num VARCHAR(12) , IN nuevaCiudadId int)
+BEGIN
+
+		UPDATE Aeropuerto
+		SET Ciudad_id = nuevaCiudadId
+		where numeroAeropuerto = num;
+        
+        SELECT nombre , ciudad_id , numeroAeropuerto FROM Aeropuerto WHERE numeroAeropuerto = num;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarNumeroSerial $$
+CREATE PROCEDURE actualizarNumeroSerial
+   (IN num VARCHAR(12) , IN nuevaSerial varchar(50))
+BEGIN
+
+		UPDATE Aeropuerto
+		SET numeroAeropuerto = nuevaSerial
+		where numeroAeropuerto = num;
+        
+        SELECT nombre , ciudad_id , numeroAeropuerto FROM Aeropuerto WHERE numeroAeropuerto = num;
+END $$
+
+DELIMITER ;
+
 -- PROCEDIMIENTOS 
 
 
