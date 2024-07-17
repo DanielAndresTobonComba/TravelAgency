@@ -1,10 +1,10 @@
-package com.agencia.Cliente.Infraestructure.In;
+package com.agencia.Cliente.Adapter.In;
 
 import com.agencia.Aeropuerto.Application.actualizarAeropuerto;
+import com.agencia.Cliente.Adapter.Out.repositorioCrearCliente;
 import com.agencia.Cliente.Application.crearCliente;
 import com.agencia.Cliente.Domian.Entity.Cliente;
 import com.agencia.Cliente.Domian.Service.interfazCrearCliente;
-import com.agencia.Cliente.Infraestructure.Out.repositorioCrearCLiente;
 import com.agencia.Verifiers.CheckInt;
 import com.agencia.Verifiers.CheckPassword;
 import com.agencia.Verifiers.CheckString;
@@ -55,7 +55,7 @@ public class controladorCrearCliente {
         cliente.setContraseña(contraseña);
 
 
-        repositorioCrearCLiente repositorioCrearCLiente = new repositorioCrearCLiente();
+        repositorioCrearCliente repositorioCrearCLiente = new repositorioCrearCliente();
 
         repositorioCrearCLiente.crearCLiente(cliente);
 

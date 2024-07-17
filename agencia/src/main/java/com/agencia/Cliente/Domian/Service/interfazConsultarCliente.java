@@ -4,6 +4,6 @@ import com.agencia.Cliente.Domian.Entity.Cliente;
 
 public interface interfazConsultarCliente {
 
-    public abstract void consultarCliente (Cliente cliente);
+    public abstract void consultarCliente (String numeroDocumento);
 
 }

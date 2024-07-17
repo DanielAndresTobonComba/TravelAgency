@@ -26,10 +26,10 @@ import com.agencia.Aeropuerto.Domain.Service.interfazCrearAeropuerto;
 import com.agencia.Aeropuerto.Infraestructure.In.controladorCrearAeropuerto;
 import com.agencia.Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
 import com.agencia.CasesListController.CasesListController;
+import com.agencia.Cliente.Adapter.In.controladorCrearCliente;
+import com.agencia.Cliente.Adapter.Out.repositorioCrearCliente;
 import com.agencia.Cliente.Application.crearCliente;
 import com.agencia.Cliente.Domian.Service.interfazCrearCliente;
-import com.agencia.Cliente.Infraestructure.In.controladorCrearCliente;
-import com.agencia.Cliente.Infraestructure.Out.repositorioCrearCLiente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.IntroView.Adapter.In.Intro;
 
@@ -37,7 +37,7 @@ public class Main {
     public static void main(String[] args) {
         
         //Confirmación de la conexión a la Base de datos 
-/*         System.out.println(DataBaseConfig.getConnection().msjConnection);
+        System.out.println(DataBaseConfig.getConnection().msjConnection);
 
         // Lanzar la aplicación
         List<Funcionalidad> listaFuncionesIntro = CasesListController.getController().lstIntro;
@@ -48,7 +48,7 @@ public class Main {
         }
         
         
-
+/* 
 
         interfazCrearAeropuerto servicio = new repositorioCrearAeropuerto();
 
@@ -56,8 +56,8 @@ public class Main {
 
         controladorCrearAeropuerto adaptador = new controladorCrearAeropuerto(crearAeropuerto);
 
-        adaptador.tomarDatosAeropuerto(); 
- */
+        adaptador.tomarDatosAeropuerto();  */
+
 
         
 /*          interfazEliminarAeropuerto servicio = new repositorioEliminarAeropuerto();
@@ -90,14 +90,14 @@ public class Main {
 
 
 
-
+/* 
         interfazCrearCliente servicio = new repositorioCrearCLiente(); 
 
         crearCliente crearCliente = new crearCliente(servicio);
 
         controladorCrearCliente controladorCrearCliente = new controladorCrearCliente(crearCliente);
 
-        controladorCrearCliente.ejecutarcrearCliente();
+        controladorCrearCliente.ejecutarcrearCliente(); */
 
 
 

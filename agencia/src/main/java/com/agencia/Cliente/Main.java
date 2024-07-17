@@ -1,23 +1,14 @@
 package com.agencia.Cliente;
 
-import com.agencia.Aeropuerto.Application.consultarAeropuerto;
-import com.agencia.Aeropuerto.Application.eliminarAeropuerto;
-import com.agencia.Aeropuerto.Domain.Service.interfazConsultarAeropuerto;
-import com.agencia.Aeropuerto.Domain.Service.interfazEliminarAeropuerto;
-import com.agencia.Aeropuerto.Infraestructure.In.controladorConsultarAeropuerto;
-import com.agencia.Aeropuerto.Infraestructure.In.controladorEliminarAeropuerto;
-import com.agencia.Aeropuerto.Infraestructure.Out.repositorioConsultarAeropuerto;
-import com.agencia.Aeropuerto.Infraestructure.Out.repositorioEliminarAeropuerto;
-import com.agencia.Cliente.Application.ConsultarCliente;
-import com.agencia.Cliente.Domian.Service.interfazConsultarCliente;
-import com.agencia.Cliente.Infraestructure.In.controladorConsultarCliente;
-import com.agencia.Cliente.Infraestructure.Out.repositorioConsultarCliente;
+import com.agencia.Cliente.Adapter.In.ControladorCasosActualizarDatosCliente.menuActualizarCliente;
 
 public class Main {
 
     
     public static void main(String[] args) {
+
         
+/*         
         interfazConsultarCliente servicio = new repositorioConsultarCliente(); 
 
         ConsultarCliente consultarCliente = new ConsultarCliente(servicio); 
@@ -25,8 +16,22 @@ public class Main {
         controladorConsultarCliente adaptador = new controladorConsultarCliente(consultarCliente);
 
         adaptador.tomarDocumentoCliente();
+ */
 
 
+/*         interfazActualizarCliente servicio = new repositorioActualizarCliente();
+
+        actualizarCliente actualizarCliente = new actualizarCliente(servicio); 
+
+        controladorActualizarCliente adaptador = new controladorActualizarCliente(actualizarCliente); 
+
+        adaptador.ejecutarActualizarCliente(); */
+
+
+        menuActualizarCliente controlador = new menuActualizarCliente();
+
+        controlador.ejecutarMenu();
+        
 
         
     }

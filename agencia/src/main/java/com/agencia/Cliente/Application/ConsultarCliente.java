@@ -14,7 +14,7 @@ public class ConsultarCliente {
 
     
 
-    public void ejecutarConsultarAeropuerto (Cliente cliente){
-        servicio.consultarCliente(cliente);
+    public void ejecutarConsultarAeropuerto (String numeroDocumento){
+        servicio.consultarCliente(numeroDocumento);
     }
 }
