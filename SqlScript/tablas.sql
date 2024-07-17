@@ -386,6 +386,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Cliente` (
   `TipoDocumento_id` INT NULL,
   `usuario` VARCHAR(25) NULL,
   `contraseña` VARCHAR(70) NULL,
+  `numeroDocumento` varchar(20) not null,
   PRIMARY KEY (`id`),
   INDEX `fk_Cliente_TipoDocumento1_idx` (`TipoDocumento_id` ASC) VISIBLE,
   CONSTRAINT `fk_Cliente_TipoDocumento1`
@@ -394,7 +395,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Cliente` (
     ON DELETE SET NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
-
+CREATE INDEX clienteIdentificacion ON mydb.Cliente (numeroDocumento);
 
 -- -----------------------------------------------------
 -- Table `mydb`.`MetodoPago`
@@ -600,4 +601,136 @@ INSERT INTO `mydb`.`Aeropuerto` (`nombre`, `Ciudad_id`, `numeroAeropuerto`) VALU
 ('Aeropuerto Internacional de Narita', 9, 'NRT9'),
 ('Aeropuerto Internacional de Kansai', 10, 'KIX0');
 
+INSERT INTO `mydb`.`TipoDocumento` (`nombre`)
+VALUES 
+  ('DNI'),
+  ('Pasaporte'),
+  ('Carné de conducir'),
+  ('NIE (Número de Identificación de Extranjero)'),
+  ('Tarjeta de residencia');
 
+-- CONSULTAS PROPIAS
+
+SELECT * FROM TipoDocumento; 
+
+
+
+-- FALTAN LOS PROCEDURES QUE ESTAN EN MI CODIGO EN LA CASA 
+
+
+
+-- PROCEDIMIENTOS ALMACENADOS
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS eliminarAeropuerto $$
+CREATE PROCEDURE eliminarAeropuerto
+   (IN numAeropuerto VARCHAR(12))
+BEGIN
+    -- Seleccionar los datos del aeropuerto antes de eliminarlo
+    SELECT  nombre , ciudad_id , numeroAeropuerto FROM Aeropuerto WHERE numeroAeropuerto = numAeropuerto;
+    
+    -- Eliminar el aeropuerto
+    DELETE FROM Aeropuerto WHERE numeroAeropuerto = numAeropuerto;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS consultarAeropuerto $$
+CREATE PROCEDURE consultarAeropuerto
+   (IN numAeropuerto VARCHAR(12))
+BEGIN
+    -- Seleccionar los datos del aeropuerto 
+    SELECT nombre , ciudad_id , numeroAeropuerto FROM Aeropuerto WHERE numeroAeropuerto = numAeropuerto;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarNombreAeropuerto $$
+CREATE PROCEDURE actualizarNombreAeropuerto
+   (IN num VARCHAR(12) , IN nuevoNombre varchar(50))
+BEGIN
+
+		UPDATE Aeropuerto
+		SET nombre = nuevoNombre
+		where numeroAeropuerto = num;
+        
+		SELECT nombre , ciudad_id , numeroAeropuerto FROM Aeropuerto WHERE numeroAeropuerto = num;
+        
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarCiudad $$
+CREATE PROCEDURE actualizarCiudad
+   (IN num VARCHAR(12) , IN nuevaCiudadId int)
+BEGIN
+
+		UPDATE Aeropuerto
+		SET Ciudad_id = nuevaCiudadId
+		where numeroAeropuerto = num;
+        
+        SELECT nombre , ciudad_id , numeroAeropuerto FROM Aeropuerto WHERE numeroAeropuerto = num;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarNumeroSerial $$
+CREATE PROCEDURE actualizarNumeroSerial
+   (IN num VARCHAR(12) , IN nuevaSerial varchar(50))
+BEGIN
+
+		UPDATE Aeropuerto
+		SET numeroAeropuerto = nuevaSerial
+		where numeroAeropuerto = num;
+        
+        SELECT nombre , ciudad_id , numeroAeropuerto FROM Aeropuerto WHERE numeroAeropuerto = num;
+END $$
+
+DELIMITER ;
+
+-- PROCEDIMIENTOS 
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS crearCliente $$
+
+CREATE PROCEDURE crearCliente(
+    IN p_nombre VARCHAR(100),
+    IN p_edad INT,
+    IN p_tipoDocumento INT,
+    IN p_numeroDocumento VARCHAR(50),
+    IN p_usuario VARCHAR(50),
+    IN p_contraseña VARCHAR(50)
+)
+BEGIN
+    -- Declarar variables locales si es necesario
+    DECLARE cliente_id varchar(50);
+
+    -- Insertar el nuevo cliente en la tabla Cliente
+    INSERT INTO Cliente (nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña)
+    VALUES (p_nombre, p_edad, p_tipoDocumento, p_numeroDocumento, p_usuario, p_contraseña);
+
+    -- Obtener el ID del cliente insertado
+    SET cliente_id = p_numeroDocumento ;
+
+    -- Seleccionar los datos del cliente insertado y devolverlos como resultado (opcional)
+    SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = cliente_id;
+
+END $$
+
+DELIMITER ;
+
+
+-- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");

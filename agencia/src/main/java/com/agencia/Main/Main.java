@@ -26,6 +26,10 @@ import com.agencia.Aeropuerto.Domain.Service.interfazCrearAeropuerto;
 import com.agencia.Aeropuerto.Infraestructure.In.controladorCrearAeropuerto;
 import com.agencia.Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
 import com.agencia.CasesListController.CasesListController;
+import com.agencia.Cliente.Application.crearCliente;
+import com.agencia.Cliente.Domian.Service.interfazCrearCliente;
+import com.agencia.Cliente.Infraestructure.In.controladorCrearCliente;
+import com.agencia.Cliente.Infraestructure.Out.repositorioCrearCLiente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.IntroView.Adapter.In.Intro;
 
@@ -75,17 +79,25 @@ public class Main {
         adapter.tomarNumAeropuerto(); */
 
 
-
+/* 
         interfazActualizarAeropuerto servicio = new repositorioActualizarAeropuerto(); 
 
         actualizarAeropuerto actualizarAeropuerto = new actualizarAeropuerto(servicio);
 
         controladorActualizarAeropuerto consultarAeropuerto = new controladorActualizarAeropuerto(actualizarAeropuerto);
 
-        consultarAeropuerto.actualizarAeropuerto();
+        consultarAeropuerto.actualizarAeropuerto(); */
 
 
 
+
+        interfazCrearCliente servicio = new repositorioCrearCLiente(); 
+
+        crearCliente crearCliente = new crearCliente(servicio);
+
+        controladorCrearCliente controladorCrearCliente = new controladorCrearCliente(crearCliente);
+
+        controladorCrearCliente.ejecutarcrearCliente();
 
 
 

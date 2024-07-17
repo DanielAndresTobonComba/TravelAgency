@@ -23,7 +23,8 @@ public class repositorioEliminarAeropuerto implements interfazEliminarAeropuerto
 
         DataBaseConfig.getConnection();
 
-        try (Connection connection = DataBaseConfig.DBconnection;) {
+        try {
+            Connection connection = DataBaseConfig.DBconnection;
 
             String sql = "{call eliminarAeropuerto  (?)}";
             stmt = (CallableStatement) connection.prepareCall(sql);
@@ -54,7 +55,7 @@ public class repositorioEliminarAeropuerto implements interfazEliminarAeropuerto
 
                             System.out.printf("| %-45s | %-10d | %-25s |\n", nombre, ciudadId, numero);
                         }
-                }
+                } 
             }
 
            
