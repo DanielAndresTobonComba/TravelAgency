@@ -37,7 +37,7 @@ public class Main {
     public static void main(String[] args) {
         
         //Confirmación de la conexión a la Base de datos 
-        System.out.println(DataBaseConfig.getConnection().msjConnection);
+         System.out.println(DataBaseConfig.getConnection().msjConnection);
 
         // Lanzar la aplicación
         List<Funcionalidad> listaFuncionesIntro = CasesListController.getController().lstIntro;
@@ -48,17 +48,15 @@ public class Main {
         }
         
         
-/* 
 
-        interfazCrearAeropuerto servicio = new repositorioCrearAeropuerto();
+/*       interfazCrearAeropuerto servicio = new repositorioCrearAeropuerto();
 
         crearAeropuerto crearAeropuerto = new crearAeropuerto(servicio);
 
         controladorCrearAeropuerto adaptador = new controladorCrearAeropuerto(crearAeropuerto);
 
-        adaptador.tomarDatosAeropuerto();  */
-
-
+        adaptador.tomarDatosAeropuerto(); 
+*/
         
 /*          interfazEliminarAeropuerto servicio = new repositorioEliminarAeropuerto();
 
@@ -79,14 +77,14 @@ public class Main {
         adapter.tomarNumAeropuerto(); */
 
 
-/* 
-        interfazActualizarAeropuerto servicio = new repositorioActualizarAeropuerto(); 
+
+        /*interfazActualizarAeropuerto servicio = new repositorioActualizarAeropuerto(); 
 
         actualizarAeropuerto actualizarAeropuerto = new actualizarAeropuerto(servicio);
 
         controladorActualizarAeropuerto consultarAeropuerto = new controladorActualizarAeropuerto(actualizarAeropuerto);
 
-        consultarAeropuerto.actualizarAeropuerto(); */
+        consultarAeropuerto.actualizarAeropuerto();*/
 
 
 

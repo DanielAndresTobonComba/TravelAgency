@@ -131,7 +131,7 @@ public class LogInView {
                 passwordEncripted = PasswordEncripted.encript(passwordEmpleado);
                 
 
-                if (passwordEncripted.equals(passwordExtracted.toLowerCase())) {
+                if (passwordEncripted.toLowerCase().equals(passwordExtracted.toLowerCase())) {
 
                     System.out.println("\n-=-=-=-=-=-=-=-=-=-=-=-=-");
                     System.out.println("   INGRESO AUTENTICADO");
