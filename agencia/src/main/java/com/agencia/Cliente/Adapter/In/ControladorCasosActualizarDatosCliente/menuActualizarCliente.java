@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import com.agencia.AbstractClasses.actualizarDatosCliente;
 import com.agencia.CasesListController.CasesListController;
-import com.agencia.Cliente.Main;
+import com.agencia.Cliente.MainCliente;
 import com.agencia.Cliente.Adapter.Out.existeCliente;
 import com.agencia.Verifiers.CheckInt;
 import com.agencia.Verifiers.CheckString;
@@ -34,7 +34,7 @@ public class menuActualizarCliente {
         if (!existenciaCliente.verificarCliente(numeroDocumento)) {
             System.out.println("Presiona Enter para volver al menú");
             sc.nextLine();
-            Main.main(null); // Llama al método main del Main para volver al menú principal
+            MainCliente.main(null); // Llama al método main del Main para volver al menú principal
             return;
         }
 
@@ -65,7 +65,7 @@ public class menuActualizarCliente {
         if (opcion <= lista.size()) {
             lista.get(opcion - 1).actualizar(numeroDocumento);
         } else {
-            Main.main(null); // Llama al método main del Main para volver al menú principal
+            MainCliente.main(null); // Llama al método main del Main para volver al menú principal
         }
     }
 }

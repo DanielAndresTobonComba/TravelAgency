@@ -6,7 +6,7 @@ import com.agencia.Cliente.Adapter.Out.repositorioCrearCliente;
 import com.agencia.Cliente.Application.crearCliente;
 import com.agencia.Cliente.Domian.Service.interfazCrearCliente;
 
-public class Main {
+public class MainCliente {
 
     
     public static void main(String[] args) {
