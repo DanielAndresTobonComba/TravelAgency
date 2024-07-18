@@ -602,6 +602,30 @@ INSERT INTO `mydb`.`Aeropuerto` (`nombre`, `Ciudad_id`, `numeroAeropuerto`) VALU
 ('Aeropuerto Internacional de Narita', 9, 'NRT9'),
 ('Aeropuerto Internacional de Kansai', 10, 'KIX0');
 
+
+-- Insertar en la tabla TipoDocumento
+INSERT INTO `mydb`.`TipoDocumento` (`nombre`)
+VALUES 
+  ('DNI'),
+  ('Pasaporte'),
+  ('Carné de conducir'),
+  ('NIE (Número de Identificación de Extranjero)'),
+  ('Tarjeta de residencia');
+  
+-- Insertar en  la tabla Cliente  
+INSERT INTO `Cliente` (`nombre`, `edad`, `TipoDocumento_id`, `usuario`, `contraseña`, `numeroDocumento`)
+VALUES
+    ('Juan Pérez', 30, 1, 'juanperez30', 'abc123', '12345678'),
+    ('María López', 25, 2, 'marialopez25', 'def456', '87654321'),
+    ('Carlos Martínez', 40, 3, 'carlosm40', 'ghi789', '56781234'),
+    ('Ana Gómez', 28, 4, 'anagomez28', 'jkl012', '43218765'),
+    ('Pedro Ramírez', 35, 5, 'pedror35', 'mno345', '98765432'),
+    ('Luisa Fernández', 22, 1, 'luisaf22', 'pqr678', '87654321'),
+    ('Elena Torres', 33, 2, 'elenat33', 'stu901', '76543218'),
+    ('Javier García', 45, 3, 'javierg45', 'vwx234', '67812345'),
+    ('Sofía Rodríguez', 26, 4, 'sofiar26', 'yz567', '54321678'),
+    ('Martín Sánchez', 31, 5, 'martins31', 'abc890', '32187654');
+
 -- Insertar en la tabla Rol
 INSERT INTO Rol (nombre)
 VALUES ("Administrador");
@@ -611,11 +635,6 @@ VALUES ("Agente de ventas");
 
 INSERT INTO Rol (nombre)
 VALUES ("Tecnico de mantenimiento");
-
--- Insertar en la tabla TipoDocumento
-INSERT INTO TipoDocumento (nombre)
-VALUES ("Pasaporte");
-
 
 
 -- Insertar en la tabla Aerolinea
@@ -712,33 +731,7 @@ BEGIN
 END&&
 delimiter ;
 
-INSERT INTO `mydb`.`TipoDocumento` (`nombre`)
-VALUES 
-  ('DNI'),
-  ('Pasaporte'),
-  ('Carné de conducir'),
-  ('NIE (Número de Identificación de Extranjero)'),
-  ('Tarjeta de residencia');
-  
-INSERT INTO `Cliente` (`nombre`, `edad`, `TipoDocumento_id`, `usuario`, `contraseña`, `numeroDocumento`)
-VALUES
-    ('Juan Pérez', 30, 1, 'juanperez30', 'abc123', '12345678'),
-    ('María López', 25, 2, 'marialopez25', 'def456', '87654321'),
-    ('Carlos Martínez', 40, 3, 'carlosm40', 'ghi789', '56781234'),
-    ('Ana Gómez', 28, 4, 'anagomez28', 'jkl012', '43218765'),
-    ('Pedro Ramírez', 35, 5, 'pedror35', 'mno345', '98765432'),
-    ('Luisa Fernández', 22, 1, 'luisaf22', 'pqr678', '876543211'),
-    ('Elena Torres', 33, 2, 'elenat33', 'stu901', '76543218'),
-    ('Javier García', 45, 3, 'javierg45', 'vwx234', '67812345'),
-    ('Sofía Rodríguez', 26, 4, 'sofiar26', 'yz567', '54321678'),
-    ('Martín Sánchez', 31, 5, 'martins31', 'abc890', '32187654');
-
-
-
--- CONSULTAS PROPIAS
-
-
--- PROCEDIMIENTOS ALMACENADOS
+-- Procedure para eliminar un Aeropuerto
 
 DELIMITER $$
 
@@ -755,6 +748,9 @@ END $$
 
 DELIMITER ;
 
+
+-- Procedure para consultar Aeropuerto
+
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS consultarAeropuerto $$
@@ -766,6 +762,8 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+-- Procedure para actualizar Nombre Aeropuerto
 
 
 DELIMITER $$
@@ -785,6 +783,9 @@ END $$
 
 DELIMITER ;
 
+
+-- Procedure para actualizar Ciudad
+
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarCiudad $$
@@ -802,6 +803,9 @@ END $$
 DELIMITER ;
 
 
+
+-- Procedure para actualizar Numero Serial de un Aeropuerto
+
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarNumeroSerial $$
@@ -818,8 +822,33 @@ END $$
 
 DELIMITER ;
 
--- PROCEDIMIENTOS 
+-- Procedure para Registrar un Avion
 
+DROP PROCEDURE IF EXISTS InsertarAvion;
+
+delimiter &&
+
+CREATE PROCEDURE InsertarAvion
+(
+    IN placaInput VARCHAR(30),
+    IN capacidadInput INT,
+    IN fechaFabricacionInput DATE,
+    IN ModeloAvionIdInput INT,
+    IN EstadoIdInput INT
+)
+BEGIN
+	INSERT INTO Avion (placa, capacidad, fechaFabricacion, ModeloAvion_id, Estado_id) VALUES
+    (placaInput, capacidadInput, fechaFabricacionInput, ModeloAvionIdInput, EstadoIdInput);
+    
+    SELECT count(placa) AS numRow 
+    FROM Avion
+    WHERE placa = placaInput;
+    
+END &&
+delimiter ;
+
+
+-- Procedure para Crear Cliente
 
 DELIMITER $$
 
@@ -852,6 +881,9 @@ END $$
 DELIMITER ;
 
 
+
+-- Procedure para consultar cliente
+
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS consultarCliente $$
@@ -863,6 +895,7 @@ BEGIN
 END $$
 
 DELIMITER ;
+
 
 
 DELIMITER $$
@@ -918,3 +951,4 @@ END $$
 DELIMITER ;
 
 -- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
+

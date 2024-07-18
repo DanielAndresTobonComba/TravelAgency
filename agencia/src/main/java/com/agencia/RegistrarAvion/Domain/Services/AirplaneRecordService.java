@@ -4,6 +4,6 @@ import com.agencia.RegistrarAvion.Domain.Entity.Airplane;
 
 public interface AirplaneRecordService {
 
-    public void record(Airplane airplane);
+    public int record(Airplane airplane);
 
 }
