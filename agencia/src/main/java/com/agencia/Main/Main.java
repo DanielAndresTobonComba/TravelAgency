@@ -1,6 +1,6 @@
 package com.agencia.Main;
 
-import com.agencia.Aeropuerto.Application.actualizarAeropuerto;
+/*import com.agencia.Aeropuerto.Application.actualizarAeropuerto;
 import com.agencia.Aeropuerto.Application.consultarAeropuerto;
 import com.agencia.Aeropuerto.Application.crearAeropuerto;
 import com.agencia.Aeropuerto.Application.eliminarAeropuerto;
@@ -17,6 +17,7 @@ import com.agencia.Aeropuerto.Infraestructure.Out.repositorioActualizarAeropuert
 import com.agencia.Aeropuerto.Infraestructure.Out.repositorioConsultarAeropuerto;
 import com.agencia.Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
 import com.agencia.Aeropuerto.Infraestructure.Out.repositorioEliminarAeropuerto;
+*/
 import java.util.List;
 
 import com.agencia.AbstractClasses.Funcionalidad;

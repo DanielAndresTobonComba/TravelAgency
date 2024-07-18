@@ -2,6 +2,7 @@ package com.agencia.EmployeeView.Domain;
 
 import com.agencia.AbstractClasses.Funcionalidad;
 import com.agencia.LogIn.MainLogIn.MainLogIn;
+import com.agencia.RegistrarAvion.Main.MainAirplaneRegistration;
 
 public class RegistrarAvion  extends Funcionalidad{
 
@@ -12,7 +13,7 @@ public class RegistrarAvion  extends Funcionalidad{
 
     @Override
     public void ejecutar() {
-        System.out.println("Aquí se va a registrar un avión");
+        MainAirplaneRegistration.mainAirplaneRegistration();
     }
 
 }
