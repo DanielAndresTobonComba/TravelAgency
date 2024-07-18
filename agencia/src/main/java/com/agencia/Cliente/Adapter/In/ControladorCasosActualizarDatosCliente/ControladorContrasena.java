@@ -5,13 +5,13 @@ import com.agencia.Verifiers.CheckString;
 
 public class ControladorContrasena {
 
-    public void tomarNuevaContraseña () {
+    public void tomarNuevaContraseña (String numeroDocumento) {
 
         System.out.println("Digita la nueva contraseña");
         String contraseña = CheckString.check("Digita de nuevo la contraseña"); 
 
         RepoContrasena repoContrasena = new RepoContrasena(); 
-        repoContrasena.actualizarContraseña(contraseña);
+        repoContrasena.actualizarContraseña( numeroDocumento , contraseña);
 
         
 

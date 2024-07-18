@@ -56,7 +56,7 @@ public class existeCliente {
                         System.out.printf("| %-30s | %-5d | %-15d | %-20s | %-15s | %-70s |\n", nombre, edad, tipoDocumento, documento, usuario, contraseña);
                     }
 
-                    System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+");
+                    System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+----------------------------+");
                     System.out.println("\n\nPresiona enter para continuar");
                     sc.nextLine();
                 }

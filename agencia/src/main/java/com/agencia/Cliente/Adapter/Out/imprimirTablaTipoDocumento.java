@@ -1,17 +1,14 @@
-package com.agencia.Cliente.Adapter.Out.RepositoriosActualizarDatosCliente;
+package com.agencia.Cliente.Adapter.Out;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLIntegrityConstraintViolationException;
-
-import com.agencia.Cliente.imprimirDatosCliente;
-import com.agencia.Cliente.Adapter.Out.imprimirTablaTipoDocumento;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.mysql.cj.jdbc.CallableStatement;
 
-public class RepoTipoDocumento {
+public class imprimirTablaTipoDocumento {
 
-  
-    public void actualizarTipoDocumento ( String numeroDocumento , String tipoDocumento) {
+    public static void imprimirTablaTipoDoc () {
 
         CallableStatement stmt = null;
         DataBaseConfig.getConnection();
@@ -19,25 +16,33 @@ public class RepoTipoDocumento {
         try {
             Connection connection = DataBaseConfig.DBconnection;
             
-            String sql = "{call actualizarTipoDocumentoCliente (?,?)}";
+            String sql = "Select id , nombre from TipoDocumento";
             stmt = (CallableStatement) connection.prepareCall(sql);
         
-            stmt.setString(1, numeroDocumento);
-            stmt.setInt(2, Integer.valueOf(tipoDocumento) );
- 
-        
-            System.out.println("Buscando cliente con el documento..." + numeroDocumento);
+            System.out.println("Buscando cliente con el documento...");
 
             try {
 
                 boolean hasResult = stmt.execute();
         
                 if (!hasResult) {
-    
                     System.out.println("Error al actualizar el numero de documento");
-
                 } else {
-                    imprimirTablaTipoDocumento.imprimirTablaTipoDoc();
+                    ResultSet rs = stmt.getResultSet();
+
+                    System.out.println("\nTablas tipo doc");
+                    System.out.println("+--------+--------------------------------------------------+");
+                    System.out.printf("| %-6s | %-50s |\n", "ID", "Tipo Documento");
+                    System.out.println("+--------+--------------------------------------------------+");
+
+                    while (rs.next()) {
+                        int id = rs.getInt("id");
+                        String tipoDoc = rs.getString("nombre");
+
+                        System.out.printf("| %-6d | %-50s |\n", id, tipoDoc);
+                    }
+
+                    System.out.println("+--------+--------------------------------------------------+");
                 }
             
                 stmt.close();
@@ -50,12 +55,8 @@ public class RepoTipoDocumento {
                 }
             }
         
-           
-        
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
 }
