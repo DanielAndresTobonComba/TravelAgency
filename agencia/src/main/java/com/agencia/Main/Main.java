@@ -21,20 +21,22 @@ import com.agencia.Aeropuerto.Infraestructure.Out.repositorioEliminarAeropuerto;
 import java.util.List;
 
 import com.agencia.AbstractClasses.Funcionalidad;
-import com.agencia.Aeropuerto.Application.crearAeropuerto;
-import com.agencia.Aeropuerto.Domain.Entity.Aeropuerto;
-import com.agencia.Aeropuerto.Domain.Service.interfazCrearAeropuerto;
-import com.agencia.Aeropuerto.Infraestructure.In.controladorCrearAeropuerto;
-import com.agencia.Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
+//import com.agencia.Aeropuerto.Application.crearAeropuerto;
+//import com.agencia.Aeropuerto.Domain.Entity.Aeropuerto;
+//import com.agencia.Aeropuerto.Domain.Service.interfazCrearAeropuerto;
+//import com.agencia.Aeropuerto.Infraestructure.In.controladorCrearAeropuerto;
+//import com.agencia.Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
 import com.agencia.CasesListController.CasesListController;
-import com.agencia.Cliente.Adapter.In.controladorCrearCliente;
-import com.agencia.Cliente.Adapter.Out.repositorioCrearCliente;
-import com.agencia.Cliente.Application.crearCliente;
-import com.agencia.Cliente.Domian.Service.interfazCrearCliente;
+//import com.agencia.Cliente.Adapter.In.controladorCrearCliente;
+//import com.agencia.Cliente.Adapter.Out.repositorioCrearCliente;
+//import com.agencia.Cliente.Application.crearCliente;
+//import com.agencia.Cliente.Domian.Service.interfazCrearCliente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.IntroView.Adapter.In.Intro;
 
 public class Main {
+
+
     public static void main(String[] args) {
         
         //Confirmación de la conexión a la Base de datos 
@@ -47,6 +49,7 @@ public class Main {
         if (DataBaseConfig.getConnection().verifyConnection) {
             intro.start();
         }
+
 
 
         
@@ -99,10 +102,6 @@ public class Main {
         controladorCrearCliente controladorCrearCliente = new controladorCrearCliente(crearCliente);
 
         controladorCrearCliente.ejecutarcrearCliente(); */
-
-
-
-
 
 
     }
