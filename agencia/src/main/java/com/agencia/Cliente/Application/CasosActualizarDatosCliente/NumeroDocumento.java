@@ -11,9 +11,9 @@ public class NumeroDocumento extends actualizarDatosCliente{
     }
 
     @Override
-    public void actualizar() {
+    public void actualizar(String numeroDocumento) {
         ControladorNumeroDocumento controladorNumeroDocumento = new ControladorNumeroDocumento(); 
-        controladorNumeroDocumento.tomarNuevoNumeroDocumento();
+        controladorNumeroDocumento.tomarNuevoNumeroDocumento(numeroDocumento);
     }
 
 

@@ -11,7 +11,7 @@ public class Contrasena extends actualizarDatosCliente{
     }
 
     @Override
-    public void actualizar() {
+    public void actualizar(String numeroDocumento) {
         
         ControladorContrasena controladorContrasena = new ControladorContrasena();
         controladorContrasena.tomarNuevaContraseña();
