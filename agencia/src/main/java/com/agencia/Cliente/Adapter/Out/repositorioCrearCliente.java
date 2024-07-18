@@ -7,6 +7,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import com.agencia.Cliente.Domian.Entity.Cliente;
 import com.agencia.Cliente.Domian.Service.interfazCrearCliente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
+import com.agencia.Verifiers.PasswordEncripted;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class repositorioCrearCliente implements interfazCrearCliente {
@@ -28,7 +29,7 @@ public class repositorioCrearCliente implements interfazCrearCliente {
             stmt.setInt(3, cliente.getTipoDocumento());
             stmt.setString(4, cliente.getNumeroDocumento());
             stmt.setString(5, cliente.getUsuario());
-            stmt.setString(6, cliente.getContraseña());
+            stmt.setString(6, PasswordEncripted.encript(cliente.getContraseña()));
         
             System.out.println("Ejecutando el procedimiento almacenado de crearCliente...");
 
@@ -52,7 +53,7 @@ public class repositorioCrearCliente implements interfazCrearCliente {
                         System.out.println("\nCLIENTE CREADO");
                         
                         System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+");
-                        System.out.printf("| %-30s | %-5s | %-15s | %-20s | %-10s | %-20s |\n", "Nombre", "Edad", "TipoDocumento", "NumeroDocumento", "Usuario", "Contraseña");
+                        System.out.printf("| %-30s | %-5s | %-15s | %-20s | %-20s | %-70s |\n", "Nombre", "Edad", "TipoDocumento", "NumeroDocumento", "Usuario", "Contraseña");
                         System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+");
                         
                         while (rs.next()) {
@@ -64,7 +65,7 @@ public class repositorioCrearCliente implements interfazCrearCliente {
                             String usuario = rs.getString("usuario");
                             String contraseña = rs.getString("contraseña");
             
-                            System.out.printf("| %-30s | %-5d | %-15d | %-20s | %-20s | %-20s |\n", nombre, edad, tipoDocumento, numeroDocumento, usuario, contraseña);
+                            System.out.printf("| %-30s | %-5d | %-15d | %-20s | %-20s | %-70s |\n", nombre, edad, tipoDocumento, numeroDocumento, usuario, contraseña);
                         }
                     }
                 }

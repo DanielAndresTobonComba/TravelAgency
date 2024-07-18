@@ -3,13 +3,17 @@ package com.agencia.Cliente.Adapter.Out;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.Scanner;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.mysql.cj.jdbc.CallableStatement;
 public class existeCliente {
 
     public boolean verificarCliente(String numeroDocumento) {
+
+        Scanner sc = new Scanner(System.in);
+
+        
         CallableStatement stmt = null;
         DataBaseConfig.getConnection();
 
@@ -34,12 +38,12 @@ public class existeCliente {
                         System.out.println("Cliente no encontrado en la base de datos");
                         return false;
                     }
-
+                    
                     System.out.println("\nCLIENTE ENCONTRADO");
                         
-                    System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+");
-                    System.out.printf("| %-30s | %-5s | %-15s | %-20s | %-15s | %-20s |\n", "Nombre", "Edad", "TipoDocumento", "NumeroDocumento", "Usuario", "Contraseña");
-                    System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+");
+                    System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+-----------------------------+");
+                    System.out.printf("| %-30s | %-5s | %-15s | %-20s | %-15s | %-70s |\n", "Nombre", "Edad", "TipoDocumento", "NumeroDocumento", "Usuario", "Contraseña");
+                    System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+-----------------------------+");
 
                     while (rs.next()) {
                         String nombre = rs.getString("nombre");
@@ -49,8 +53,12 @@ public class existeCliente {
                         String usuario = rs.getString("usuario");
                         String contraseña = rs.getString("contraseña");
 
-                        System.out.printf("| %-30s | %-5d | %-15d | %-20s | %-15s | %-20s |\n", nombre, edad, tipoDocumento, documento, usuario, contraseña);
+                        System.out.printf("| %-30s | %-5d | %-15d | %-20s | %-15s | %-70s |\n", nombre, edad, tipoDocumento, documento, usuario, contraseña);
                     }
+
+                    System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+");
+                    System.out.println("\n\nPresiona enter para continuar");
+                    sc.nextLine();
                 }
             }
             

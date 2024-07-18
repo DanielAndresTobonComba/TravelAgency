@@ -382,11 +382,11 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Cliente` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(50) NULL,
-  `edad` INT NULL,
+  `edad` varchar(2) NULL,
   `TipoDocumento_id` INT NULL,
   `usuario` VARCHAR(25) NULL unique,
   `contraseña` VARCHAR(70) NULL,
-  `numeroDocumento` varchar(15) not null,
+  `numeroDocumento` varchar(15) not null unique,
   PRIMARY KEY (`id`),
   INDEX `fk_Cliente_TipoDocumento1_idx` (`TipoDocumento_id` ASC) VISIBLE,
   CONSTRAINT `fk_Cliente_TipoDocumento1`
@@ -731,7 +731,6 @@ BEGIN
 END&&
 delimiter ;
 
-
 -- Procedure para eliminar un Aeropuerto
 
 DELIMITER $$
@@ -861,7 +860,7 @@ CREATE PROCEDURE crearCliente(
     IN p_tipoDocumento INT,
     IN p_numeroDocumento VARCHAR(50),
     IN p_usuario VARCHAR(50),
-    IN p_contraseña VARCHAR(50)
+    IN p_contraseña VARCHAR(70)
 )
 BEGIN
     -- Declarar variables locales si es necesario
@@ -897,4 +896,59 @@ END $$
 
 DELIMITER ;
 
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarNombreCliente $$
+CREATE PROCEDURE actualizarNombreCliente
+   (IN documento VARCHAR(15) , IN nuevoNombre varchar(30) )
+BEGIN
+        
+        UPDATE Cliente
+		SET nombre = nuevoNombre
+		where numeroDocumento = documento;
+        
+        SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = documento;
+END $$
+
+DELIMITER ;
+
+
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarEdadCliente $$
+CREATE PROCEDURE actualizarEdadCliente
+   (IN documento VARCHAR(15) , IN nuevaEdad varchar(2) )
+BEGIN
+        
+        UPDATE Cliente
+		SET edad = nuevaEdad
+		where numeroDocumento = documento;
+        
+        SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = documento;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarNumeroDocumentoCliente $$
+CREATE PROCEDURE actualizarNumeroDocumentoCliente
+   (IN documento VARCHAR(15) , IN nuevoDocumento varchar(15) )
+BEGIN
+        
+        UPDATE Cliente
+		SET numeroDocumento = nuevoDocumento
+		where numeroDocumento = documento;
+        
+        SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = nuevoDocumento;
+END $$
+
+DELIMITER ;
+
+-- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
 

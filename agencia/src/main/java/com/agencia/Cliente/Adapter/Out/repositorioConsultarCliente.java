@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLIntegrityConstraintViolationException;
 
-import com.agencia.Cliente.Domian.Entity.Cliente;
+
 import com.agencia.Cliente.Domian.Service.interfazConsultarCliente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.mysql.cj.jdbc.CallableStatement;
