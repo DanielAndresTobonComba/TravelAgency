@@ -12,6 +12,8 @@ import com.agencia.Verifiers.CheckString;
 
 public class menuActualizarCliente {
 
+    
+
     public void ejecutarMenu() {
 
         Scanner sc = new Scanner(System.in);
@@ -19,6 +21,8 @@ public class menuActualizarCliente {
         System.out.println("ACTUALIZAR CLIENTE");
         System.out.println("Ingresa el numero de documento del cliente");
         String numeroDocumento = CheckString.check("Digita el numero de nuevo");
+
+
 
         existeCliente existenciaCliente = new existeCliente();
 
@@ -59,7 +63,7 @@ public class menuActualizarCliente {
         }
 
         if (opcion <= lista.size()) {
-            lista.get(opcion - 1).actualizar();
+            lista.get(opcion - 1).actualizar(numeroDocumento);
         } else {
             Main.main(null); // Llama al método main del Main para volver al menú principal
         }

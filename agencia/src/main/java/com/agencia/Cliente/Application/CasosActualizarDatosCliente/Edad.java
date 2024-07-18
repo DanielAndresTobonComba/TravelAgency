@@ -11,8 +11,8 @@ public class Edad extends  actualizarDatosCliente {
     }
 
     @Override
-    public void actualizar() {
+    public void actualizar(String numeroDocumento) {
         ControladorEdad controladorEdad = new ControladorEdad(); 
-        controladorEdad.tomarEdadNueva();
+        controladorEdad.tomarEdadNueva(numeroDocumento);
     }
 }

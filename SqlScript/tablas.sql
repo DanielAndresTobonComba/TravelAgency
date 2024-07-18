@@ -382,11 +382,11 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Cliente` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(50) NULL,
-  `edad` INT NULL,
+  `edad` varchar(2) NULL,
   `TipoDocumento_id` INT NULL,
   `usuario` VARCHAR(25) NULL unique,
   `contraseña` VARCHAR(70) NULL,
-  `numeroDocumento` varchar(15) not null,
+  `numeroDocumento` varchar(15) not null unique,
   PRIMARY KEY (`id`),
   INDEX `fk_Cliente_TipoDocumento1_idx` (`TipoDocumento_id` ASC) VISIBLE,
   CONSTRAINT `fk_Cliente_TipoDocumento1`
@@ -727,7 +727,7 @@ VALUES
     ('Carlos Martínez', 40, 3, 'carlosm40', 'ghi789', '56781234'),
     ('Ana Gómez', 28, 4, 'anagomez28', 'jkl012', '43218765'),
     ('Pedro Ramírez', 35, 5, 'pedror35', 'mno345', '98765432'),
-    ('Luisa Fernández', 22, 1, 'luisaf22', 'pqr678', '87654321'),
+    ('Luisa Fernández', 22, 1, 'luisaf22', 'pqr678', '876543211'),
     ('Elena Torres', 33, 2, 'elenat33', 'stu901', '76543218'),
     ('Javier García', 45, 3, 'javierg45', 'vwx234', '67812345'),
     ('Sofía Rodríguez', 26, 4, 'sofiar26', 'yz567', '54321678'),
@@ -737,7 +737,6 @@ VALUES
 
 -- CONSULTAS PROPIAS
 
-SELECT * FROM TipoDocumento; 
 
 -- PROCEDIMIENTOS ALMACENADOS
 
@@ -832,7 +831,7 @@ CREATE PROCEDURE crearCliente(
     IN p_tipoDocumento INT,
     IN p_numeroDocumento VARCHAR(50),
     IN p_usuario VARCHAR(50),
-    IN p_contraseña VARCHAR(50)
+    IN p_contraseña VARCHAR(70)
 )
 BEGIN
     -- Declarar variables locales si es necesario
@@ -861,6 +860,59 @@ CREATE PROCEDURE consultarCliente
 BEGIN
         
         SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = documento;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarNombreCliente $$
+CREATE PROCEDURE actualizarNombreCliente
+   (IN documento VARCHAR(15) , IN nuevoNombre varchar(30) )
+BEGIN
+        
+        UPDATE Cliente
+		SET nombre = nuevoNombre
+		where numeroDocumento = documento;
+        
+        SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = documento;
+END $$
+
+DELIMITER ;
+
+
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarEdadCliente $$
+CREATE PROCEDURE actualizarEdadCliente
+   (IN documento VARCHAR(15) , IN nuevaEdad varchar(2) )
+BEGIN
+        
+        UPDATE Cliente
+		SET edad = nuevaEdad
+		where numeroDocumento = documento;
+        
+        SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = documento;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarNumeroDocumentoCliente $$
+CREATE PROCEDURE actualizarNumeroDocumentoCliente
+   (IN documento VARCHAR(15) , IN nuevoDocumento varchar(15) )
+BEGIN
+        
+        UPDATE Cliente
+		SET numeroDocumento = nuevoDocumento
+		where numeroDocumento = documento;
+        
+        SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = nuevoDocumento;
 END $$
 
 DELIMITER ;

@@ -12,9 +12,9 @@ public class Nombre extends actualizarDatosCliente {
     }
 
     @Override
-    public void actualizar() {
+    public void actualizar(String numeroDocumento) {
         ControladorNombre controladorNombre = new ControladorNombre(); 
-        controladorNombre.tomarNuevoNombre();
+        controladorNombre.tomarNuevoNombre(numeroDocumento);
     }
 
 }
