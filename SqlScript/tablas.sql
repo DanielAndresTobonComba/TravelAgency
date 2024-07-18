@@ -384,9 +384,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Cliente` (
   `nombre` VARCHAR(50) NULL,
   `edad` INT NULL,
   `TipoDocumento_id` INT NULL,
-  `usuario` VARCHAR(25) NULL,
+  `usuario` VARCHAR(25) NULL unique,
   `contraseña` VARCHAR(70) NULL,
-  `numeroDocumento` varchar(20) not null,
+  `numeroDocumento` varchar(15) not null,
   PRIMARY KEY (`id`),
   INDEX `fk_Cliente_TipoDocumento1_idx` (`TipoDocumento_id` ASC) VISIBLE,
   CONSTRAINT `fk_Cliente_TipoDocumento1`
@@ -608,6 +608,21 @@ VALUES
   ('Carné de conducir'),
   ('NIE (Número de Identificación de Extranjero)'),
   ('Tarjeta de residencia');
+  
+INSERT INTO `Cliente` (`nombre`, `edad`, `TipoDocumento_id`, `usuario`, `contraseña`, `numeroDocumento`)
+VALUES
+    ('Juan Pérez', 30, 1, 'juanperez30', 'abc123', '12345678'),
+    ('María López', 25, 2, 'marialopez25', 'def456', '87654321'),
+    ('Carlos Martínez', 40, 3, 'carlosm40', 'ghi789', '56781234'),
+    ('Ana Gómez', 28, 4, 'anagomez28', 'jkl012', '43218765'),
+    ('Pedro Ramírez', 35, 5, 'pedror35', 'mno345', '98765432'),
+    ('Luisa Fernández', 22, 1, 'luisaf22', 'pqr678', '87654321'),
+    ('Elena Torres', 33, 2, 'elenat33', 'stu901', '76543218'),
+    ('Javier García', 45, 3, 'javierg45', 'vwx234', '67812345'),
+    ('Sofía Rodríguez', 26, 4, 'sofiar26', 'yz567', '54321678'),
+    ('Martín Sánchez', 31, 5, 'martins31', 'abc890', '32187654');
+
+
 
 -- CONSULTAS PROPIAS
 
@@ -726,5 +741,17 @@ END $$
 
 DELIMITER ;
 
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS consultarCliente $$
+CREATE PROCEDURE consultarCliente
+   (IN documento VARCHAR(15))
+BEGIN
+        
+        SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = documento;
+END $$
+
+DELIMITER ;
 
 -- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
