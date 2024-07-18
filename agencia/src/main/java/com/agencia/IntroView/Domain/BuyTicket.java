@@ -1,9 +1,9 @@
 package com.agencia.IntroView.Domain;
 
 import com.agencia.AbstractClasses.Funcionalidad;
+import com.agencia.LogIn.MainLogIn.MainLogIn;
 
-public class BuyTicket extends Funcionalidad{
-
+public class BuyTicket extends Funcionalidad {
 
     public BuyTicket(String enunciado, String codigo) {
         this.enunciado = enunciado;
@@ -12,7 +12,7 @@ public class BuyTicket extends Funcionalidad{
 
     @Override
     public void ejecutar() {
-        System.out.println("Vamos a comprar un ticket");
+        System.out.println("Cliente pasa a comprar");
     }
 
 }

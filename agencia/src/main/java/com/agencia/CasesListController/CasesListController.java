@@ -14,6 +14,7 @@ import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Usuario;
 import com.agencia.EmployeeView.Domain.RegistrarAvion;
 import com.agencia.IntroView.Domain.IntroLogIn;
 import com.agencia.IntroView.Domain.BuyTicket;
+import com.agencia.IntroView.Domain.BuyTicket;
 import com.agencia.IntroView.Domain.Exit;
 
 public class CasesListController {
@@ -33,8 +34,9 @@ public class CasesListController {
 
         Funcionalidad introLogin = new IntroLogIn("Iniciar Sesión", "");
         Funcionalidad logOut = new Exit("Salir", "");
+
         Funcionalidad registrarAvion = new RegistrarAvion("Registrar Avión", "rav");
-        Funcionalidad buyTicket = new BuyTicket("Comprar Tickets", "");
+;
 
 
         // FUNCIONALIDADES ACTUALIZAR CLIENTE
@@ -60,10 +62,11 @@ public class CasesListController {
         lstActualizarDatosClientes.add(actualizarContraseña);
 
         lstIntro.add(introLogin);
-        lstIntro.add(buyTicket);
+
         lstIntro.add(logOut);
 
         lstFuncionalidades.add(registrarAvion);
+        
     }
 
     public static CasesListController getController() {

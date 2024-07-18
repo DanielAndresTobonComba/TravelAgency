@@ -20,7 +20,8 @@ public class Intro {
 
 
     public  void start() {
-        int opcion;
+        int opcion = 0;
+        boolean checkOpcion = false;
 
         System.out.println("\n------------------------------");
         System.out.println("   T R A V E L  A G E N C Y");
@@ -40,7 +41,25 @@ public class Intro {
         System.out.println(". . . . . . . . . . ");
         System.out.print(">>> ");
 
-        opcion = CheckInt.check("Ingrese nuevamente la opción") - 1;
+        while (checkOpcion == false) {
+            opcion = CheckInt.check("Ingrese nuevamente la opción") - 1;
+
+            if (opcion >= lstFuncionesIntro.size() || opcion <= -1 ) {
+                System.out.println("\n***********************");
+                System.out.println("   OPCIÓN INCORRECTA");
+                System.out.println("***********************");
+
+                System.out.println("\n. . . . . . . . . . . . . . . . . .");
+                System.out.println("Nuevamente: ¿Qué deseas realizar?");
+                System.out.println(". . . . . . . . . . . . . . . . . .");
+                System.out.print(">>> ");
+            } else {
+                checkOpcion = true;
+            }
+
+        }
+
+        
 
         lstFuncionesIntro.get(opcion).ejecutar();
 

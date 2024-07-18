@@ -1,6 +1,6 @@
 -- MySQL Workbench Forward Engineering
 
-
+-- CREACIÓN DE LA BASE DE DATOS
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -554,6 +554,7 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+--  --------------------------------------------------------------------------- INSERCIONES ---------------------------------------------------------------------
 
 /* INSERCIONES DE DATOS */
 
@@ -600,6 +601,116 @@ INSERT INTO `mydb`.`Aeropuerto` (`nombre`, `Ciudad_id`, `numeroAeropuerto`) VALU
 -- Aeropuertos en ciudades de Japón
 ('Aeropuerto Internacional de Narita', 9, 'NRT9'),
 ('Aeropuerto Internacional de Kansai', 10, 'KIX0');
+
+-- Insertar en la tabla Rol
+INSERT INTO Rol (nombre)
+VALUES ("Administrador");
+
+INSERT INTO Rol (nombre)
+VALUES ("Agente de ventas");
+
+INSERT INTO Rol (nombre)
+VALUES ("Tecnico de mantenimiento");
+
+-- Insertar en la tabla TipoDocumento
+INSERT INTO TipoDocumento (nombre)
+VALUES ("Pasaporte");
+
+
+
+-- Insertar en la tabla Aerolinea
+INSERT INTO Aerolinea  (nombre) VALUES 
+("Ninguno"); 
+
+
+INSERT INTO Aerolinea  (nombre) VALUES 
+("Copa Airlines");
+
+INSERT INTO Aerolinea  (nombre) VALUES 
+("Avianca");
+
+INSERT INTO Aerolinea  (nombre) VALUES 
+("Aeromexico");
+
+INSERT INTO Aerolinea  (nombre) VALUES 
+("Azul");
+
+INSERT INTO Aerolinea  (nombre) VALUES 
+("Aerolineas Argentina");     
+
+INSERT INTO Aerolinea  (nombre) VALUES 
+("LATAM Airlines");
+
+
+
+-- Insertar datos en la tabla Empleado
+INSERT INTO Empleado (name, fechaIngreso, Ciudad_id,  Aerolinia_id, TripulacionRol_id, TipoDocumento_id, usuario, contraseña)
+VALUES ("Carlos Jhoan Aguilar Galvis", "2020-01-01", 5, 1, 1, 1, "admin123", "240BE518FABD2724DDB6F04EEB1DA5967448D7E831C08C8FA822809F74C720A9");
+
+
+-- Insertar datos en la tabla Estado
+INSERT INTO Estado(nombre) VALUES
+('Activo'), ('En reparacion');
+
+
+-- Insertar datos en la tabla Fabricante
+INSERT INTO Fabricante(nombre) VALUES
+('Bombardier'), ('ACJ'), ('Airbus'), ('Beechcraft'), ('Boeing');
+
+
+-- Insertar datos en la tabla ModeloAvion
+INSERT INTO ModeloAvion(nombre, Fabricante_id)
+VALUES ('CHALLENGER 350', 1), ('AIRBUS 320', 3);
+
+
+
+
+
+-- ----------------------------------------------------------------------------- PROCEDURES ---------------------------------------------------------------------
+
+-- Procedure para obtener la información de un Empleado en especìfico
+DROP PROCEDURE if EXISTS  ObtainEMpleado;
+
+delimiter &&
+
+CREATE PROCEDURE ObtainEmpleado (IN nombreUsuario VARCHAR(45), IN rolNombre VARCHAR(45))
+BEGIN
+
+	SELECT e.id, e.name AS nombreEmpleado, e.fechaIngreso, c.nombre AS ciudadNombre, a.nombre AS aerolinea, r.nombre AS rolNombre, d.nombre AS tipodocumentoNombre, e.usuario, e.contraseña
+	FROM Empleado AS  e, Ciudad AS c, TipoDocumento AS d, Rol AS r, Aerolinea AS a
+	WHERE c.id = e.Ciudad_id AND
+			d.id = e.TipoDocumento_id AND 
+			r.id = e.TripulacionRol_id AND
+			a.id = e.Aerolinia_id AND
+			e.usuario = nombreUsuario AND 
+			r.nombre = rolNombre;
+		
+END &&
+delimiter ;
+
+-- Procedure para obtener los Roles
+
+DROP PROCEDURE if EXISTS ObtainRol;
+
+delimiter &&
+CREATE PROCEDURE ObtainRol()
+BEGIN
+	SELECT  nombre
+	FROM Rol;
+END &&
+delimiter ;
+
+-- Procedure para obtener las placas
+
+DROP PROCEDURE IF EXISTS ObtainPlacas;
+
+delimiter &&
+CREATE PROCEDURE ObtainPlacas()
+BEGIN
+	SELECT	placa
+    FROM	Avion;
+END&&
+delimiter ;
 
 INSERT INTO `mydb`.`TipoDocumento` (`nombre`)
 VALUES 
