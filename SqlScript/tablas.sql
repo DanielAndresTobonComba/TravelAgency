@@ -950,5 +950,26 @@ END $$
 
 DELIMITER ;
 
--- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
+
+-- Procedure para obtener los Modelos de Avion ya regostrados
+
+DROP PROCEDURE IF EXISTS ObtainModeloAvion;
+
+delimiter &&
+
+CREATE PROCEDURE ObtainModeloAvion()
+BEGIN
+			SELECT 	m.id AS idmodelo,
+						CONCAT(m.nombre , " - ", f.nombre) AS modelo
+						
+						
+			FROM 		ModeloAvion AS m,
+						Fabricante AS f
+			
+			WHERE		m.Fabricante_id = f.id;
+END &&
+
+delimiter ;
+
+
 

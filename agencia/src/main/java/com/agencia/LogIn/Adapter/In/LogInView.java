@@ -101,7 +101,7 @@ public class LogInView {
             System.out.print(">>> ");
             usuarioEmpleado = CheckString.check("Ingresa de nuevo el nombre de usuario");
 
-            if (usuarioEmpleado.toLowerCase().equals("exit") ) {
+            if (usuarioEmpleado.toLowerCase().trim().equals("exit") ) {
 
                 Intro intro = new Intro(listaFuncionesIntro);
                 intro.start();

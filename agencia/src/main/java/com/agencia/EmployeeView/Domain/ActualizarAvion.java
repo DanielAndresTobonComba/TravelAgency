@@ -1,6 +1,7 @@
 package com.agencia.EmployeeView.Domain;
 
 import com.agencia.AbstractClasses.Funcionalidad;
+import com.agencia.LogIn.Domain.Empleado;
 
 public class ActualizarAvion extends Funcionalidad {
 
@@ -10,7 +11,7 @@ public class ActualizarAvion extends Funcionalidad {
     }
 
     @Override
-    public void ejecutar() {
+    public void ejecutar(Empleado empleado) {
         System.out.println("Aquí se va a actualizar un avión");
 
     }

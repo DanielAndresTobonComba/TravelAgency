@@ -58,7 +58,7 @@ public class EmployeeView {
                 System.out.print(">>> ");
                 markedOption = CheckInt.check("Ingrese la opción nuevamente") - 1;
 
-                if (markedOption <= listEmployeeFunctions.size()) {
+                if (markedOption <= listEmployeeFunctions.size() && markedOption >= 0) {
                     correctOption = true;
                 } else {
                     System.out.println("\n*********************");
@@ -75,7 +75,7 @@ public class EmployeeView {
                 Intro intro = new Intro(listaFuncionesIntro);
                 intro.start();
             } else {
-                listEmployeeFunctions.get(markedOption).ejecutar();
+                listEmployeeFunctions.get(markedOption).ejecutar(empleado);
             }
 
             

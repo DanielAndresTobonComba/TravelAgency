@@ -61,7 +61,7 @@ public class Intro {
 
         
 
-        lstFuncionesIntro.get(opcion).ejecutar();
+        lstFuncionesIntro.get(opcion).ejecutar(null);
 
     } 
 
