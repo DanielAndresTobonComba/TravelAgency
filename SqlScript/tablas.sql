@@ -620,7 +620,7 @@ VALUES
     ('Carlos Martínez', 40, 3, 'carlosm40', 'ghi789', '56781234'),
     ('Ana Gómez', 28, 4, 'anagomez28', 'jkl012', '43218765'),
     ('Pedro Ramírez', 35, 5, 'pedror35', 'mno345', '98765432'),
-    ('Luisa Fernández', 22, 1, 'luisaf22', 'pqr678', '87654321'),
+    ('Luisa Fernández', 22, 1, 'luisaf22', 'pqr678', '1739021'),
     ('Elena Torres', 33, 2, 'elenat33', 'stu901', '76543218'),
     ('Javier García', 45, 3, 'javierg45', 'vwx234', '67812345'),
     ('Sofía Rodríguez', 26, 4, 'sofiar26', 'yz567', '54321678'),
@@ -949,6 +949,106 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+
+-- PROCEDURES PARA LA TABLA TIPO DE DOCUMENTO 
+
+
+select * from TipoDocumento;
+
+
+
+
+-- PROCEDIMIENTO PARA CREAR TIPO DE DOCUMENTO
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS imprimirTablaConEntradaTipoDocumento $$
+CREATE PROCEDURE imprimirTablaConEntradaTipoDocumento( in in_Id int )
+BEGIN
+        
+        SELECT id , nombre FROM TipoDocumento WHERE id = in_Id;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS imprimirTablaTipoDocumento $$
+CREATE PROCEDURE imprimirTablaTipoDocumento( )
+BEGIN
+        
+        SELECT id , nombre FROM TipoDocumento WHERE id = in_Id;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarNombreTipoDocumento $$
+CREATE PROCEDURE actualizarNombreTipoDocumento
+   (IN in_Id int , IN nuevoNombre varchar(45) )
+BEGIN	
+		
+        
+        
+        UPDATE TipoDocumento
+		SET nombre = nuevoNombre
+		where id = in_Id;
+        
+        SELECT id , nombre FROM TipoDocumento WHERE id = in_Id;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS crearTipoDocumento $$
+CREATE PROCEDURE crearTipoDocumento
+   (IN nuevoNombre varchar(45) )
+BEGIN	
+
+	DECLARE tipoDocumento_id int;
+
+    -- Insertar el nuevo tipo de documento en la tabla tipoDocumento
+    INSERT INTO TipoDocumento (nombre)
+    VALUES (nuevoNombre);
+
+    -- Obtener el ID del cliente insertado
+    SET tipoDocumento_id = LAST_INSERT_ID();
+
+    -- Seleccionar los datos del cliente insertado y devolverlos como resultado (opcional)
+	SELECT id , nombre FROM TipoDocumento WHERE id = tipoDocumento_id;
+END $$
+
+
+DELIMITER ;
+
+-- ELIMINAR TIPO DE DOCUMENTO 
+DELIMITER $$
+DROP PROCEDURE IF EXISTS eliminarTipoDocumento $$
+CREATE PROCEDURE eliminarTipoDocumento
+   (IN in_Id int )
+BEGIN	
+	
+    
+    
+	-- Seleccionar los datos del tipo de documento insertado y devolverlos como resultado 
+	SELECT id , nombre FROM TipoDocumento WHERE id = in_Id  ;
+
+	-- Eliminar el tipo de documento
+    DELETE FROM TipoDocumento WHERE id = in_Id ;
+	
+
+
+    
+    
+END $$
+
+
+DELIMITER ;
+
+select * from TipoDocumento;
 
 -- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
 
