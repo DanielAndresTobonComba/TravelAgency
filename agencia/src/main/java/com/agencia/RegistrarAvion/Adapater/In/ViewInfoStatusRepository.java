@@ -7,10 +7,11 @@ import java.util.List;
 
 import com.agencia.RegistrarAvion.Domain.Services.ViewInfoService;
 
-public class ViewInfoModelRepository implements ViewInfoService {
+public class ViewInfoStatusRepository implements ViewInfoService {
 
     @Override
     public List<Integer> print(ResultSet resultSet) {
+        
         List<Integer> listCodes = new ArrayList<>();
         int rowCount = 0;
 
@@ -18,24 +19,24 @@ public class ViewInfoModelRepository implements ViewInfoService {
 
             
             System.out.println("\n\n==========================================");
-            System.out.println("           MODELOS REGISTRADOS");
+            System.out.println("           ESTADOS REGISTRADOS");
             System.out.println("==========================================");
-            System.err.println("  COD\t|    MODELO");
+            System.err.println("  COD\t|    ESTADO");
             System.out.println("------------------------------------------");
 
             while ( resultSet.next()) {
 
                 rowCount++;
-                int code = resultSet.getInt("idmodelo");
+                int code = resultSet.getInt("id");
                 listCodes.add(code);
-                String model = resultSet.getString("modelo");
-                System.out.println("  " + code + ".\t|  " + model);
+                String status = resultSet.getString("estado");
+                System.out.println("  " + code + ".\t|  " + status);
             
             }
 
             if (rowCount == 0) {
 
-                System.out.println("\nNO HAY MODELOS REGISTRADOS\n");
+                System.out.println("\nNO HAY ESTADOS REGISTRADOS\n");
 
             }
 
@@ -51,6 +52,5 @@ public class ViewInfoModelRepository implements ViewInfoService {
 
         return listCodes;
     }
-    
 
 }

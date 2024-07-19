@@ -7,7 +7,10 @@ import com.agencia.EmployeeView.MainEmployeeView.MainEmployeeView;
 import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.RegistrarAvion.Application.ExistentPlatesExtraction;
 import com.agencia.RegistrarAvion.Application.ExtractRegistersAction;
+import com.agencia.RegistrarAvion.Application.RecordAirplaneAction;
 import com.agencia.RegistrarAvion.Application.ViewInfoModelsAction;
+import com.agencia.RegistrarAvion.Application.ViewInfoStatusAction;
+import com.agencia.RegistrarAvion.Domain.Entity.Airplane;
 import com.agencia.Verifiers.CheckDate;
 import com.agencia.Verifiers.CheckInt;
 import com.agencia.Verifiers.CheckString;
@@ -17,19 +20,33 @@ public class FormAirplaneRegistration {
     private ExistentPlatesExtraction existentPlatesExtraction;
     private ViewInfoModelsAction viewInfoModelAction;
     private ExtractRegistersAction extractRegistersModelsAction;
+    private ViewInfoStatusAction viewInfoStatusAction;
+    private ExtractRegistersAction extractRegistersStatusAction;
+    private RecordAirplaneAction recordAirplaneAction;
     
 
-    public FormAirplaneRegistration(ExistentPlatesExtraction existentPlatesExtraction, ViewInfoModelsAction viewInfoModelAction, ExtractRegistersAction extractRegistersModelsAction) {
+    
+
+    public FormAirplaneRegistration(ExistentPlatesExtraction existentPlatesExtraction,
+            ViewInfoModelsAction viewInfoModelAction, ExtractRegistersAction extractRegistersModelsAction,
+            ViewInfoStatusAction viewInfoStatusAction, ExtractRegistersAction extractRegistersStatusAction,
+            RecordAirplaneAction recordAirplaneAction) {
         this.existentPlatesExtraction = existentPlatesExtraction;
         this.viewInfoModelAction = viewInfoModelAction;
         this.extractRegistersModelsAction = extractRegistersModelsAction;
-        //this.extractRegistersStatusACtion = extractRegistersStatusACtion;
-
+        this.viewInfoStatusAction = viewInfoStatusAction;
+        this.extractRegistersStatusAction = extractRegistersStatusAction;
+        this.recordAirplaneAction =  recordAirplaneAction;
+        
     }
+
+
+
 
     public void SeeResults(Empleado empleado) {
         List<String> listRegisteredPlates = this.existentPlatesExtraction.executeExtract(); 
         ResultSet infoModels = this.extractRegistersModelsAction.extractInfo();
+        ResultSet infoStatus = this.extractRegistersStatusAction.extractInfo();
         boolean checkPlaca = false;
         boolean exitPlaca = false;
         String placa = "";
@@ -39,6 +56,12 @@ public class FormAirplaneRegistration {
         boolean checkFechaFabricacion = false;
         boolean exitFechaFabricacion = false;
         String fechaFabricacion = "";
+        boolean checkModelo = false;
+        boolean exitModelo = false;
+        int codModelo = 0;
+        boolean checkEstado = false;
+        boolean exitEstado = false;
+        int codEstado = 0;
         
 
         System.out.println("\n______________________\n");
@@ -49,7 +72,7 @@ public class FormAirplaneRegistration {
 
         while (exitPlaca == false) {
 
-            System.out.println("\n--> Ingrese la placa del Avión");
+            System.out.println("\n\n--> Ingrese la placa del Avión");
             System.out.println("....................................");
             System.out.println("      [EXIT/exit] para Salir");
             System.out.print(">>> ");
@@ -93,7 +116,7 @@ public class FormAirplaneRegistration {
         if (checkPlaca == true) {
             while ((exitCapacidad == false)) {
                 
-                System.out.println("\n--> Ingrese la capacidad del Avión");
+                System.out.println("\n\n--> Ingrese la capacidad del Avión");
                 System.out.println("......................................");
                 System.out.println("      (Presiona -1 para Salir)");
                 System.out.print(">>> ");
@@ -129,7 +152,7 @@ public class FormAirplaneRegistration {
         if (checkCapacidad == true) {
             while ((exitFechaFabricacion == false)) {
                 
-                System.out.println("\n--> Ingrese la Fecha de Fabricación del Avión");
+                System.out.println("\n\n--> Ingrese la Fecha de Fabricación del Avión");
                 System.out.println("                  [AAAA-MM-DD]");
                 System.out.println(".................................................");
                 System.out.println("      [EXIT/exit] para Salir");
@@ -154,7 +177,122 @@ public class FormAirplaneRegistration {
 
             }
 
-            List<Integer> listCodesModels = this.viewInfoModelAction.executeView(infoModels); 
+            // Resgitro del Modelo del Avión
+
+            if (checkFechaFabricacion == true) {
+
+                List<Integer> listCodesModels = this.viewInfoModelAction.executeView(infoModels); 
+
+                while ((exitModelo == false)) {
+
+                    
+                    System.out.println("\n\n--> Ingrese el código del modelo");
+                    System.out.println("......................................");
+                    System.out.println("      (Presiona -1 para Salir)");
+                    System.out.print(">>> ");
+    
+                    codModelo = CheckInt.check("Ingrese el código nuevamente");
+    
+                    if (codModelo == -1) {
+    
+                        System.out.println("\nxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                        System.out.println("x    REGISTRO CANCELADO   x");
+                        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                        exitModelo = true;
+                        MainEmployeeView.mainEmployeeView(empleado);
+        
+                    } else if (codModelo <0 && codModelo != -1) {
+    
+                        System.out.println("\n****************************************");
+                        System.out.println("||  EL CÓDIGO NO PUEDE SER NEGATIVO   ||");
+                        System.out.println("****************************************\n");
+    
+                    } else if (listCodesModels.contains(codModelo) == false) {
+    
+                        System.out.println("\n******************************************");
+                        System.out.println("||    CÓDIGO DE MODELO NO REGISTRADO    ||");
+                        System.out.println("******************************************\n");
+    
+                    } else {
+
+                        exitModelo = true;
+                        checkModelo = true;
+
+                    }
+    
+                }
+            }
+
+
+            // Resgitro del Modelo del Avión
+
+            if (checkModelo == true) {
+
+                List<Integer> listCodesStatus = this.viewInfoStatusAction.executeView(infoStatus);  
+
+                while ((exitEstado == false)) {
+
+                    
+                    System.out.println("\n\n--> Ingrese el código del estado");
+                    System.out.println("......................................");
+                    System.out.println("      (Presiona -1 para Salir)");
+                    System.out.print(">>> ");
+    
+                    codEstado = CheckInt.check("Ingrese el código nuevamente");
+    
+                    if (codEstado == -1) {
+    
+                        System.out.println("\nxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                        System.out.println("x    REGISTRO CANCELADO   x");
+                        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                        exitEstado = true;
+                        MainEmployeeView.mainEmployeeView(empleado);
+        
+                    } else if (codEstado <0 && codEstado != -1) {
+    
+                        System.out.println("\n****************************************");
+                        System.out.println("||  EL CÓDIGO NO PUEDE SER NEGATIVO   ||");
+                        System.out.println("****************************************\n");
+    
+                    } else if (listCodesStatus.contains(codEstado) == false) {
+    
+                        System.out.println("\n******************************************");
+                        System.out.println("||    CÓDIGO DE ESTADO NO REGISTRADO    ||");
+                        System.out.println("******************************************\n");
+    
+                    } else {
+
+                        exitEstado = true;
+                        checkEstado = true;
+
+                    }
+    
+                }
+            }
+
+            if (checkEstado == true) {
+
+                Airplane newAirplane = new Airplane(placa, capacidad, fechaFabricacion, codModelo, codEstado);
+                int insertedRow = this.recordAirplaneAction.executeRecord(newAirplane);
+
+                if (insertedRow == 1) {
+
+                    System.out.println("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+                    System.out.println("   Avión resgitrado EXITOSAMENTE");
+                    System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+                    MainEmployeeView.mainEmployeeView(empleado);
+
+                } else {
+
+                    System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                    System.out.println("x  FALLÓ AL REGISTRAR AVIÓN  x");
+                    System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+
+
+                }
+            }
+            
+            
 
             
         }

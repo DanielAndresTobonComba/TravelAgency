@@ -17,7 +17,7 @@ public class ExtractAirplaneStatusesRepository implements  ExtractRegistersServi
         
         try {
 
-            String sqlProcedure = "{CALL ObtainModeloAvion()}";
+            String sqlProcedure = "{CALL ObtainEstadoAvion()}";
             Connection connection = DataBaseConfig.getConnection().DBconnection;
             CallableStatement cs = connection.prepareCall(sqlProcedure);
             cs.execute();
