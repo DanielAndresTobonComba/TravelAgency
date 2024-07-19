@@ -3,7 +3,7 @@ package com.agencia.Tarifa.Adapter.In;
 import java.util.Scanner;
 
 import com.agencia.Tarifa.Adapter.Out.repoAgregarTarifa;
-import com.agencia.Tarifa.Application.Entity.agregarTarifa;
+import com.agencia.Tarifa.Application.Casos.agregarTarifa;
 import com.agencia.Tarifa.Domain.Tarifa;
 import com.agencia.Verifiers.CheckDecimal;
 import com.agencia.Verifiers.CheckInt;
