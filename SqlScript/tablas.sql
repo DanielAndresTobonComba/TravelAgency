@@ -962,7 +962,7 @@ delimiter &&
 CREATE PROCEDURE ObtainModeloAvion()
 BEGIN
 			SELECT 	m.id AS idmodelo,
-						CONCAT(m.nombre , " - ", f.nombre) AS modelo
+						  CONCAT(m.nombre , " - ", f.nombre) AS modelo
 						
 						
 			FROM 		ModeloAvion AS m,
@@ -972,6 +972,37 @@ BEGIN
 END &&
 
 delimiter ;
+
+
+-- Procedure para obtener el Estado del Avión
+DROP PROCEDURE IF EXISTS ObtainEstadoAvion;
+
+delimiter &&
+
+CREATE PROCEDURE ObtainEstadoAvion()
+BEGIN
+			SELECT 	id,
+						  nombre AS estado
+						
+						
+			FROM 		Estado;
+END &&
+
+delimiter ;
+
+-- Procedure para obtener las placas de los Aviones resgistrados
+
+DROP PROCEDURE IF EXISTS ObtainPlacas;
+
+delimiter &&
+CREATE PROCEDURE ObtainPlacas()
+BEGIN
+	SELECT	placa
+    FROM	Avion;
+END&&
+delimiter ;
+
+
 
 
 

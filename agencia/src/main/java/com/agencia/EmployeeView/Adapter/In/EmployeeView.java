@@ -39,9 +39,9 @@ public class EmployeeView {
             System.out.println("\n----------------------------------");
             System.out.println("     T R A V E L  A G E N C Y");
             System.out.println("__________________________________\n");
-            System.out.println(String.format("  %s",empleado.getUsuario()));
-            System.out.println(String.format("  %s",empleado.getName()));
-            System.out.println(String.format("  %s",empleado.getRol()));
+            System.out.println(String.format("  User: %s",empleado.getUsuario()));
+            System.out.println(String.format("  Nombre: %s",empleado.getName()));
+            System.out.println(String.format("  Rol: %s",empleado.getRol()));
             System.out.println("__________________________________");
             for(Funcionalidad function : listEmployeeFunctions) {
                 itemFunction = listEmployeeFunctions.indexOf(function) + 1;

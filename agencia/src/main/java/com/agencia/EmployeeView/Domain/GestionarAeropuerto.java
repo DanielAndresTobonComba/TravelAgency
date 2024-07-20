@@ -16,7 +16,7 @@ public class GestionarAeropuerto extends Funcionalidad {
     @Override
     public void ejecutar(Empleado empleado) {
         
-        MainMenuAeropuerto.main();
+        MainMenuAeropuerto.main(empleado);
 
     }
 

@@ -5,6 +5,10 @@ import java.util.List;
 
 import com.agencia.AbstractClasses.Funcionalidad;
 import com.agencia.AbstractClasses.actualizarDatosCliente;
+import com.agencia.Aeropuerto.Infraestructure.In.GoToActualizarAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.In.GoToConsultarAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.In.GoToCrearAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.In.GoToEliminarAeropuerto;
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Contrasena;
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Edad;
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Nombre;
@@ -21,14 +25,15 @@ public class CasesListController {
     public static List<Funcionalidad> lstIntro;
     public static List<Funcionalidad> lstFuncionalidades;
     public static List<actualizarDatosCliente> lstActualizarDatosClientes;
+    public static List<Funcionalidad> lstGestionarAeropuerto;
 
     private static CasesListController CONTROLLER = new CasesListController();
 
     private CasesListController() {
         lstIntro = new ArrayList<>();
         lstFuncionalidades = new ArrayList<>();
-
         lstActualizarDatosClientes = new ArrayList<>();
+        lstGestionarAeropuerto = new ArrayList<>();
 
         // Instanciación funciones del Login Inicial
         Funcionalidad introLogin = new IntroLogIn("Iniciar Sesión", "");
@@ -39,18 +44,19 @@ public class CasesListController {
 ;       Funcionalidad gestionarAeropuerto = new GestionarAeropuerto("Gestionar Aeropuerto", "gae");
 
 
-        // FUNCIONALIDADES ACTUALIZAR CLIENTE
-        actualizarDatosCliente actualizarNombre = new Nombre("Actualizar nombre");
-        
+        // INSTANCICIÓN FUNCIONALIDADES ACTUALIZAR CLIENTE
+        actualizarDatosCliente actualizarNombre = new Nombre("Actualizar nombre");       
         actualizarDatosCliente actualizarEdad = new Edad("Actualizar edad");
-
         actualizarDatosCliente actualizarTipoDocumento = new TipoDocumento("Actualizar tipo de documento");
-
         actualizarDatosCliente actualizarNumeroDocumento = new NumeroDocumento("Actualizar numero de documento"); 
-
         actualizarDatosCliente actualizarUsuario = new Usuario("Actualizar usuario");
-
         actualizarDatosCliente actualizarContraseña = new Contrasena("Actualizar contraseña");
+
+        // INSTANCIACIÓN FUNCIONALIDADES PARA GESTIONAR AEROPUERTO
+        Funcionalidad registrarAeropuerto = new GoToCrearAeropuerto("Registrar Aeropuerto", "");
+        Funcionalidad actualizarAeropuerto = new GoToActualizarAeropuerto("Actualizar Aeropuerto", "");
+        Funcionalidad consultarAeropuerto = new GoToConsultarAeropuerto("Consultar Aeropuerto", "");
+        Funcionalidad eliminarAeropuerto = new GoToEliminarAeropuerto("Eliminar Aeropuerto", "");
 
         // AGREGAR LA FUNCIONALIDAD A LA LISTA DE CASOS DE USO DE ACTUALIZAR DATOS DEL CLIENTE 
 
@@ -64,13 +70,18 @@ public class CasesListController {
         // FUNCIONES DEL MENÚ INICIAL
 
         lstIntro.add(introLogin);
-
         lstIntro.add(logOut);
 
         // FUNCIONALIDADES DE LOS EMPLEADOS
 
         lstFuncionalidades.add(registrarAvion);
         lstFuncionalidades.add(gestionarAeropuerto);
+
+        // FUNCIONALIDADES PARA GESTIONAR AEROPUERTO
+        lstGestionarAeropuerto.add(registrarAeropuerto);
+        lstGestionarAeropuerto.add(actualizarAeropuerto);
+        lstGestionarAeropuerto.add(consultarAeropuerto);
+        lstGestionarAeropuerto.add(eliminarAeropuerto);
         
     }
 
