@@ -40,7 +40,9 @@ public class Main {
     public static void main(String[] args) {
         
         //Confirmación de la conexión a la Base de datos 
-         System.out.println(DataBaseConfig.getConnection().msjConnection);
+        String RESET = "\u001B[0m";
+        String GREEN = "\u001B[42m";
+         System.out.println(GREEN + DataBaseConfig.getConnection().msjConnection + RESET);
 
         // Lanzar la aplicación
         List<Funcionalidad> listaFuncionesIntro = CasesListController.getController().lstIntro;

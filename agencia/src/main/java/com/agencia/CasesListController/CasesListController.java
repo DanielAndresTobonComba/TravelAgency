@@ -11,10 +11,9 @@ import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Nombre;
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.NumeroDocumento;
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.TipoDocumento;
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Usuario;
+import com.agencia.EmployeeView.Domain.GestionarAeropuerto;
 import com.agencia.EmployeeView.Domain.RegistrarAvion;
 import com.agencia.IntroView.Domain.IntroLogIn;
-import com.agencia.IntroView.Domain.BuyTicket;
-import com.agencia.IntroView.Domain.BuyTicket;
 import com.agencia.IntroView.Domain.Exit;
 
 public class CasesListController {
@@ -31,12 +30,13 @@ public class CasesListController {
 
         lstActualizarDatosClientes = new ArrayList<>();
 
-
+        // Instanciación funciones del Login Inicial
         Funcionalidad introLogin = new IntroLogIn("Iniciar Sesión", "");
         Funcionalidad logOut = new Exit("Salir", "");
 
+        // Instanciación funciones del empleado
         Funcionalidad registrarAvion = new RegistrarAvion("Registrar Avión", "rav");
-;
+;       Funcionalidad gestionarAeropuerto = new GestionarAeropuerto("Gestionar Aeropuerto", "gae");
 
 
         // FUNCIONALIDADES ACTUALIZAR CLIENTE
@@ -61,11 +61,16 @@ public class CasesListController {
         lstActualizarDatosClientes.add(actualizarUsuario);
         lstActualizarDatosClientes.add(actualizarContraseña);
 
+        // FUNCIONES DEL MENÚ INICIAL
+
         lstIntro.add(introLogin);
 
         lstIntro.add(logOut);
 
+        // FUNCIONALIDADES DE LOS EMPLEADOS
+
         lstFuncionalidades.add(registrarAvion);
+        lstFuncionalidades.add(gestionarAeropuerto);
         
     }
 

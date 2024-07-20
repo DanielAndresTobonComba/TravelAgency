@@ -45,10 +45,10 @@ public class EmployeeView {
             System.out.println("__________________________________");
             for(Funcionalidad function : listEmployeeFunctions) {
                 itemFunction = listEmployeeFunctions.indexOf(function) + 1;
-                System.out.println(itemFunction + ". " + function.enunciado + "\n");
+                System.out.println("   " + itemFunction + ". " + function.enunciado + "\n");
             }
             itemFunction ++;
-            System.out.println(itemFunction + ". Cerrar Sesión");
+            System.out.println("   " + itemFunction + ". Cerrar Sesión");
             System.out.println("----------------------------------");
 
             while ( correctOption == false) {
