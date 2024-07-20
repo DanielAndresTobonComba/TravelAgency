@@ -16,7 +16,8 @@ import com.agencia.Cliente.Application.CasosActualizarDatosCliente.NumeroDocumen
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.TipoDocumento;
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Usuario;
 import com.agencia.EmployeeView.Domain.GestionarAeropuerto;
-import com.agencia.EmployeeView.Domain.RegistrarAvion;
+import com.agencia.EmployeeView.Domain.GestionarAvion;
+import com.agencia.GestionAvion.Adapter.GoToRegistrarAvion;
 import com.agencia.IntroView.Domain.IntroLogIn;
 import com.agencia.IntroView.Domain.Exit;
 
@@ -26,6 +27,7 @@ public class CasesListController {
     public static List<Funcionalidad> lstFuncionalidades;
     public static List<actualizarDatosCliente> lstActualizarDatosClientes;
     public static List<Funcionalidad> lstGestionarAeropuerto;
+    public static List<Funcionalidad> lstGestionarAvion;
 
     private static CasesListController CONTROLLER = new CasesListController();
 
@@ -33,6 +35,7 @@ public class CasesListController {
         lstIntro = new ArrayList<>();
         lstFuncionalidades = new ArrayList<>();
         lstActualizarDatosClientes = new ArrayList<>();
+        lstGestionarAvion = new ArrayList<>();
         lstGestionarAeropuerto = new ArrayList<>();
 
         // Instanciación funciones del Login Inicial
@@ -40,7 +43,8 @@ public class CasesListController {
         Funcionalidad logOut = new Exit("Salir", "");
 
         // Instanciación funciones del empleado
-        Funcionalidad registrarAvion = new RegistrarAvion("Registrar Avión", "rav");
+        
+        Funcionalidad gestionarAvion = new GestionarAvion("Gestionar Avión", "gav");
 ;       Funcionalidad gestionarAeropuerto = new GestionarAeropuerto("Gestionar Aeropuerto", "gae");
 
 
@@ -51,6 +55,10 @@ public class CasesListController {
         actualizarDatosCliente actualizarNumeroDocumento = new NumeroDocumento("Actualizar numero de documento"); 
         actualizarDatosCliente actualizarUsuario = new Usuario("Actualizar usuario");
         actualizarDatosCliente actualizarContraseña = new Contrasena("Actualizar contraseña");
+
+        // INSTANCIACIÓN FUNCIONALIDADES ´PARA GESTIONAR AVIÓN
+        Funcionalidad registrarAvion = new GoToRegistrarAvion("Registrar Avión", "");
+
 
         // INSTANCIACIÓN FUNCIONALIDADES PARA GESTIONAR AEROPUERTO
         Funcionalidad registrarAeropuerto = new GoToCrearAeropuerto("Registrar Aeropuerto", "");
@@ -74,8 +82,12 @@ public class CasesListController {
 
         // FUNCIONALIDADES DE LOS EMPLEADOS
 
-        lstFuncionalidades.add(registrarAvion);
+        lstFuncionalidades.add(gestionarAvion);
         lstFuncionalidades.add(gestionarAeropuerto);
+
+        //FUNCIONALIDADES PARA GESTIONAR AVIÓN
+        lstGestionarAvion.add(registrarAvion);
+
 
         // FUNCIONALIDADES PARA GESTIONAR AEROPUERTO
         lstGestionarAeropuerto.add(registrarAeropuerto);

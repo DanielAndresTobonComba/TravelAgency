@@ -1,18 +1,23 @@
 package com.agencia.EmployeeView.Domain;
 
 import com.agencia.AbstractClasses.Funcionalidad;
+import com.agencia.GestionAvion.Main.MainMenuGestionAvion;
 import com.agencia.LogIn.Domain.Empleado;
 
-public class ActualizarAvion extends Funcionalidad {
+public class GestionarAvion extends Funcionalidad {
 
-    public ActualizarAvion(String enunciado, String codigo) {
+    public GestionarAvion(String enunciado, String codigo) {
         this.enunciado = enunciado;
         this.codigo = codigo;
     }
 
+
+
     @Override
     public void ejecutar(Empleado empleado) {
-        System.out.println("Aquí se va a actualizar un avión");
+        
+        MainMenuGestionAvion.main(empleado);
 
     }
+
 }

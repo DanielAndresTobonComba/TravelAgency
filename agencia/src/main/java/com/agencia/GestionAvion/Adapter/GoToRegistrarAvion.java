@@ -1,15 +1,12 @@
-package com.agencia.EmployeeView.Domain;
+package com.agencia.GestionAvion.Adapter;
 
 import com.agencia.AbstractClasses.Funcionalidad;
 import com.agencia.LogIn.Domain.Empleado;
-import com.agencia.LogIn.MainLogIn.MainLogIn;
 import com.agencia.RegistrarAvion.Main.MainAirplaneRegistration;
 
-public class RegistrarAvion  extends Funcionalidad{
+public class GoToRegistrarAvion extends Funcionalidad {
 
-    
-
-    public RegistrarAvion(String enunciado, String codigo) {
+    public GoToRegistrarAvion(String enunciado, String codigo) {
         this.enunciado = enunciado;
         this.codigo = codigo;
     }

@@ -1,4 +1,4 @@
-package com.agencia.Aeropuerto.Infraestructure.In;
+package com.agencia.GestionAvion.Adapter;
 
 import java.util.List;
 
@@ -7,26 +7,22 @@ import com.agencia.EmployeeView.MainEmployeeView.MainEmployeeView;
 import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.Verifiers.CheckInt;
 
-public class IntroGestionAeropuerto {
+public class IntroGestionAvion {
 
-    private List<Funcionalidad> listaFuncionesGestionarAeropuerto;
+    private List<Funcionalidad> listaFuncionesGestionarAvion;
     private Empleado empleado;
 
-    
-
-    public IntroGestionAeropuerto(List<Funcionalidad> listaFuncionesGestionarAeropuerto, Empleado empleado) {
-        this.listaFuncionesGestionarAeropuerto = listaFuncionesGestionarAeropuerto;
+    public IntroGestionAvion(List<Funcionalidad> listaFuncionesGestionarAvion, Empleado empleado) {
+        this.listaFuncionesGestionarAvion = listaFuncionesGestionarAvion;
         this.empleado = empleado;
     }
-
-
 
     public void start() {
 
         int itemFunction = 0;
         int markedOption = 0;
         boolean correctOption = false;
-        List<Funcionalidad> listaFuncionesGestionarAeropuerto = this.listaFuncionesGestionarAeropuerto;
+        List<Funcionalidad> listaFuncionesGestionarAvion = this.listaFuncionesGestionarAvion;
         Empleado empleado = this.empleado;
 
 
@@ -37,11 +33,11 @@ public class IntroGestionAeropuerto {
         System.out.println(String.format("  Nombre: %s", this.empleado.getName()));
         System.out.println(String.format("  Rol: %s", this.empleado.getRol()));
         System.out.println("__________________________________");
-        System.out.println("       GESTIONAR AEROPUERTO");
+        System.out.println("          GESTIONAR AVIÓN");
         System.out.println("===================================");
 
-        for(Funcionalidad function : listaFuncionesGestionarAeropuerto) {
-            itemFunction = listaFuncionesGestionarAeropuerto.indexOf(function) + 1;
+        for(Funcionalidad function : listaFuncionesGestionarAvion) {
+            itemFunction = listaFuncionesGestionarAvion.indexOf(function) + 1;
             System.out.println("   " + itemFunction + ". " + function.enunciado + "\n");
         }
         itemFunction ++;
@@ -55,7 +51,7 @@ public class IntroGestionAeropuerto {
                 System.out.print(">>> ");
                 markedOption = CheckInt.check("Ingrese la opción nuevamente") - 1;
 
-                if (markedOption <= listaFuncionesGestionarAeropuerto.size() && markedOption >= 0) {
+                if (markedOption <= listaFuncionesGestionarAvion.size() && markedOption >= 0) {
                     correctOption = true;
                 } else {
                     System.out.println("\n*********************");
@@ -65,14 +61,11 @@ public class IntroGestionAeropuerto {
             
         }
 
-        if (markedOption == listaFuncionesGestionarAeropuerto.size()) {
+        if (markedOption == listaFuncionesGestionarAvion.size()) {
                 MainEmployeeView.mainEmployeeView(empleado);
             } else {
-                listaFuncionesGestionarAeropuerto.get(markedOption).ejecutar(empleado);
+                listaFuncionesGestionarAvion.get(markedOption).ejecutar(empleado);
             }
-
-
-
 
     }
 
