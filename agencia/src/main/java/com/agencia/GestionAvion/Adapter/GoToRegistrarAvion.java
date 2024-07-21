@@ -12,11 +12,6 @@ public class GoToRegistrarAvion extends Funcionalidad {
     }
 
 
-
-
-
-    
-
     @Override
     public void ejecutar(Empleado empleado) {
         MainAirplaneRegistration.mainAirplaneRegistration(empleado);

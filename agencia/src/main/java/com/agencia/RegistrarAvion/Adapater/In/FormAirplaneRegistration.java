@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.util.List;
 
 import com.agencia.EmployeeView.MainEmployeeView.MainEmployeeView;
+import com.agencia.GestionAvion.Main.MainMenuGestionAvion;
 import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.RegistrarAvion.Application.ExistentPlatesExtraction;
 import com.agencia.RegistrarAvion.Application.ExtractRegistersAction;
@@ -31,6 +32,7 @@ public class FormAirplaneRegistration {
             ViewInfoModelsAction viewInfoModelAction, ExtractRegistersAction extractRegistersModelsAction,
             ViewInfoStatusAction viewInfoStatusAction, ExtractRegistersAction extractRegistersStatusAction,
             RecordAirplaneAction recordAirplaneAction) {
+                
         this.existentPlatesExtraction = existentPlatesExtraction;
         this.viewInfoModelAction = viewInfoModelAction;
         this.extractRegistersModelsAction = extractRegistersModelsAction;
@@ -85,7 +87,7 @@ public class FormAirplaneRegistration {
                 System.out.println("x    REGISTRO CANCELADO   x");
                 System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
                 exitPlaca = true;
-                MainEmployeeView.mainEmployeeView(empleado);
+                MainMenuGestionAvion.main(empleado);
 
 
 
@@ -129,7 +131,7 @@ public class FormAirplaneRegistration {
                     System.out.println("x    REGISTRO CANCELADO   x");
                     System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
                     exitCapacidad = true;
-                    MainEmployeeView.mainEmployeeView(empleado);
+                    MainMenuGestionAvion.main(empleado);
     
                 } else if (capacidad <=0 && capacidad != -1) {
 
@@ -166,7 +168,7 @@ public class FormAirplaneRegistration {
                     System.out.println("x    REGISTRO CANCELADO   x");
                     System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
                     exitFechaFabricacion = true;
-                    MainEmployeeView.mainEmployeeView(empleado);
+                    MainMenuGestionAvion.main(empleado);
     
                 } else {
 
@@ -199,7 +201,7 @@ public class FormAirplaneRegistration {
                         System.out.println("x    REGISTRO CANCELADO   x");
                         System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
                         exitModelo = true;
-                        MainEmployeeView.mainEmployeeView(empleado);
+                        MainMenuGestionAvion.main(empleado);
         
                     } else if (codModelo <0 && codModelo != -1) {
     
@@ -246,7 +248,7 @@ public class FormAirplaneRegistration {
                         System.out.println("x    REGISTRO CANCELADO   x");
                         System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
                         exitEstado = true;
-                        MainEmployeeView.mainEmployeeView(empleado);
+                        MainMenuGestionAvion.main(empleado);
         
                     } else if (codEstado <0 && codEstado != -1) {
     
@@ -280,13 +282,14 @@ public class FormAirplaneRegistration {
                     System.out.println("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
                     System.out.println("   Avión resgitrado EXITOSAMENTE");
                     System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-                    MainEmployeeView.mainEmployeeView(empleado);
+                    MainMenuGestionAvion.main(empleado);
 
                 } else {
 
                     System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
                     System.out.println("x  FALLÓ AL REGISTRAR AVIÓN  x");
                     System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                    MainMenuGestionAvion.main(empleado);
 
 
                 }
