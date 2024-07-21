@@ -584,6 +584,7 @@ INSERT INTO `mydb`.`Ciudad` (`nombre`, `Pais_id`) VALUES
 ('Tokio', 5),
 ('Osaka', 5);
 
+select * from Aeropuerto;
 -- Insertar datos en la tabla `Aeropuerto`
 INSERT INTO `mydb`.`Aeropuerto` (`nombre`, `Ciudad_id`, `numeroAeropuerto`) VALUES
 -- Aeropuertos en ciudades de Estados Unidos
@@ -681,6 +682,12 @@ INSERT INTO Fabricante(nombre) VALUES
 INSERT INTO ModeloAvion(nombre, Fabricante_id)
 VALUES ('CHALLENGER 350', 1), ('AIRBUS 320', 3);
 
+INSERT INTO `mydb`.`Tarifa` (`descripcion`, `detalle`, `precioBase`, `impuesto`) VALUES 
+('Tarifa Básica', 'Servicios básicos', 100.00, 15.00),
+('Tarifa Premium', 'Servicios premium', 200.00, 30.00),
+('Tarifa Económica', 'Servicios económicos', 50.00, 7.50),
+('Tarifa Corporativa', 'Servicios para empresas', 500.00, 75.00),
+('Tarifa Estudiante', 'Descuento para estudiantes', 75.00, 11.25);
 
 
 -- ----------------------------------------------------------------------------- ---------------------------------------------------------------------
@@ -848,9 +855,7 @@ END &&
 delimiter ;
 
 -- -----------------------------------------------------------------------------------------------------------------------
--- -----------------------------------------------------------------------------------------------------------------------
 -- 											PROCEDIMIENTOS RELACIONADOS CON EL CLIENTE
--- -----------------------------------------------------------------------------------------------------------------------
 -- -----------------------------------------------------------------------------------------------------------------------
 
 -- Procedure para Crear Cliente
@@ -1020,18 +1025,17 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS buscarTarifa $$
 CREATE PROCEDURE buscarTarifa
-    (IN idEntrante int)
+    (IN idEntrante INT)
 BEGIN
-	
-	Select id , descripcion, detalle, precioBase, impuesto from Tarifa where id = idEntrante;
-    
+    SELECT id, descripcion, detalle, precioBase, impuesto
+    FROM Tarifa
+    WHERE id = idEntrante;
 END $$
 
 DELIMITER ;
 
 
 -- CREAR TARIFA 
-
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS crearTarifa $$
@@ -1059,5 +1063,95 @@ END $$
 DELIMITER ;
 
 select * from Tarifa;
+
+
+-- Actualizar descripcion tarifa 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarDescripcionTarifa $$
+CREATE PROCEDURE actualizarDescripcionTarifa
+    (IN idEntrante int , IN in_descripcion varchar(50))
+BEGIN
+
+	update Tarifa 
+    set descripcion = in_descripcion
+    where id = idEntrante;
+	
+	Select id , descripcion, detalle, precioBase, impuesto from Tarifa where id = idEntrante;
+    
+END $$
+
+DELIMITER ;
+
+-- Actualizar detalle tarifa 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarDetalleTarifa $$
+CREATE PROCEDURE actualizarDetalleTarifa
+    (IN idEntrante int , IN in_detalle varchar(50))
+BEGIN
+
+	update Tarifa 
+    set detalle = in_detalle
+    where id = idEntrante;
+	
+	Select id , descripcion, detalle, precioBase, impuesto from Tarifa where id = idEntrante;
+    
+END $$
+
+DELIMITER ;
+
+
+-- Actualizar impuesto tarifa 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarImpuestoTarifa $$
+CREATE PROCEDURE actualizarImpuestoTarifa
+    (IN idEntrante int , IN in_impuesto decimal(10,2))
+BEGIN
+
+	update Tarifa 
+    set impuesto = in_impuesto
+    where id = idEntrante;
+	
+	Select id , descripcion, detalle, precioBase, impuesto from Tarifa where id = idEntrante;
+    
+END $$
+
+DELIMITER ;
+
+
+-- Actualizar precio tarifa 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarPrecioTarifa $$
+CREATE PROCEDURE actualizarPrecioTarifa
+    (IN idEntrante int , IN in_precio decimal(10,2))
+BEGIN
+
+	update Tarifa 
+    set precioBase = in_precio
+    where id = idEntrante;
+	
+	Select id , descripcion, detalle, precioBase, impuesto from Tarifa where id = idEntrante;
+    
+END $$
+
+DELIMITER ;
+
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS eliminarTarifa $$
+CREATE PROCEDURE eliminarTarifa
+    (IN idEntrante int)
+BEGIN
+
+	delete From tarifa where id = idEntrante;
+    
+END $$
+
+DELIMITER ;
 
 -- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");

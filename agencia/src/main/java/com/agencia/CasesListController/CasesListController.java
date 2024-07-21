@@ -14,6 +14,9 @@ import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Usuario;
 import com.agencia.EmployeeView.Domain.RegistrarAvion;
 import com.agencia.IntroView.Domain.IntroLogIn;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDescripcionTarifa;
+import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDetallesTarifa;
+import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarImpuestoTarifa;
+import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarPrecioTarifa;
 import com.agencia.Tarifa.Domain.actualizarDatosTarifa;
 import com.agencia.IntroView.Domain.Exit;
 
@@ -33,14 +36,25 @@ public class CasesListController {
         lstFuncionalidades = new ArrayList<>();
         lstActualizarDatosClientes = new ArrayList<>();
         lstActualizarDatosTarifas = new ArrayList<>();
-
+ 
         // AGREGAR FUNCIONALIDADES A ACTUALIZAR TARIFA 
         actualizarDatosTarifa actualizarDescripcion = new actualizarDescripcionTarifa ("Actualizar descripción");
+
+        actualizarDatosTarifa actualizarDetalles = new actualizarDetallesTarifa("Actualizar detalle"); 
+
+        
+        actualizarDatosTarifa actualizarPrecio = new actualizarPrecioTarifa("Actualizar precio");
+
+        
+        actualizarDatosTarifa actualizarImpuesto = new actualizarImpuestoTarifa("Actualizar impuesto");
 
 
         // AGREGAR LA FUNCIONALIDAD A LA LISTA DE CASOS DE USO DE ACTUALIZAR TATIFA
 
         lstActualizarDatosTarifas.add(actualizarDescripcion);
+        lstActualizarDatosTarifas.add(actualizarDetalles);
+        lstActualizarDatosTarifas.add(actualizarPrecio);
+        lstActualizarDatosTarifas.add(actualizarImpuesto);
 
         Funcionalidad introLogin = new IntroLogIn("Iniciar Sesión", "");
         Funcionalidad logOut = new Exit("Salir", "");

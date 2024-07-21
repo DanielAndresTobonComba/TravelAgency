@@ -10,16 +10,17 @@ import com.agencia.Tarifa.MainTarifa;
 import com.agencia.Tarifa.Utilities.imprimirDatosTarifa;
 import com.mysql.cj.jdbc.CallableStatement;
 
-public class repoActualizarDescripcion {
+public class repoActualizarDetalle {
 
-    public void ejecutarActualizarDescripcion (String numeroTarifa ,String nuevaDescripcion) {
+    public void ejecutarActualizarDetalle (String numeroTarifa , String nuevoDetalle){
 
+        
         Scanner sc = new Scanner(System.in);
         CallableStatement stmt = null;
         DataBaseConfig.getConnection();
 
-        if (nuevaDescripcion.length() > 50) {
-            System.out.println("La longitud de la descripción excede el rango (50)");
+        if (nuevoDetalle.length() > 50) {
+            System.out.println("La longitud del detalle excede el rango (50)");
             System.out.println("Presiona enter para volver al menu");
             sc.nextLine();
             MainTarifa.main(null);
@@ -30,11 +31,11 @@ public class repoActualizarDescripcion {
            Connection connection =  DataBaseConfig.DBconnection;
            imprimirDatosTarifa imprimirDatosTarifa = new imprimirDatosTarifa(); 
 
-           String sql = "{call actualizarDescripcionTarifa (? , ?)}";
+           String sql = "{call actualizarDetalleTarifa (? , ?)}";
            stmt = (CallableStatement) connection.prepareCall(sql);
        
            stmt.setInt(1, Integer.valueOf(numeroTarifa));
-           stmt.setString(2, nuevaDescripcion);
+           stmt.setString(2, nuevoDetalle);
 
            boolean hasResult = stmt.execute();
 
@@ -100,5 +101,5 @@ public class repoActualizarDescripcion {
         }
         
     }
-        
+
 }

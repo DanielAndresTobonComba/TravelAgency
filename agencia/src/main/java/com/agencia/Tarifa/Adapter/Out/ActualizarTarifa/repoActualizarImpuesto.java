@@ -10,31 +10,32 @@ import com.agencia.Tarifa.MainTarifa;
 import com.agencia.Tarifa.Utilities.imprimirDatosTarifa;
 import com.mysql.cj.jdbc.CallableStatement;
 
-public class repoActualizarDescripcion {
+public class repoActualizarImpuesto {
 
-    public void ejecutarActualizarDescripcion (String numeroTarifa ,String nuevaDescripcion) {
+
+    public void ejecutarActualizarImpuesto (String numeroTarifa , String nuevoImpuesto){
 
         Scanner sc = new Scanner(System.in);
         CallableStatement stmt = null;
         DataBaseConfig.getConnection();
 
-        if (nuevaDescripcion.length() > 50) {
+/*         if (nuevaDescripcion.length() > 50) {
             System.out.println("La longitud de la descripción excede el rango (50)");
             System.out.println("Presiona enter para volver al menu");
             sc.nextLine();
             MainTarifa.main(null);
-        }
+        } */
 
         try {
             
            Connection connection =  DataBaseConfig.DBconnection;
            imprimirDatosTarifa imprimirDatosTarifa = new imprimirDatosTarifa(); 
 
-           String sql = "{call actualizarDescripcionTarifa (? , ?)}";
+           String sql = "{call actualizarImpuestoTarifa (? , ?)}";
            stmt = (CallableStatement) connection.prepareCall(sql);
        
            stmt.setInt(1, Integer.valueOf(numeroTarifa));
-           stmt.setString(2, nuevaDescripcion);
+           stmt.setDouble(2, Double.valueOf(nuevoImpuesto));
 
            boolean hasResult = stmt.execute();
 
@@ -52,6 +53,9 @@ public class repoActualizarDescripcion {
             } else {
                 // Si no hay resultados, imprimir el mensaje de error
                 System.out.println("No se encontró ninguna tarifa con el ID ingresado.");
+                System.out.println("Presiona enter para volver al menu");
+                sc.nextLine();
+                MainTarifa.main(null);
             }
             
             } else {
@@ -88,8 +92,8 @@ public class repoActualizarDescripcion {
         }    
         catch (SQLIntegrityConstraintViolationException b) {
             String mensaString = b.getMessage();
-            if (mensaString.contains("descripcion")) {
-                System.out.println("Error con la descripción ingresada");
+            if (mensaString.contains("impuesto")) {
+                System.out.println("Error con el impuesto ingresado ");
             }
         
         }catch (Exception e) {
@@ -100,5 +104,5 @@ public class repoActualizarDescripcion {
         }
         
     }
-        
+
 }
