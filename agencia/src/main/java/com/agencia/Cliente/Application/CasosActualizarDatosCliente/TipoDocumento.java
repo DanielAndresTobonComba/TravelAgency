@@ -13,7 +13,7 @@ public class TipoDocumento extends actualizarDatosCliente{
     @Override
     public void actualizar(String numeroDocumento) {
         ControladorTipoDocumento controladorTipoDocumento = new ControladorTipoDocumento(); 
-        controladorTipoDocumento.tomarNuevoTipoDocuemnto();
+        controladorTipoDocumento.tomarNuevoTipoDocuemnto(numeroDocumento);
     }
 
 

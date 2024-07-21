@@ -14,7 +14,7 @@ public class Contrasena extends actualizarDatosCliente{
     public void actualizar(String numeroDocumento) {
         
         ControladorContrasena controladorContrasena = new ControladorContrasena();
-        controladorContrasena.tomarNuevaContraseña();
+        controladorContrasena.tomarNuevaContraseña(numeroDocumento);
         
     }
 

@@ -9,6 +9,8 @@ public class CheckInt {
         int opcion = 0;
         Scanner scanner = new Scanner(System.in);
         boolean introPermise = true;
+
+        
         while (introPermise == true) {
             try {
 

@@ -368,10 +368,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Tarifa` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `descripcion` VARCHAR(20) NULL,
-  `detalles` VARCHAR(45) NULL,
-  `precioBase` DECIMAL NULL,
-  `impuestos` DECIMAL NULL,
+  `descripcion` VARCHAR(50) NOT NULL,
+  `detalle` VARCHAR(50)NOT NULL,
+  `precioBase`  DECIMAL(10, 2) NOT NULL,
+  `impuesto`  DECIMAL(10, 2) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -620,7 +620,7 @@ VALUES
     ('Carlos Martínez', 40, 3, 'carlosm40', 'ghi789', '56781234'),
     ('Ana Gómez', 28, 4, 'anagomez28', 'jkl012', '43218765'),
     ('Pedro Ramírez', 35, 5, 'pedror35', 'mno345', '98765432'),
-    ('Luisa Fernández', 22, 1, 'luisaf22', 'pqr678', '87654321'),
+    ('Luisa Fernández', 22, 1, 'luisaf22', 'pqr678', '876543211'),
     ('Elena Torres', 33, 2, 'elenat33', 'stu901', '76543218'),
     ('Javier García', 45, 3, 'javierg45', 'vwx234', '67812345'),
     ('Sofía Rodríguez', 26, 4, 'sofiar26', 'yz567', '54321678'),
@@ -683,9 +683,9 @@ VALUES ('CHALLENGER 350', 1), ('AIRBUS 320', 3);
 
 
 
-
-
--- ----------------------------------------------------------------------------- PROCEDURES ---------------------------------------------------------------------
+-- ----------------------------------------------------------------------------- ---------------------------------------------------------------------
+--  																PROCEDURES 
+-- --------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Procedure para obtener la información de un Empleado en especìfico
 DROP PROCEDURE if EXISTS  ObtainEMpleado;
@@ -847,6 +847,11 @@ BEGIN
 END &&
 delimiter ;
 
+-- -----------------------------------------------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------------------------------------------------
+-- 											PROCEDIMIENTOS RELACIONADOS CON EL CLIENTE
+-- -----------------------------------------------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------------------------------------------------
 
 -- Procedure para Crear Cliente
 
@@ -900,6 +905,8 @@ DELIMITER ;
 
 DELIMITER $$
 
+-- Procedure para actualizar cliente
+
 DROP PROCEDURE IF EXISTS actualizarNombreCliente $$
 CREATE PROCEDURE actualizarNombreCliente
    (IN documento VARCHAR(15) , IN nuevoNombre varchar(30) )
@@ -915,7 +922,7 @@ END $$
 DELIMITER ;
 
 
-
+-- Procedure para actualizar edad del cliente
 
 DELIMITER $$
 
@@ -934,6 +941,8 @@ END $$
 DELIMITER ;
 
 
+-- Procedure para actualizar codumento del cliente
+
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarNumeroDocumentoCliente $$
@@ -950,5 +959,105 @@ END $$
 
 DELIMITER ;
 
--- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarContraseñaCliente $$
+CREATE PROCEDURE actualizarContraseñaCliente
+   (IN documento VARCHAR(15) , IN nuevaContraseña varchar(70) )
+BEGIN
+        
+        UPDATE Cliente
+		SET contraseña = nuevaContraseña
+		where numeroDocumento = documento;
+        
+        SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = documento;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarUsuarioCliente $$
+CREATE PROCEDURE actualizarUsuarioCliente
+   (IN documento VARCHAR(15) , IN nuevoUsuario varchar(25) )
+BEGIN
+        
+        UPDATE Cliente
+		SET usuario = nuevoUsuario
+		where numeroDocumento = documento;
+        
+        SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = documento;
+END $$
+
+DELIMITER ;
+
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarTipoDocumentoCliente $$
+CREATE PROCEDURE actualizarTipoDocumentoCliente
+   (IN documento VARCHAR(15) , IN nuevoTipoDocumento int )
+BEGIN
+        
+        UPDATE Cliente
+		SET TipoDocumento_id = nuevoTipoDocumento
+		where numeroDocumento = documento;
+        
+        SELECT nombre, edad, TipoDocumento_id, numeroDocumento, usuario, contraseña FROM Cliente WHERE numeroDocumento = documento;
+END $$
+
+DELIMITER ;
+
+
+-- PROCEDIMIENTOS RELACIONADOS CON TARIFA
+
+
+-- BUSCAR TARIFA 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS buscarTarifa $$
+CREATE PROCEDURE buscarTarifa
+    (IN idEntrante int)
+BEGIN
+	
+	Select id , descripcion, detalle, precioBase, impuesto from Tarifa where id = idEntrante;
+    
+END $$
+
+DELIMITER ;
+
+
+-- CREAR TARIFA 
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS crearTarifa $$
+CREATE PROCEDURE crearTarifa
+    (IN in_Descripcion VARCHAR(50), 
+     IN in_Detalles VARCHAR(100), 
+     IN in_precioBase DOUBLE, 
+     IN in_impuestos DOUBLE)
+BEGIN
+	
+    declare idTarifa double;
+	
+    -- Insertar la nueva tarifa
+    INSERT INTO Tarifa (descripcion, detalle, precioBase, impuesto) 
+    VALUES (in_Descripcion, in_Detalles, in_precioBase, in_impuestos);
+    
+    
+	SELECT LAST_INSERT_ID() into idTarifa;
+    
+    -- call buscarTarifa (idTarifa);
+    
+    Select id , descripcion, detalle, precioBase, impuesto from Tarifa where id = idTarifa;
+END $$
+
+DELIMITER ;
+
+select * from Tarifa;
+
+-- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");

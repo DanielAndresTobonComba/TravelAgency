@@ -13,7 +13,7 @@ public class Usuario extends actualizarDatosCliente{
     @Override
     public void actualizar(String numeroDocumento) {
         ControladorUsuario controladorUsuario = new ControladorUsuario(); 
-        controladorUsuario.tomarNuevoUsuario();
+        controladorUsuario.tomarNuevoUsuario(numeroDocumento);
     }
 
 

@@ -40,14 +40,6 @@ public class repositorioCrearCliente implements interfazCrearCliente {
                 if (!hasResult) {
     
                     System.out.println("Error al crear el Cliente");
-    /*                 System.out.println("\nUSUARIO CREADO");
-                    
-                    System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+");
-                    System.out.printf("| %-30s | %-5s | %-15s | %-20s | %-10s | %-20s |\n", "Nombre", "Edad", "TipoDocumento", "NumeroDocumento", "Usuario", "Contraseña");
-                    System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+"); */
-                    
-                    // No hay resultados para mostrar directamente, ya que el procedimiento almacenado
-                    // probablemente no devuelve un conjunto de resultados
                 } else {
                     try (ResultSet rs = stmt.getResultSet()) {
                         System.out.println("\nCLIENTE CREADO");
