@@ -53,6 +53,9 @@ public class repoActualizarImpuesto {
             } else {
                 // Si no hay resultados, imprimir el mensaje de error
                 System.out.println("No se encontró ninguna tarifa con el ID ingresado.");
+                System.out.println("Presiona enter para volver al menu");
+                sc.nextLine();
+                MainTarifa.main(null);
             }
             
             } else {

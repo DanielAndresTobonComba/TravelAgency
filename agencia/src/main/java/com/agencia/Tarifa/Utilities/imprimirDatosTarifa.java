@@ -9,7 +9,7 @@ import com.agencia.AbstractClasses.imprimirTabla;
 public class imprimirDatosTarifa extends imprimirTabla {
 
     @Override
-    public void imprimir(ResultSet rs) throws SQLException {
+    public  void imprimir(ResultSet rs) throws SQLException {
 
 
 
