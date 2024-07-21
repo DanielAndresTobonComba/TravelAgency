@@ -3,7 +3,6 @@ package com.agencia.EliminarAvion.Adapter.In;
 import java.util.List;
 
 import com.agencia.EliminarAvion.Application.DeleteAirplaneAction;
-import com.agencia.EmployeeView.MainEmployeeView.MainEmployeeView;
 import com.agencia.GestionAvion.Main.MainMenuGestionAvion;
 import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.RegistrarAvion.Application.ExistentPlatesExtraction;
