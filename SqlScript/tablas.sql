@@ -823,7 +823,6 @@ END $$
 DELIMITER ;
 
 -- Procedure para Registrar un Avion
-
 DROP PROCEDURE IF EXISTS InsertarAvion;
 
 delimiter &&
@@ -849,7 +848,6 @@ delimiter ;
 
 
 -- Procedure para Crear Cliente
-
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS crearCliente $$
@@ -897,7 +895,7 @@ END $$
 DELIMITER ;
 
 
-
+-- Procedure para Actualizar el Nombre del Cliente
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarNombreCliente $$
@@ -916,7 +914,7 @@ DELIMITER ;
 
 
 
-
+-- Procedure para Actualizar la Edad del Cliente
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarEdadCliente $$
@@ -934,6 +932,7 @@ END $$
 DELIMITER ;
 
 
+-- Procedure para Actualizar Numero de Documento del Cliente
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarNumeroDocumentoCliente $$
@@ -953,7 +952,7 @@ DELIMITER ;
 
 
 
--- Procedure para obtener los Modelos de Avion ya regostrados
+-- Procedure para obtener los Modelos de Avion ya registrados
 
 DROP PROCEDURE IF EXISTS ObtainModeloAvion;
 
@@ -991,7 +990,6 @@ END &&
 delimiter ;
 
 -- Procedure para obtener las placas de los Aviones resgistrados
-
 DROP PROCEDURE IF EXISTS ObtainPlacas;
 
 delimiter &&
@@ -1002,7 +1000,59 @@ BEGIN
 END&&
 delimiter ;
 
+-- Procedure para eliminar un Avion
+DROP PROCEDURE if EXISTS EliminarAvion;
 
+delimiter &&
+
+CREATE PROCEDURE EliminarAvion(IN placaInput VARCHAR(30))
+BEGIN
+		DECLARE TIME_BEFORE DATETIME;
+		DECLARE TIME_AFTER DATETIME;
+	
+	
+	
+		SELECT UPDATE_TIME INTO TIME_BEFORE FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		DELETE FROM Avion WHERE placa = placaInput;
+		
+		SELECT UPDATE_TIME INTO TIME_AFTER FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		SELECT TIME_BEFORE, TIME_AFTER;
+	
+END &&
+
+delimiter ;
+
+-- Procedure para consultar Avión
+
+DROP PROCEDURE if EXISTS ConsultarAvion;
+
+delimiter &&
+
+CREATE PROCEDURE ConsultarAvion(IN placaInput VARCHAR(30))
+BEGIN
+		SELECT 	a.id,
+					a.placa,
+					a.capacidad,
+					a.fechaFabricacion,
+					ma.nombre AS modelo,
+					f.nombre AS fabricante,
+					e.nombre AS estado
+		FROM   	
+					Avion AS a,
+					ModeloAvion AS  ma,  
+					Fabricante AS f,
+					Estado AS e
+		WHERE 
+					a.ModeloAvion_id = ma.id AND 
+					ma.Fabricante_id = f.id AND
+					ma.id = a.ModeloAvion_id AND 
+					a.Estado_id = e.id AND
+					a.placa = placaInput;
+END &&
+	
+delimiter ;
 
 
 

@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.agencia.AbstractClasses.Funcionalidad;
 import com.agencia.AbstractClasses.actualizarDatosCliente;
+import com.agencia.ActualizarAvion.Adapter.In.GoToActualizarCapacidadAvion;
+import com.agencia.ActualizarAvion.Adapter.In.GoToActualizarEstadoAvion;
 import com.agencia.Aeropuerto.Infraestructure.In.GoToActualizarAeropuerto;
 import com.agencia.Aeropuerto.Infraestructure.In.GoToConsultarAeropuerto;
 import com.agencia.Aeropuerto.Infraestructure.In.GoToCrearAeropuerto;
@@ -17,6 +19,7 @@ import com.agencia.Cliente.Application.CasosActualizarDatosCliente.TipoDocumento
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Usuario;
 import com.agencia.EmployeeView.Domain.GestionarAeropuerto;
 import com.agencia.EmployeeView.Domain.GestionarAvion;
+import com.agencia.GestionAvion.Adapter.GoToActualizarAvion;
 import com.agencia.GestionAvion.Adapter.GoToConsultarAvion;
 import com.agencia.GestionAvion.Adapter.GoToEliminarAvion;
 import com.agencia.GestionAvion.Adapter.GoToRegistrarAvion;
@@ -29,6 +32,7 @@ public class CasesListController {
     public static List<Funcionalidad> lstFuncionalidades;
     public static List<actualizarDatosCliente> lstActualizarDatosClientes;
     public static List<Funcionalidad> lstGestionarAeropuerto;
+    public static List<Funcionalidad> lstActualizarAvion;
     public static List<Funcionalidad> lstGestionarAvion;
 
     private static CasesListController CONTROLLER = new CasesListController();
@@ -38,6 +42,7 @@ public class CasesListController {
         lstFuncionalidades = new ArrayList<>();
         lstActualizarDatosClientes = new ArrayList<>();
         lstGestionarAvion = new ArrayList<>();
+        lstActualizarAvion = new ArrayList<>();
         lstGestionarAeropuerto = new ArrayList<>();
 
         // Instanciación funciones del Login Inicial
@@ -60,8 +65,14 @@ public class CasesListController {
 
         // INSTANCIACIÓN FUNCIONALIDADES ´PARA GESTIONAR AVIÓN
         Funcionalidad registrarAvion = new GoToRegistrarAvion("Registrar Avión", "");
+        Funcionalidad actualizarAvion = new GoToActualizarAvion("Actualizar Avión", "");
         Funcionalidad consultarAvion = new GoToConsultarAvion("Consultar Avión", "");
         Funcionalidad eliminarAvion = new GoToEliminarAvion("Eliminar Avión", "");
+
+        // INSTANCIACIÓN FUNCIONALIDADES PARA ACTUALIZAR AVIÓN
+        Funcionalidad actualizarCapacidadAvion = new GoToActualizarCapacidadAvion("Actualizar Capacidad", "");
+        Funcionalidad actualizarEstadoAvion = new GoToActualizarEstadoAvion("Actualizar Estado", "");
+        
 
 
         // INSTANCIACIÓN FUNCIONALIDADES PARA GESTIONAR AEROPUERTO
@@ -91,8 +102,13 @@ public class CasesListController {
 
         //FUNCIONALIDADES PARA GESTIONAR AVIÓN
         lstGestionarAvion.add(registrarAvion);
+        lstGestionarAvion.add(actualizarAvion);
         lstGestionarAvion.add(consultarAvion);
         lstGestionarAvion.add(eliminarAvion);
+
+        // FUNCIONALIDADES PARA ACTUALIZAR AVION
+        lstActualizarAvion.add(actualizarCapacidadAvion);
+        lstActualizarAvion.add(actualizarEstadoAvion);
 
 
         // FUNCIONALIDADES PARA GESTIONAR AEROPUERTO

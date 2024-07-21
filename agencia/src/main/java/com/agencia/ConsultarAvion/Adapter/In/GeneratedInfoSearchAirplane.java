@@ -41,7 +41,12 @@ public class GeneratedInfoSearchAirplane implements ViewSearchAirplaneService {
                 System.out.println("||  placa:   " + placa + "\t\t\t||");
                 System.out.println("||  capacidad:   " + capacidad + "\t\t\t||");
                 System.out.println("||  fecha de Fabricación:   " + fechaFabricacion + "\t||");
-                System.out.println("||  modelo:   " + modelo + "\t\t||");
+                if (modelo.length() <=8) {
+                    System.out.println("||  modelo:   " + modelo + "\t\t\t||");
+
+                }else {
+                    System.out.println("||  modelo:   " + modelo + "\t\t||");
+                }
                 System.out.println("||  fabricante:   " + fabricante + "\t\t||");
                 System.out.println("||  estado:   " + estado + "\t\t\t||");
                 System.out.println("==========================================\n");
@@ -53,9 +58,6 @@ public class GeneratedInfoSearchAirplane implements ViewSearchAirplaneService {
                 System.out.println("***********************************************");
 
             }
-
-            
-
 
 
         } catch (SQLException e) {
