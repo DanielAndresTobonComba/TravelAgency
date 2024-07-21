@@ -3,12 +3,12 @@ package com.agencia.Cliente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.agencia.AbstractClasses.imprimirTabla;
 import com.mysql.cj.jdbc.CallableStatement;
 
-public class imprimirDatosCliente {
+public class imprimirDatosCliente extends imprimirTabla {
 
-    public static void imprimir(CallableStatement stmt) throws SQLException {
-        ResultSet rs = stmt.getResultSet();
+    public void imprimir(ResultSet rs) throws SQLException {
 
         System.out.println("Entre");
 

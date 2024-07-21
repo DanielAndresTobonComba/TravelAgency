@@ -13,8 +13,8 @@ import com.agencia.Cliente.Application.CasosActualizarDatosCliente.TipoDocumento
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Usuario;
 import com.agencia.EmployeeView.Domain.RegistrarAvion;
 import com.agencia.IntroView.Domain.IntroLogIn;
-import com.agencia.IntroView.Domain.BuyTicket;
-import com.agencia.IntroView.Domain.BuyTicket;
+import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDescripcionTarifa;
+import com.agencia.Tarifa.Domain.actualizarDatosTarifa;
 import com.agencia.IntroView.Domain.Exit;
 
 public class CasesListController {
@@ -22,19 +22,28 @@ public class CasesListController {
     public static List<Funcionalidad> lstIntro;
     public static List<Funcionalidad> lstFuncionalidades;
     public static List<actualizarDatosCliente> lstActualizarDatosClientes;
+    public static List<actualizarDatosTarifa> lstActualizarDatosTarifas;
 
     private static CasesListController CONTROLLER = new CasesListController();
 
     private CasesListController() {
+
+
         lstIntro = new ArrayList<>();
         lstFuncionalidades = new ArrayList<>();
-
         lstActualizarDatosClientes = new ArrayList<>();
+        lstActualizarDatosTarifas = new ArrayList<>();
 
+        // AGREGAR FUNCIONALIDADES A ACTUALIZAR TARIFA 
+        actualizarDatosTarifa actualizarDescripcion = new actualizarDescripcionTarifa ("Actualizar descripción");
+
+
+        // AGREGAR LA FUNCIONALIDAD A LA LISTA DE CASOS DE USO DE ACTUALIZAR TATIFA
+
+        lstActualizarDatosTarifas.add(actualizarDescripcion);
 
         Funcionalidad introLogin = new IntroLogIn("Iniciar Sesión", "");
         Funcionalidad logOut = new Exit("Salir", "");
-
         Funcionalidad registrarAvion = new RegistrarAvion("Registrar Avión", "rav");
 ;
 
@@ -53,7 +62,6 @@ public class CasesListController {
         actualizarDatosCliente actualizarContraseña = new Contrasena("Actualizar contraseña");
 
         // AGREGAR LA FUNCIONALIDAD A LA LISTA DE CASOS DE USO DE ACTUALIZAR DATOS DEL CLIENTE 
-
         lstActualizarDatosClientes.add(actualizarNombre);
         lstActualizarDatosClientes.add(actualizarEdad);
         lstActualizarDatosClientes.add(actualizarTipoDocumento);
@@ -61,10 +69,10 @@ public class CasesListController {
         lstActualizarDatosClientes.add(actualizarUsuario);
         lstActualizarDatosClientes.add(actualizarContraseña);
 
+
+        
         lstIntro.add(introLogin);
-
         lstIntro.add(logOut);
-
         lstFuncionalidades.add(registrarAvion);
         
     }

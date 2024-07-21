@@ -3,6 +3,7 @@ package com.agencia.Tarifa;
 import com.agencia.Aeropuerto.Application.consultarAeropuerto;
 import com.agencia.Tarifa.Adapter.In.controladorAgregarTarifa;
 import com.agencia.Tarifa.Adapter.In.controladorConsultarTarifa;
+import com.agencia.Tarifa.Adapter.In.ActualizarTarifa.menuActualizarTarifa;
 import com.agencia.Tarifa.Adapter.Out.repoAgregarTarifa;
 import com.agencia.Tarifa.Adapter.Out.repoConsultarTarifa;
 import com.agencia.Tarifa.Application.Casos.agregarTarifa;
@@ -13,7 +14,7 @@ import com.agencia.Tarifa.Application.Service.InterfazConsultaTarifa;
 public class MainTarifa {
 
     public static void main(String[] args) {
-        System.out.println("ENTRANDO A MAIN TARIFA");
+        
 
 /*         InterfazAgregarTarifa servicio = new repoAgregarTarifa();
 
@@ -23,7 +24,7 @@ public class MainTarifa {
 
         adapter.tomarDatosTarifa(); */
 
-
+/* 
         InterfazConsultaTarifa servicio = new repoConsultarTarifa(); 
 
         consultarTarifa consultarTarifa = new consultarTarifa(servicio);
@@ -32,7 +33,10 @@ public class MainTarifa {
 
 
         adapter.tomarNumeroTarifa();
+ */
 
+        menuActualizarTarifa menuActualizarTarifa = new menuActualizarTarifa(); 
+        menuActualizarTarifa.ejecutarMenu();
         
     }
 

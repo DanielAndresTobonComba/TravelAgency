@@ -1,6 +1,7 @@
 package com.agencia.TipoDocumento.Adapter.Out;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
@@ -40,8 +41,9 @@ interfazActualizarTipoDocumento {
                     System.out.println("Error al actualizar el nombre del tipo de documento");
 
                 } else {
+                    ResultSet rs = stmt.getResultSet();
                     ImprimirTablaTipoDocumento imprimirTabla = new ImprimirTablaTipoDocumento(); 
-                    imprimirTabla.imprimir(stmt);
+                    imprimirTabla.imprimir(rs);
                 }
             
                 stmt.close();

@@ -37,7 +37,9 @@ public class RepoNumeroDocumento {
                     System.out.println("Error al actualizar el numero de documento");
 
                 } else {
-                    imprimirDatosCliente.imprimir(stmt);
+                    ResultSet rs = stmt.getResultSet();
+                    imprimirDatosCliente imprimirTablaCliente = new imprimirDatosCliente(); 
+                    imprimirTablaCliente.imprimir(rs);
                 }
             
                 stmt.close();

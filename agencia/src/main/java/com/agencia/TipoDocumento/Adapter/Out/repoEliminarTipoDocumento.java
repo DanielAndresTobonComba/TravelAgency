@@ -36,8 +36,9 @@ public class repoEliminarTipoDocumento implements interfazEliminarTipoDocumento 
 
             if (hasResult) {
                 
-                ImprimirTablaTipoDocumento imprimirTabla = new ImprimirTablaTipoDocumento(); 
-                imprimirTabla.imprimir(stmtBuscar);
+                    ResultSet rs = stmtBuscar.getResultSet();
+                    ImprimirTablaTipoDocumento imprimirTabla = new ImprimirTablaTipoDocumento(); 
+                    imprimirTabla.imprimir(rs);
 
             } else {
                 System.out.println("No se encontró ningún tipo de documento con la ID " + numero);

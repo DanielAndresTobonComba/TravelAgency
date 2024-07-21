@@ -1,12 +1,13 @@
 package com.agencia.AbstractClasses;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.cj.jdbc.CallableStatement;
+
 
 public abstract class imprimirTabla {
 
 
-    public abstract void imprimir (CallableStatement stmt) throws SQLException ;
+    public abstract void imprimir (ResultSet rs) throws SQLException ;
 
 }

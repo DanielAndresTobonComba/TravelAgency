@@ -1,6 +1,7 @@
 package com.agencia.Cliente.Adapter.Out.RepositoriosActualizarDatosCliente;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import com.agencia.Cliente.imprimirDatosCliente;
@@ -37,7 +38,9 @@ public class RepoContrasena {
                     System.out.println("Error al actualizar la contraseña");
 
                 } else {
-                    imprimirDatosCliente.imprimir(stmt);
+                    ResultSet rs = stmt.getResultSet();
+                    imprimirDatosCliente imprimirTablaCliente = new imprimirDatosCliente(); 
+                    imprimirTablaCliente.imprimir(rs);
                 }
             
                 stmt.close();

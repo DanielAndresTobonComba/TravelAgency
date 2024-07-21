@@ -43,11 +43,13 @@ public class repoAgregarTarifa implements InterfazAgregarTarifa {
                     System.out.println("Error al crear la tarifa");
 
                 } else {
+
+                    ResultSet rs = stmt.getResultSet();
                     imprimirDatosTarifa imprimirDatosTarifa = new imprimirDatosTarifa(); 
-                    imprimirDatosTarifa.imprimir(stmt);
+                    imprimirDatosTarifa.imprimir(rs);
                 }
             
-                stmt.close();
+               
                 
             } catch (SQLIntegrityConstraintViolationException b) {
                 String mensaString = b.getMessage();

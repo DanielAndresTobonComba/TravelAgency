@@ -42,8 +42,9 @@ public class repoCrearTipoDocumento implements interfazCrearTipoDocumento{
 
                     System.out.println("TIPO DE DOCUMENTO CREADO CORECTAMENTE");
                     
+                    ResultSet rs = stmt.getResultSet();
                     ImprimirTablaTipoDocumento imprimirTabla = new ImprimirTablaTipoDocumento(); 
-                    imprimirTabla.imprimir(stmt);
+                    imprimirTabla.imprimir(rs);
 
 
                 }

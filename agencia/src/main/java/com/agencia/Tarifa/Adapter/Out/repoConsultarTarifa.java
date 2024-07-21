@@ -7,7 +7,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.Tarifa.Application.Service.InterfazConsultaTarifa;
 import com.agencia.Tarifa.Utilities.imprimirDatosTarifa;
-import com.agencia.Verifiers.PasswordEncripted;
+
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class repoConsultarTarifa implements InterfazConsultaTarifa {
@@ -36,11 +36,13 @@ public class repoConsultarTarifa implements InterfazConsultaTarifa {
     
                     System.out.println("Error al buscar la tarifa");
                 } else {
+                    
+                    ResultSet rs = stmt.getResultSet();
                     imprimirDatosTarifa imprimirDatosTarifa = new imprimirDatosTarifa(); 
-                    imprimirDatosTarifa.imprimir(stmt);
+                    imprimirDatosTarifa.imprimir(rs);
                 }
             
-                stmt.close();
+                
                 
             } catch (SQLIntegrityConstraintViolationException b) {
                 String mensaString = b.getMessage();

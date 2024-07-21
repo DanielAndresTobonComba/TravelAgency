@@ -8,9 +8,9 @@ import com.mysql.cj.jdbc.CallableStatement;
 
 public class ImprimirTablaTipoDocumento extends imprimirTabla {
 
-    public void imprimir(CallableStatement stmt) throws SQLException {
+    public void imprimir(ResultSet rs) throws SQLException {
 
-        ResultSet rs = stmt.getResultSet();
+        
 
         System.out.println("\nTipos de Documento encontrado");
         System.out.println("+------+-----------------------------------------------+");
