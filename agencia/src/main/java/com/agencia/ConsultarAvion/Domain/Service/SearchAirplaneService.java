@@ -1,8 +1,9 @@
 package com.agencia.ConsultarAvion.Domain.Service;
 
+import java.sql.ResultSet;
 
-public class SearchAirplaneService  {
+public interface SearchAirplaneService {
 
-    
+    public ResultSet search(String placa);
 
 }

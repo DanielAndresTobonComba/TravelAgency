@@ -17,6 +17,7 @@ import com.agencia.Cliente.Application.CasosActualizarDatosCliente.TipoDocumento
 import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Usuario;
 import com.agencia.EmployeeView.Domain.GestionarAeropuerto;
 import com.agencia.EmployeeView.Domain.GestionarAvion;
+import com.agencia.GestionAvion.Adapter.GoToConsultarAvion;
 import com.agencia.GestionAvion.Adapter.GoToEliminarAvion;
 import com.agencia.GestionAvion.Adapter.GoToRegistrarAvion;
 import com.agencia.IntroView.Domain.IntroLogIn;
@@ -59,6 +60,7 @@ public class CasesListController {
 
         // INSTANCIACIÓN FUNCIONALIDADES ´PARA GESTIONAR AVIÓN
         Funcionalidad registrarAvion = new GoToRegistrarAvion("Registrar Avión", "");
+        Funcionalidad consultarAvion = new GoToConsultarAvion("Consultar Avión", "");
         Funcionalidad eliminarAvion = new GoToEliminarAvion("Eliminar Avión", "");
 
 
@@ -89,6 +91,7 @@ public class CasesListController {
 
         //FUNCIONALIDADES PARA GESTIONAR AVIÓN
         lstGestionarAvion.add(registrarAvion);
+        lstGestionarAvion.add(consultarAvion);
         lstGestionarAvion.add(eliminarAvion);
 
 
