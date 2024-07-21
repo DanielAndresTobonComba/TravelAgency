@@ -2,7 +2,6 @@ package com.agencia.Tarifa.Adapter.Out;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import com.agencia.AbstractClasses.verificarExistencia;

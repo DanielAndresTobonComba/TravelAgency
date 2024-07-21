@@ -7,7 +7,7 @@ public class actualizarDescripcionTarifa extends actualizarDatosTarifa {
 
     public actualizarDescripcionTarifa(String enunciado) {
         this.enunciado = enunciado;
-
+        
     }
 
     @Override

@@ -15,7 +15,7 @@ public class imprimirDatosTarifa extends imprimirTabla {
 
         System.out.println("\nTARIFA ENCONTRADA");
         System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+----------------------------+");
-        System.out.printf("| %-10s | %-50s | %-50s | %-15s | %-8s |\n", "id", "Descripcion", "Detalles", "Precio Base", "Usuario", "Impuesto");
+        System.out.printf("| %-10s | %-50s | %-50s | %-15s | %-15s |\n", "id", "Descripcion", "Detalles", "Precio Base", "Impuesto");
         System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+----------------------------+");
 
         
@@ -28,7 +28,7 @@ public class imprimirDatosTarifa extends imprimirTabla {
             Double precioBase = rs.getDouble("precioBase");
             Double impuesto = rs.getDouble("impuesto");
 
-            System.out.printf("| %-10d | %-50s | %-50s | %-15.2f | %-9.2f|\n", id, descripcion, detalle, precioBase, impuesto);
+            System.out.printf("| %-10d | %-50s | %-50s | %-15.2f | %-16.2f|\n", id, descripcion, detalle, precioBase, impuesto);
         } while (rs.next());
         
         System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+----------------------------+");
