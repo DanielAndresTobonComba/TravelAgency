@@ -1,6 +1,7 @@
 package com.agencia.IntroView.Domain;
 
 import com.agencia.AbstractClasses.Funcionalidad;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.LogIn.MainLogIn.MainLogIn;
 
 public class IntroLogIn extends Funcionalidad {
@@ -13,7 +14,7 @@ public class IntroLogIn extends Funcionalidad {
     }
 
     @Override
-    public void ejecutar() {
+    public void ejecutar(Empleado empleado) {
         MainLogIn.mainLogIn();
     }
 

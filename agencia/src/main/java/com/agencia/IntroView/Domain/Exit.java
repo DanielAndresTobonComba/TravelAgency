@@ -1,6 +1,7 @@
 package com.agencia.IntroView.Domain;
 
 import com.agencia.AbstractClasses.Funcionalidad;
+import com.agencia.LogIn.Domain.Empleado;
 
 public class Exit extends Funcionalidad {
 
@@ -10,7 +11,7 @@ public class Exit extends Funcionalidad {
     }
 
     @Override
-    public void ejecutar() {
+    public void ejecutar(Empleado empleado) {
         System.out.println("\n _ - _ - _ - _ - _ - _ - _ - _ - _ - _");
         System.out.println("|      T R A V E L  A G E N C Y      |");
         System.out.println("|                                    |");

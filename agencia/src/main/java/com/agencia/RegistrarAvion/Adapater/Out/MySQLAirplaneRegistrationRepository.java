@@ -48,16 +48,7 @@ public class MySQLAirplaneRegistrationRepository implements AirplaneRecordServic
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-
-        /*if (insertedRows == 1) {
-
-            msjInsertion =  "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n  Avión registrado EXITOSAMENTE\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
-                            
-        } else {
-
-        }*/
-        
+        }        
 
         return insertedRows;
 

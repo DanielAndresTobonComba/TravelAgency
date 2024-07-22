@@ -13,6 +13,20 @@ public class Airplane {
 
     public Airplane() {}
 
+    
+
+
+
+    public Airplane(String placa, int capacidad, String fechaFabricacion, int modeloAvion_id, int estado_id) {
+        this.placa = placa;
+        this.capacidad = capacidad;
+        this.fechaFabricacion = fechaFabricacion;
+        this.ModeloAvion_id = modeloAvion_id;
+        this.Estado_id = estado_id;
+    }
+
+
+
 
 
     public Airplane(int id, String placa, int capacidad, String fechaFabricacion, int modeloAvion_id, int estado_id) {

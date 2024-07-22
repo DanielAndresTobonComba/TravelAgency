@@ -13,6 +13,7 @@ import com.agencia.LogIn.Application.SearchRols;
 import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.LogIn.Domain.VerifyEmployeeService;
 import com.agencia.LogIn.Domain.ViewRolService;
+import com.agencia.Main.Main;
 import com.agencia.Verifiers.CheckInt;
 import com.agencia.Verifiers.CheckPassword;
 import com.agencia.Verifiers.CheckString;
@@ -96,57 +97,71 @@ public class LogInView {
 
             System.out.println("\n--> Ingresa el nombre de Usuario");
             System.out.println("....................................");
+            System.out.println("      [EXIT/exit] para Salir");
             System.out.print(">>> ");
             usuarioEmpleado = CheckString.check("Ingresa de nuevo el nombre de usuario");
 
-            employeeSet = this.checkEmployee.extract(rolEmpleado, usuarioEmpleado);
+            if (usuarioEmpleado.toLowerCase().trim().equals("exit") ) {
 
-            try {
-                while(employeeSet.next()) {
-                    idEmployee = employeeSet.getInt("id");
-                    nameEployee = employeeSet.getString("nombreEmpleado");
-                    fechaIngreso = employeeSet.getString("fechaIngreso");
-                    cityEMployee = employeeSet.getString("ciudadNombre");
-                    rolExtracted = employeeSet.getString("rolNombre");
-                    document = employeeSet.getString("tipodocumentoNombre");
-                    userEmployee = employeeSet.getString("usuario");
-                    passwordExtracted = employeeSet.getString("contraseña");
-                    countSet ++;
-                }
+                Intro intro = new Intro(listaFuncionesIntro);
+                intro.start();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        
-            if (countSet == 0) {
-                System.err.println("\n****************************************");
-                System.out.println("*  Información de Empleado Incorrecta  *");
-                System.out.println("****************************************");
-                startLogIn();
             } else {
-                
 
-                passwordEmpleado = CheckPassword.check();
+                employeeSet = this.checkEmployee.extract(rolEmpleado, usuarioEmpleado);
 
-                passwordEncripted = PasswordEncripted.encript(passwordEmpleado);
-                
+            
 
-                if (passwordEncripted.toLowerCase().equals(passwordExtracted.toLowerCase())) {
+                try {
+                    while(employeeSet.next()) {
+                        idEmployee = employeeSet.getInt("id");
+                        nameEployee = employeeSet.getString("nombreEmpleado");
+                        fechaIngreso = employeeSet.getString("fechaIngreso");
+                        cityEMployee = employeeSet.getString("ciudadNombre");
+                        rolExtracted = employeeSet.getString("rolNombre");
+                        document = employeeSet.getString("tipodocumentoNombre");
+                        userEmployee = employeeSet.getString("usuario");
+                        passwordExtracted = employeeSet.getString("contraseña");
+                        countSet ++;
+                    }
 
-                    System.out.println("\n-=-=-=-=-=-=-=-=-=-=-=-=-");
-                    System.out.println("   INGRESO AUTENTICADO");
-                    System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-");
-                    Empleado employee = new Empleado(idEmployee, nameEployee, cityEMployee, aerolinea, rolExtracted, document, usuarioEmpleado, passwordExtracted, fechaIngreso);
-                    MainEmployeeView.mainEmployeeView(employee);
-                
-                } else {
-                    System.out.println("\nxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-                    System.out.println("x  CONTRASEÑA INCORRECTA  x");
-                    System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            
+                if (countSet == 0) {
+                    System.err.println("\n****************************************");
+                    System.out.println("*  Información de Empleado Incorrecta  *");
+                    System.out.println("****************************************");
                     startLogIn();
+                } else {
+                    
+
+                    passwordEmpleado = CheckPassword.check();
+
+                    passwordEncripted = PasswordEncripted.encript(passwordEmpleado);
+                    
+
+                    if (passwordEncripted.toLowerCase().equals(passwordExtracted.toLowerCase())) {
+
+                        System.out.println("\n-=-=-=-=-=-=-=-=-=-=-=-=-");
+                        System.out.println("   INGRESO AUTENTICADO");
+                        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-");
+                        Empleado employee = new Empleado(idEmployee, nameEployee, cityEMployee, aerolinea, rolExtracted, document, usuarioEmpleado, passwordExtracted, fechaIngreso);
+                        MainEmployeeView.mainEmployeeView(employee);
+                    
+                    } else {
+                        System.out.println("\nxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                        System.out.println("x  CONTRASEÑA INCORRECTA  x");
+                        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                        startLogIn();
+                    }
+
                 }
 
             }
+
+            
         }else {
             Intro intro = new Intro(listaFuncionesIntro);
             intro.start();
