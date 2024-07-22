@@ -3,8 +3,8 @@ package com.agencia.Cliente.Adapter.Out.RepositoriosActualizarDatosCliente;
 import java.sql.Connection;
 import java.sql.SQLIntegrityConstraintViolationException;
 
-import com.agencia.Cliente.imprimirDatosCliente;
 import com.agencia.Cliente.Adapter.Out.imprimirTablaTipoDocumento;
+import com.agencia.Cliente.Utilities.imprimirDatosCliente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.mysql.cj.jdbc.CallableStatement;
 

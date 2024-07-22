@@ -40,6 +40,7 @@ public class repositorioCrearCliente implements interfazCrearCliente {
                 if (!hasResult) {
     
                     System.out.println("Error al crear el Cliente");
+                    
                 } else {
                     try (ResultSet rs = stmt.getResultSet()) {
                         System.out.println("\nCLIENTE CREADO");

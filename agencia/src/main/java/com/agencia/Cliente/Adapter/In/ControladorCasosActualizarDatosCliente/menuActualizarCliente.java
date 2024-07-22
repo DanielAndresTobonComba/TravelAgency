@@ -3,10 +3,10 @@ package com.agencia.Cliente.Adapter.In.ControladorCasosActualizarDatosCliente;
 import java.util.List;
 import java.util.Scanner;
 
-import com.agencia.AbstractClasses.actualizarDatosCliente;
 import com.agencia.CasesListController.CasesListController;
 import com.agencia.Cliente.Main;
 import com.agencia.Cliente.Adapter.Out.existeCliente;
+import com.agencia.Cliente.Utilities.actualizarDatosCliente;
 import com.agencia.Verifiers.CheckInt;
 import com.agencia.Verifiers.CheckString;
 

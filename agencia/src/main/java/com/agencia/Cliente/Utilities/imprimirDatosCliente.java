@@ -1,4 +1,4 @@
-package com.agencia.Cliente;
+package com.agencia.Cliente.Utilities;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
