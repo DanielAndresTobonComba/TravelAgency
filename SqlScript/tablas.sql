@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Revision` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NOT NULL,
   `Avion_id` INT NULL,
-  `descripcion` TEXT(200) NOT NULL,
+  `descripcion` TEXT(50) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Revision_Avion1_idx` (`Avion_id` ASC) VISIBLE,
   CONSTRAINT `fk_Revision_Avion1`
@@ -360,6 +360,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`EmpleadoVueloConexion` (
     REFERENCES `mydb`.`VueloConexion` (`id`)
     ON DELETE SET NULL
     ON UPDATE CASCADE)
+    
 ENGINE = InnoDB;
 
 
@@ -1218,4 +1219,48 @@ END $$
 
 DELIMITER ;
 
+-- -----------------------------------------------------------------------------------------------------------------------
+-- 										PROCEDIMIENTOS RELACIONADOS CON REVISION MANTENIMIENTO
+-- -----------------------------------------------------------------------------------------------------------------------
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS consultarAvion $$
+CREATE PROCEDURE consultarAvion
+    (IN placaEntrante varchar(10))
+BEGIN
+
+	select av.placa as Placa , ma.nombre as Modelo , av.id as IdAvion from Avion as av , ModeloAvion as ma
+	where av.ModeloAvion_id = ma.id and av.placa = placaEntrante ;
+    
+	-- select * from Avion as av , ModeloAvion as ma where av.ModeloAvion_id = ma.id ;
+    
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS crearRevision $$
+CREATE PROCEDURE crearRevision
+    ( IN in_fecha date , IN in_Descripcion varchar(50) , in in_idAvion int)
+BEGIN
+
+	declare idRevision int;
+	
+    -- Insertar la nueva tarifa
+    INSERT INTO Revision (descripcion, fecha, Avion_id ) 
+    VALUES (in_Descripcion, in_fecha , in_idAvion);
+    
+	SELECT LAST_INSERT_ID() into idRevision;
+
+
+	select id , fecha , descripcion , Avion_id  from Revision where id = idRevision ;
+    
+    
+END $$
+DELIMITER ;
 -- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
+
+select * from Revision;
