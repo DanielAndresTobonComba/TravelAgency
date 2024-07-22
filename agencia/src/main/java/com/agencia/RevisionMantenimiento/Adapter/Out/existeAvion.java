@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import com.agencia.AbstractClasses.verificarExistencia;
 import com.agencia.DataBaseConfig.DataBaseConfig;
-import com.agencia.RevisionMantenimiento.imprimirExisteAvion;
+import com.agencia.RevisionMantenimiento.Utilities.imprimirExisteAvion;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class existeAvion extends verificarExistencia {

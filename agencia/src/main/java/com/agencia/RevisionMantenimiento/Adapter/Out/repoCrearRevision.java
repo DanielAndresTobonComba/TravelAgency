@@ -8,9 +8,8 @@ import java.sql.Date;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
-import com.agencia.RevisionMantenimiento.imprimirDatosRevision;
 import com.agencia.RevisionMantenimiento.Domain.revision;
-
+import com.agencia.RevisionMantenimiento.Utilities.imprimirDatosRevision;
 import com.mysql.cj.jdbc.CallableStatement;
 import java.util.Scanner;
 

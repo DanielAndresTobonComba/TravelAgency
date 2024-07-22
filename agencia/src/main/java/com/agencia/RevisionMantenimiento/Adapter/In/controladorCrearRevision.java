@@ -2,11 +2,10 @@ package com.agencia.RevisionMantenimiento.Adapter.In;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
-import com.agencia.RevisionMantenimiento.tomarDatosRevision;
 import com.agencia.RevisionMantenimiento.Adapter.Out.existeAvion;
 import com.agencia.RevisionMantenimiento.Adapter.Out.repoCrearRevision;
 import com.agencia.RevisionMantenimiento.Domain.revision;
-
+import com.agencia.RevisionMantenimiento.Utilities.tomarDatosRevision;
 import com.agencia.Verifiers.CheckString;
 
 import java.util.Scanner;
