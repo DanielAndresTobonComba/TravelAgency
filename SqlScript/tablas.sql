@@ -670,16 +670,16 @@ VALUES ("Carlos Jhoan Aguilar Galvis", "2020-01-01", 5, 1, 1, 1, "admin123", "24
 
 
 INSERT INTO `mydb`.`Empleado` (`name`, `fechaIngreso`, `Ciudad_id`, `Aerolinia_id`, `TripulacionRol_id`, `TipoDocumento_id`, `usuario`, `contraseña`) VALUES
-('Juan Pérez', '2022-01-15', 1, 1, 6, 1, 'jperez', 'pwd1'),
-('Ana Gómez', '2021-05-22', 2, 2, 7, 2, 'agomez', 'pwd2'),
-('Carlos López', '2020-03-10', 3, 3, 8, 3, 'clopez', 'pwd3'),
-('María Fernández', '2019-08-05', 4, 4, 9, 4, 'mfernandez', 'pwd4'),
-('Luis Martínez', '2018-12-20', 5, 5, 10, 5, 'lmartinez', 'pwd5'),
-('Carmen Torres', '2017-11-30', 6, 1, 1, 1, 'ctorres', 'pwd6'),
-('José Rodríguez', '2016-06-25', 7, 2, 2, 2, 'jrodriguez', 'pwd7'),
-('Laura Ramírez', '2015-09-12', 8, 3, 3, 3, 'lramirez', 'pwd8'),
-('Miguel Sánchez', '2014-04-17', 9, 4, 4, 4, 'msanchez', 'pwd9'),
-('Elena González', '2013-02-28', 10, 5, 5, 5, 'egonzalez', 'pwd10');
+('Juan Pérez', '2022-01-15', 1, 1, 6, 1, 'jperez', '6EAC1114AA783F6549327E7D01F63752995DA7B31F1F37092B7DCB9F49CF5651'),
+('Ana Gómez', '2021-05-22', 2, 2, 7, 2, 'agomez', '149D2937D1BCE53FA683AE652291BD54CC8754444216A9E278B45776B76375AF'),
+('Carlos López', '2020-03-10', 3, 3, 8, 3, 'clopez', 'FFC169417B4146CEBE09A3E9FFBCA33DB82E3E593B4D04C0959A89C05B87E15D'),
+('María Fernández', '2019-08-05', 4, 4, 9, 4, 'mfernandez', '54775A53A76AE02141D920FD2A4682F6E7D3AEF1F35210B9E4D253AD3DB7E3A8'),
+('Luis Martínez', '2018-12-20', 5, 5, 10, 5, 'lmartinez', '263AFC384461BCEFF1154660F784D26F90C00CA8923AA1A04CEEBBC14F30E253'),
+('Carmen Torres', '2017-11-30', 6, 1, 1, 1, 'ctorres', '1A878E3715DECCE119C93236F2CDCCB9F47F8142397348209F9082C36A7C2524'),
+('José Rodríguez', '2016-06-25', 7, 2, 2, 2, 'jrodriguez', '3FED6B4E386C7A023A849B490EC9E6F9670BB03067136FE561108159F4883BC9'),
+('Laura Ramírez', '2015-09-12', 8, 3, 3, 3, 'lramirez', '82DB9D1CECF58438D72C8033C923EAA7F96BFB0FD20ED83440D8EDDF3A77077A'),
+('Miguel Sánchez', '2014-04-17', 9, 4, 4, 4, 'msanchez', '814FAE7E37DB76D0BB7770DE9E8E3A7B3DC15193F93AE93461C28A5BF4E19206'),
+('Elena González', '2013-02-28', 10, 5, 5, 5, 'egonzalez', 'DE15BBF50716C8AB1680C845F081CF81D3596B08D40CF8C5B726AAC1F9D7A55C');
 
 -- Insertar datos en la tabla Estado
 INSERT INTO Estado(nombre) VALUES
@@ -688,24 +688,11 @@ INSERT INTO Estado(nombre) VALUES
 
 -- Insertar datos en la tabla fabricante
 INSERT INTO `mydb`.`Fabricante` (`nombre`) VALUES 
-('Boeing'),
-('Airbus'),
-('Embraer'),
-('Bombardier'),
-('Cessna');
+('Bombardier'), ('ACJ'), ('Airbus'), ('Beechcraft'), ('Boeing');
 
 -- Insertar datos en la tabla modelo avion
 INSERT INTO `mydb`.`ModeloAvion` (`nombre`, `Fabricante_id`) VALUES 
-('737-800', 1),
-('A320neo', 2),
-('E195-E2', 3),
-('CRJ700', 4),
-('Citation Longitude', 5),
-('787-9', 1),
-('A330-900', 2),
-('E175', 3),
-('Global Express', 4),
-('Citation Mustang', 5);
+('CHALLENGER 350', 1), ('AIRBUS 320', 3), ('ACJ 220', 1), ('A330-200F', 3), ('BOEING 737', 5);
 
 -- Insertar datos en la tabla tarifa
 INSERT INTO `mydb`.`Tarifa` (`descripcion`, `detalle`, `precioBase`, `impuesto`) VALUES 
@@ -988,13 +975,8 @@ END $$
 DELIMITER ;
 
 
-<<<<<<< HEAD
--- Procedure para actualizar edad del cliente
-
-=======
 
 -- Procedure para Actualizar la Edad del Cliente
->>>>>>> 7519df5a7633b6a54af4bc175ec72f8ec30eaab3
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarEdadCliente $$
@@ -1012,12 +994,7 @@ END $$
 DELIMITER ;
 
 
-<<<<<<< HEAD
--- Procedure para actualizar codumento del cliente
-
-=======
 -- Procedure para Actualizar Numero de Documento del Cliente
->>>>>>> 7519df5a7633b6a54af4bc175ec72f8ec30eaab3
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarNumeroDocumentoCliente $$
