@@ -1054,6 +1054,79 @@ END &&
 	
 delimiter ;
 
+-- Procedure para Actualizar Capacidad  de un Avión
+DROP PROCEDURE if EXISTS ActualizarCapacidadAvion;
+
+delimiter &&
+
+CREATE PROCEDURE ActualizarCapacidadAvion(IN placaInput VARCHAR(30), IN capacidadInput INT)
+BEGIN
+		DECLARE TIME_BEFORE DATETIME;
+		DECLARE TIME_AFTER DATETIME;
+	
+	
+	
+		SELECT UPDATE_TIME INTO TIME_BEFORE FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		UPDATE 	Avion
+		SET  		capacidad =   capacidadInput
+		WHERE 	placa = placaInput;
+		
+		SELECT UPDATE_TIME INTO TIME_AFTER FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		SELECT TIME_BEFORE, TIME_AFTER;
+END &&
+	
+delimiter ;
+
+
+-- Procedure para Actualizar Estado  de un Avión
+DROP PROCEDURE if EXISTS ActualizarEstadoAvion
+
+delimiter &&
+
+CREATE PROCEDURE ActualizarEstadoAvion(IN placaIpunt VARCHAR(30), IN estadoIdInput INT)
+BEGIN
+		DECLARE TIME_BEFORE DATETIME;
+		DECLARE TIME_AFTER DATETIME;
+	
+	
+	
+		SELECT UPDATE_TIME INTO TIME_BEFORE FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		UPDATE 	Avion
+		SET  		Estado_id =   estadoIdInput
+		WHERE 	placa = placaInput;
+		
+		SELECT UPDATE_TIME INTO TIME_AFTER FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		SELECT TIME_BEFORE, TIME_AFTER;
+END &&
+	
+delimiter ;
+
+
+-- Procedure para extraer un Avión de la base de datos
+DROP PROCEDURE if EXISTS ExtractAirplane;
+
+delimiter &&
+
+CREATE PROCEDURE ExtractAirplane(IN placaInput VARCHAR(30))
+BEGIN
+		SELECT 	a.id,
+            a.capacidad,
+            a.fechaFabricacion,
+            a.ModeloAvion_id,
+            a.Estado_id
+
+		FROM 		Avion AS a
+
+		WHERE 	a.placa = placaInput;
+    
+END &&
+
+delimiter ;
+
 
 
 
