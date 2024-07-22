@@ -9,7 +9,7 @@ import java.sql.Date;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
 import com.agencia.RevisionMantenimiento.Domain.revision;
-import com.agencia.RevisionMantenimiento.Utilities.imprimirDatosRevision;
+import com.agencia.RevisionMantenimiento.Utilities.imprimirTablaDatosRevision;
 import com.mysql.cj.jdbc.CallableStatement;
 import java.util.Scanner;
 
@@ -65,7 +65,7 @@ public class repoCrearRevision {
                 System.out.println("Error al crear la revisión");
             } else {
 
-                imprimirDatosRevision imprimirDatosRevision = new imprimirDatosRevision();
+                imprimirTablaDatosRevision imprimirDatosRevision = new imprimirTablaDatosRevision();
                 rs = stmt.getResultSet();
                 imprimirDatosRevision.imprimir(rs);
 
