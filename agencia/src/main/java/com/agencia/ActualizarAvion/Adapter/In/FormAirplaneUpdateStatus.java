@@ -149,7 +149,7 @@ public class FormAirplaneUpdateStatus {
 
                 } else if (estadoIdBefore == estadoIdNew) {
 
-                    System.out.println("\n**********************************************");
+                    System.out.println("\n*************************************************");
                     System.out.println("||          ¡ACTUALIZACIÓN CANCELADA!          ||");
                     System.out.println("||       Este código es igual al anterior      ||");
                     System.out.println("*************************************************\n");

@@ -139,7 +139,7 @@ public class FormAirplaneUpdateCapacity {
 
                 } else if (capacidadBefore == capacidadNew) {
 
-                    System.out.println("\n**********************************************");
+                    System.out.println("\n************************************************");
                     System.out.println("||          ¡ACTUALIZACIÓN CANCELADA!          ||");
                     System.out.println("||    Esta capacidad es igual a la anterior    ||");
                     System.out.println("*************************************************\n");
