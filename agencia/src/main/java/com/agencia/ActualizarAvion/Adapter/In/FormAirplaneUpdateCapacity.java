@@ -8,7 +8,6 @@ import com.agencia.ActualizarAvion.Application.UpdateAirplaneAction;
 import com.agencia.ActualizarAvion.MainActualizarAvion.MainActualizarAvion;
 import com.agencia.ConsultarAvion.Application.ExtractSearchAirplaneAction;
 import com.agencia.ConsultarAvion.Application.ViewSearchAirplaneAction;
-import com.agencia.GestionAvion.Main.MainMenuGestionAvion;
 import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.RegistrarAvion.Application.ExistentPlatesExtraction;
 import com.agencia.RegistrarAvion.Domain.Entity.Airplane;
@@ -52,9 +51,9 @@ public class FormAirplaneUpdateCapacity {
         boolean checkCambio = false;
 
 
-        System.out.println("\n________________________\n");
-        System.out.println("     CONSULTAR AVIÓN");
-        System.out.println("__________________________\n");
+        System.out.println("\n______________________________________\n");
+        System.out.println("    ACTUALIZAR CAPACIDAD DE AVIÓN");
+        System.out.println("______________________________________\n");
 
         // Registro de la placa
 
