@@ -40,11 +40,13 @@ public class existeRevision extends verificarExistencia {
                     if (!rs.isBeforeFirst()) {
                         System.out.println("Revisiòn no encontrada en la base de datos");
                         return false;
+                    } else {
+                        imprimirDatosRevision imprimirDatosRevision = new imprimirDatosRevision(); 
+                        imprimirDatosRevision.imprimir(rs);
+                        return true;
                     }
                     
-                    imprimirDatosRevision imprimirDatosRevision = new imprimirDatosRevision(); 
-                    imprimirDatosRevision.imprimir(rs);
-                    return true;
+
                 }
             }
         } catch (SQLException e) {
