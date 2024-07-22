@@ -4,16 +4,14 @@ import java.util.Scanner;
 
 import com.agencia.AbstractClasses.Funcionalidad;
 import com.agencia.CasesListController.CasesListController;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
-import com.agencia.Tarifa.MainTarifa;
-import com.agencia.Tarifa.Adapter.Out.existeTarifa;
-import com.agencia.Tarifa.Domain.actualizarDatosTarifa;
 import com.agencia.Verifiers.CheckInt;
-import com.agencia.Verifiers.CheckString;
+
 
 public class menuRevision {
 
-    public static void ejecutarMenu () {
+    public static void ejecutarMenu (Empleado empleado) {
 
             Scanner sc = new Scanner(System.in);
             int opcion = 0;
@@ -47,7 +45,7 @@ public class menuRevision {
                 }
         
                 if (opcion <= lista.size()) {
-                    lista.get(opcion - 1).ejecutar();
+                    lista.get(opcion - 1).ejecutar(empleado);
                 } else {
                     //MainTarifa.main(null); // Llama al método main del Main para volver al menú principal
                 }

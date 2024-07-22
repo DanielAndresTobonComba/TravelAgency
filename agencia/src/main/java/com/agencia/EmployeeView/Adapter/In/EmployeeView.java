@@ -39,16 +39,16 @@ public class EmployeeView {
             System.out.println("\n----------------------------------");
             System.out.println("     T R A V E L  A G E N C Y");
             System.out.println("__________________________________\n");
-            System.out.println(String.format("  %s",empleado.getUsuario()));
-            System.out.println(String.format("  %s",empleado.getName()));
-            System.out.println(String.format("  %s",empleado.getRol()));
+            System.out.println(String.format("  User: %s",empleado.getUsuario()));
+            System.out.println(String.format("  Nombre: %s",empleado.getName()));
+            System.out.println(String.format("  Rol: %s",empleado.getRol()));
             System.out.println("__________________________________");
             for(Funcionalidad function : listEmployeeFunctions) {
                 itemFunction = listEmployeeFunctions.indexOf(function) + 1;
-                System.out.println(itemFunction + ". " + function.enunciado + "\n");
+                System.out.println("   " + itemFunction + ". " + function.enunciado + "\n");
             }
             itemFunction ++;
-            System.out.println(itemFunction + ". Cerrar Sesión");
+            System.out.println("   " + itemFunction + ". Cerrar Sesión");
             System.out.println("----------------------------------");
 
             while ( correctOption == false) {
@@ -58,7 +58,7 @@ public class EmployeeView {
                 System.out.print(">>> ");
                 markedOption = CheckInt.check("Ingrese la opción nuevamente") - 1;
 
-                if (markedOption <= listEmployeeFunctions.size()) {
+                if (markedOption <= listEmployeeFunctions.size() && markedOption >= 0) {
                     correctOption = true;
                 } else {
                     System.out.println("\n*********************");
@@ -75,7 +75,7 @@ public class EmployeeView {
                 Intro intro = new Intro(listaFuncionesIntro);
                 intro.start();
             } else {
-                listEmployeeFunctions.get(markedOption).ejecutar();
+                listEmployeeFunctions.get(markedOption).ejecutar(empleado);
             }
 
             

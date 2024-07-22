@@ -3,25 +3,29 @@ package com.agencia.Aeropuerto.Infraestructure.In;
 import java.util.Scanner;
 
 import com.agencia.Aeropuerto.Application.eliminarAeropuerto;
-import com.agencia.Aeropuerto.Infraestructure.Out.repositorioEliminarAeropuerto;
+import com.agencia.Aeropuerto.MainAeropuerto.MainMenuAeropuerto;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.Verifiers.CheckString;
 
 public class controladorEliminarAeropuerto {
 
-    Scanner sc = new Scanner(System.in);
+
     private final eliminarAeropuerto eliminarAeropuerto;
+    private Empleado empleado;
 
     
-    public controladorEliminarAeropuerto(eliminarAeropuerto eliminarAeropuerto) {
+    public controladorEliminarAeropuerto(eliminarAeropuerto eliminarAeropuerto, Empleado empleado) {
         this.eliminarAeropuerto = eliminarAeropuerto;
+        this.empleado = empleado;
     }
 
     public void tomarNumAeropuerto() {
         System.out.println("Digita el número del aeropuerto a eliminar");
         String numeroAeropuerto = CheckString.check("Digita de nuevo el número del aeropuerto");
+
+        eliminarAeropuerto.ejecutarEliminarAeropuerto(numeroAeropuerto);
+        MainMenuAeropuerto.main(empleado);
         
-        repositorioEliminarAeropuerto eliminarAeropuerto = new repositorioEliminarAeropuerto();
-        eliminarAeropuerto.eliminarAeropuerto(numeroAeropuerto);
     }
 
 }

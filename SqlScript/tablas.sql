@@ -893,7 +893,6 @@ END $$
 DELIMITER ;
 
 -- Procedure para Registrar un Avion
-
 DROP PROCEDURE IF EXISTS InsertarAvion;
 
 delimiter &&
@@ -922,7 +921,6 @@ delimiter ;
 -- -----------------------------------------------------------------------------------------------------------------------
 
 -- Procedure para Crear Cliente
-
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS crearCliente $$
@@ -970,7 +968,7 @@ END $$
 DELIMITER ;
 
 
-
+-- Procedure para Actualizar el Nombre del Cliente
 DELIMITER $$
 
 -- Procedure para actualizar cliente
@@ -990,8 +988,13 @@ END $$
 DELIMITER ;
 
 
+<<<<<<< HEAD
 -- Procedure para actualizar edad del cliente
 
+=======
+
+-- Procedure para Actualizar la Edad del Cliente
+>>>>>>> 7519df5a7633b6a54af4bc175ec72f8ec30eaab3
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarEdadCliente $$
@@ -1009,8 +1012,12 @@ END $$
 DELIMITER ;
 
 
+<<<<<<< HEAD
 -- Procedure para actualizar codumento del cliente
 
+=======
+-- Procedure para Actualizar Numero de Documento del Cliente
+>>>>>>> 7519df5a7633b6a54af4bc175ec72f8ec30eaab3
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarNumeroDocumentoCliente $$
@@ -1028,6 +1035,7 @@ END $$
 DELIMITER ;
 
 
+<<<<<<< HEAD
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarContraseñaCliente $$
@@ -1262,5 +1270,187 @@ BEGIN
 END $$
 DELIMITER ;
 -- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
+=======
+
+
+-- Procedure para obtener los Modelos de Avion ya registrados
+
+DROP PROCEDURE IF EXISTS ObtainModeloAvion;
+
+delimiter &&
+
+CREATE PROCEDURE ObtainModeloAvion()
+BEGIN
+			SELECT 	m.id AS idmodelo,
+						  CONCAT(m.nombre , " - ", f.nombre) AS modelo
+						
+						
+			FROM 		ModeloAvion AS m,
+						Fabricante AS f
+			
+			WHERE		m.Fabricante_id = f.id;
+END &&
+
+delimiter ;
+
+
+-- Procedure para obtener el Estado del Avión
+DROP PROCEDURE IF EXISTS ObtainEstadoAvion;
+
+delimiter &&
+
+CREATE PROCEDURE ObtainEstadoAvion()
+BEGIN
+			SELECT 	id,
+						  nombre AS estado
+						
+						
+			FROM 		Estado;
+END &&
+
+delimiter ;
+
+-- Procedure para obtener las placas de los Aviones resgistrados
+DROP PROCEDURE IF EXISTS ObtainPlacas;
+
+delimiter &&
+CREATE PROCEDURE ObtainPlacas()
+BEGIN
+	SELECT	placa
+    FROM	Avion;
+END&&
+delimiter ;
+
+-- Procedure para eliminar un Avion
+DROP PROCEDURE if EXISTS EliminarAvion;
+
+delimiter &&
+
+CREATE PROCEDURE EliminarAvion(IN placaInput VARCHAR(30))
+BEGIN
+		DECLARE TIME_BEFORE DATETIME;
+		DECLARE TIME_AFTER DATETIME;
+	
+	
+	
+		SELECT UPDATE_TIME INTO TIME_BEFORE FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		DELETE FROM Avion WHERE placa = placaInput;
+		
+		SELECT UPDATE_TIME INTO TIME_AFTER FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		SELECT TIME_BEFORE, TIME_AFTER;
+	
+END &&
+
+delimiter ;
+
+-- Procedure para consultar Avión
+
+DROP PROCEDURE if EXISTS ConsultarAvion;
+
+delimiter &&
+
+CREATE PROCEDURE ConsultarAvion(IN placaInput VARCHAR(30))
+BEGIN
+		SELECT 	a.id,
+					a.placa,
+					a.capacidad,
+					a.fechaFabricacion,
+					ma.nombre AS modelo,
+					f.nombre AS fabricante,
+					e.nombre AS estado
+		FROM   	
+					Avion AS a,
+					ModeloAvion AS  ma,  
+					Fabricante AS f,
+					Estado AS e
+		WHERE 
+					a.ModeloAvion_id = ma.id AND 
+					ma.Fabricante_id = f.id AND
+					ma.id = a.ModeloAvion_id AND 
+					a.Estado_id = e.id AND
+					a.placa = placaInput;
+END &&
+	
+delimiter ;
+
+-- Procedure para Actualizar Capacidad  de un Avión
+DROP PROCEDURE if EXISTS ActualizarCapacidadAvion;
+
+delimiter &&
+
+CREATE PROCEDURE ActualizarCapacidadAvion(IN placaInput VARCHAR(30), IN capacidadInput INT)
+BEGIN
+		DECLARE TIME_BEFORE DATETIME;
+		DECLARE TIME_AFTER DATETIME;
+	
+	
+	
+		SELECT UPDATE_TIME INTO TIME_BEFORE FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		UPDATE 	Avion
+		SET  		capacidad =   capacidadInput
+		WHERE 	placa = placaInput;
+		
+		SELECT UPDATE_TIME INTO TIME_AFTER FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		SELECT TIME_BEFORE, TIME_AFTER;
+END &&
+	
+delimiter ;
+
+
+-- Procedure para Actualizar Estado  de un Avión
+DROP PROCEDURE if EXISTS ActualizarEstadoAvion
+
+delimiter &&
+
+CREATE PROCEDURE ActualizarEstadoAvion(IN placaIpunt VARCHAR(30), IN estadoIdInput INT)
+BEGIN
+		DECLARE TIME_BEFORE DATETIME;
+		DECLARE TIME_AFTER DATETIME;
+	
+	
+	
+		SELECT UPDATE_TIME INTO TIME_BEFORE FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		UPDATE 	Avion
+		SET  		Estado_id =   estadoIdInput
+		WHERE 	placa = placaInput;
+		
+		SELECT UPDATE_TIME INTO TIME_AFTER FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Avion';
+		
+		SELECT TIME_BEFORE, TIME_AFTER;
+END &&
+	
+delimiter ;
+
+
+-- Procedure para extraer un Avión de la base de datos
+DROP PROCEDURE if EXISTS ExtractAirplane;
+
+delimiter &&
+
+CREATE PROCEDURE ExtractAirplane(IN placaInput VARCHAR(30))
+BEGIN
+		SELECT 	a.id,
+            a.capacidad,
+            a.fechaFabricacion,
+            a.ModeloAvion_id,
+            a.Estado_id
+
+		FROM 		Avion AS a
+
+		WHERE 	a.placa = placaInput;
+    
+END &&
+
+delimiter ;
+
+
+
+
+>>>>>>> 7519df5a7633b6a54af4bc175ec72f8ec30eaab3
 
 select * from Revision;

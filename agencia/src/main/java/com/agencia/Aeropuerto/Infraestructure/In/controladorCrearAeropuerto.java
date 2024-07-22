@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 import com.agencia.Aeropuerto.Application.crearAeropuerto;
 import com.agencia.Aeropuerto.Domain.Entity.Aeropuerto;
-import com.agencia.Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
+import com.agencia.Aeropuerto.MainAeropuerto.MainMenuAeropuerto;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.Verifiers.CheckInt;
 import com.agencia.Verifiers.CheckString;
 
@@ -13,9 +14,11 @@ public class controladorCrearAeropuerto {
     Scanner sc = new Scanner(System.in);
 
     private final crearAeropuerto servicioCrearAeropuerto;
+    private Empleado empleado;
 
-    public controladorCrearAeropuerto(crearAeropuerto servicioCrearAeropuerto) {
+    public controladorCrearAeropuerto(crearAeropuerto servicioCrearAeropuerto, Empleado empleado) {
         this.servicioCrearAeropuerto = servicioCrearAeropuerto;
+        this.empleado = empleado;
     }
 
     public void tomarDatosAeropuerto (){
@@ -36,8 +39,9 @@ public class controladorCrearAeropuerto {
             aeropuerto.setNumAeropuerto(numAeropuerto);
             aeropuerto.setIdCiudad(idCiudad);
 
-            repositorioCrearAeropuerto repositorioCrearAeropuerto = new repositorioCrearAeropuerto();
-            repositorioCrearAeropuerto.crearAeropuerto(aeropuerto);
+            servicioCrearAeropuerto.ejecutar(aeropuerto);
+            MainMenuAeropuerto.main(empleado);
+
 
             
         } catch (Exception e) {
