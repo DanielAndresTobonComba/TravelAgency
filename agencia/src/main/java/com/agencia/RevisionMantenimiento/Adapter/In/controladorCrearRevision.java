@@ -30,7 +30,7 @@ public class controladorCrearRevision extends tomarDatosRevision {
             System.out.println("Error con la placa ingresada");
             System.out.println("Presiona entrer para volver al menu");
             sc.nextLine(); 
-            MainRevisionMantenimiento.main(null);
+            MainRevisionMantenimiento.main();
         }
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");

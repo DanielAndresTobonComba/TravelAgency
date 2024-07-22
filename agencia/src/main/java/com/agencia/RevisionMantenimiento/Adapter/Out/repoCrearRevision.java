@@ -44,7 +44,7 @@ public class repoCrearRevision {
                 System.out.println("Avión no encontrado.");
                 System.out.println("Presiona enter para volver al menú");
                 sc.nextLine();
-                MainRevisionMantenimiento.main(null);
+                MainRevisionMantenimiento.main();
             } 
 
             // Crear la revisión
@@ -73,7 +73,7 @@ public class repoCrearRevision {
 
                 System.out.println("Presiona enter para volver al menú");
                 sc.nextLine();
-                MainRevisionMantenimiento.main(null);
+                MainRevisionMantenimiento.main();
             }
 
         } catch (SQLIntegrityConstraintViolationException b) {
@@ -87,12 +87,12 @@ public class repoCrearRevision {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            try {
+/*             try {
                 if (rs != null) rs.close();
                 if (stmt != null) stmt.close();
             } catch (SQLException e) {
                 e.printStackTrace();
-            }
+            } */
         }
     }
 }

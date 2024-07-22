@@ -33,13 +33,14 @@ import com.agencia.CasesListController.CasesListController;
 //import com.agencia.Cliente.Domian.Service.interfazCrearCliente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.IntroView.Adapter.In.Intro;
+import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
 
 public class Main {
 
 
     public static void main(String[] args) {
         
-        //Confirmación de la conexión a la Base de datos 
+/*         //Confirmación de la conexión a la Base de datos 
         String RESET = "\u001B[0m";
         String GREEN = "\u001B[42m";
          System.out.println(GREEN + DataBaseConfig.getConnection().msjConnection + RESET);
@@ -50,60 +51,10 @@ public class Main {
 
         if (DataBaseConfig.getConnection().verifyConnection) {
             intro.start();
-        }
+        } */
 
+        MainRevisionMantenimiento.main();
 
-
-        
-        
-
-/*       interfazCrearAeropuerto servicio = new repositorioCrearAeropuerto();
-
-        crearAeropuerto crearAeropuerto = new crearAeropuerto(servicio);
-
-        controladorCrearAeropuerto adaptador = new controladorCrearAeropuerto(crearAeropuerto);
-
-        adaptador.tomarDatosAeropuerto(); 
-*/
-        
-/*          interfazEliminarAeropuerto servicio = new repositorioEliminarAeropuerto();
-
-        eliminarAeropuerto eliminarAeropuerto = new eliminarAeropuerto(servicio);
-
-        controladorEliminarAeropuerto adaptador = new controladorEliminarAeropuerto(eliminarAeropuerto);
-
-        adaptador.tomarNumAeropuerto(); */
-
-
-/*         
-        interfazConsultarAeropuerto servicio = new repositorioConsultarAeropuerto(); 
-
-        consultarAeropuerto consultarAeropuerto = new consultarAeropuerto(servicio); 
-
-        controladorConsultarAeropuerto adapter = new controladorConsultarAeropuerto(consultarAeropuerto);
-
-        adapter.tomarNumAeropuerto(); */
-
-
-
-        /*interfazActualizarAeropuerto servicio = new repositorioActualizarAeropuerto(); 
-
-        actualizarAeropuerto actualizarAeropuerto = new actualizarAeropuerto(servicio);
-
-        controladorActualizarAeropuerto consultarAeropuerto = new controladorActualizarAeropuerto(actualizarAeropuerto);
-
-        consultarAeropuerto.actualizarAeropuerto();*/
-
-
-
-/* 
-        interfazCrearCliente servicio = new repositorioCrearCLiente(); 
-
-        crearCliente crearCliente = new crearCliente(servicio);
-
-        controladorCrearCliente controladorCrearCliente = new controladorCrearCliente(crearCliente);
-
-        controladorCrearCliente.ejecutarcrearCliente(); */
 
 
     }

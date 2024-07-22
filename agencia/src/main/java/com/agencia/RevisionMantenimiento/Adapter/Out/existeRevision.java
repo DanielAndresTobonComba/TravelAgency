@@ -1,4 +1,4 @@
-package com.agencia.RevisionMantenimiento.Utilities;
+package com.agencia.RevisionMantenimiento.Adapter.Out;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,12 +8,14 @@ import java.util.Scanner;
 import com.agencia.AbstractClasses.verificarExistencia;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
+import com.agencia.RevisionMantenimiento.Utilities.imprimirDatosRevision;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class existeRevision extends verificarExistencia {
 
     @Override
     public boolean verficiar(String numero) {
+
         Scanner sc = new Scanner(System.in);
         CallableStatement stmt = null;
         DataBaseConfig.getConnection();

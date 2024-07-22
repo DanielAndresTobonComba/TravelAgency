@@ -5,9 +5,10 @@ import com.agencia.RevisionMantenimiento.Adapter.In.menuRevision;
 
 public class MainRevisionMantenimiento {
 
-    public static void main(Empleado empleado) {
+    public static void main() {
 
-        menuRevision.ejecutarMenu(empleado);
+        menuRevision.ejecutarMenu();
         
     }
+    
 }

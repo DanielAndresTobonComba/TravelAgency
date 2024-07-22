@@ -13,8 +13,8 @@ public class eliminarRevision extends Funcionalidad {
 
     @Override
     public void ejecutar(Empleado empleado) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ejecutar'");
+        controladorEliminarRevision controladorEliminarRevision = new controladorEliminarRevision(); 
+        controladorEliminarRevision.tomarDatos();
     }
 
 }
