@@ -8,7 +8,7 @@ import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.Tarifa.Application.Service.InterfazAgregarTarifa;
 import com.agencia.Tarifa.Domain.Tarifa;
 import com.agencia.Tarifa.Utilities.imprimirDatosTarifa;
-import com.agencia.Verifiers.PasswordEncripted;
+
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class repoAgregarTarifa implements InterfazAgregarTarifa {

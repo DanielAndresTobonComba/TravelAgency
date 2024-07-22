@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Aeropuerto` (
 ENGINE = InnoDB;
 
 CREATE INDEX serialAeropuerto ON mydb.Aeropuerto (numeroAeropuerto);
-select * from Aeropuerto;
+
 
 -- -----------------------------------------------------
 -- Table `mydb`.`PuertaEmbargue`
@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Revision` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NOT NULL,
   `Avion_id` INT NULL,
-  `descripcion` TEXT(200) NOT NULL,
+  `descripcion` TEXT(50) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Revision_Avion1_idx` (`Avion_id` ASC) VISIBLE,
   CONSTRAINT `fk_Revision_Avion1`
@@ -360,6 +360,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`EmpleadoVueloConexion` (
     REFERENCES `mydb`.`VueloConexion` (`id`)
     ON DELETE SET NULL
     ON UPDATE CASCADE)
+    
 ENGINE = InnoDB;
 
 
@@ -566,6 +567,9 @@ INSERT INTO `mydb`.`Pais` (`nombre`) VALUES
 ('España'),
 ('Japón');
 
+
+
+
 -- Insertar datos en la tabla `Ciudad`
 INSERT INTO `mydb`.`Ciudad` (`nombre`, `Pais_id`) VALUES
 -- Ciudades en Estados Unidos (id = 1)
@@ -584,7 +588,7 @@ INSERT INTO `mydb`.`Ciudad` (`nombre`, `Pais_id`) VALUES
 ('Tokio', 5),
 ('Osaka', 5);
 
-select * from Aeropuerto;
+
 -- Insertar datos en la tabla `Aeropuerto`
 INSERT INTO `mydb`.`Aeropuerto` (`nombre`, `Ciudad_id`, `numeroAeropuerto`) VALUES
 -- Aeropuertos en ciudades de Estados Unidos
@@ -602,6 +606,8 @@ INSERT INTO `mydb`.`Aeropuerto` (`nombre`, `Ciudad_id`, `numeroAeropuerto`) VALU
 -- Aeropuertos en ciudades de Japón
 ('Aeropuerto Internacional de Narita', 9, 'NRT9'),
 ('Aeropuerto Internacional de Kansai', 10, 'KIX0');
+
+
 
 
 -- Insertar en la tabla TipoDocumento
@@ -627,39 +633,34 @@ VALUES
     ('Sofía Rodríguez', 26, 4, 'sofiar26', 'yz567', '54321678'),
     ('Martín Sánchez', 31, 5, 'martins31', 'abc890', '32187654');
 
--- Insertar en la tabla Rol
-INSERT INTO Rol (nombre)
-VALUES ("Administrador");
-
-INSERT INTO Rol (nombre)
-VALUES ("Agente de ventas");
-
-INSERT INTO Rol (nombre)
-VALUES ("Tecnico de mantenimiento");
+-- Inserciones para la tabla rol
+INSERT INTO `mydb`.`Rol` (`nombre`) VALUES 
+('Administrador'), 
+('Agente de ventas'),
+('Tecnico de mantenimiento'), 
+('Desarrollador'), 
+('Analista'),
+('Capitán'),
+('Primer Oficial'),
+('Sobrecargo'),
+('Auxiliar de Vuelo'),
+('Mecánico de Aeronaves');
 
 
 -- Insertar en la tabla Aerolinea
-INSERT INTO Aerolinea  (nombre) VALUES 
-("Ninguno"); 
+INSERT INTO Aerolinea (nombre) VALUES 
+("Copa Airlines"),
+("Avianca"),
+("Aeromexico"),
+("Aerolineas Argentina"),
+("LATAM Airlines"),
+("Interjet"),
+("American Airlines"),
+("United Airlines"),
+("Delta Airlines"),
+("Southwest Airlines");
 
 
-INSERT INTO Aerolinea  (nombre) VALUES 
-("Copa Airlines");
-
-INSERT INTO Aerolinea  (nombre) VALUES 
-("Avianca");
-
-INSERT INTO Aerolinea  (nombre) VALUES 
-("Aeromexico");
-
-INSERT INTO Aerolinea  (nombre) VALUES 
-("Azul");
-
-INSERT INTO Aerolinea  (nombre) VALUES 
-("Aerolineas Argentina");     
-
-INSERT INTO Aerolinea  (nombre) VALUES 
-("LATAM Airlines");
 
 
 
@@ -668,26 +669,88 @@ INSERT INTO Empleado (name, fechaIngreso, Ciudad_id,  Aerolinia_id, TripulacionR
 VALUES ("Carlos Jhoan Aguilar Galvis", "2020-01-01", 5, 1, 1, 1, "admin123", "240BE518FABD2724DDB6F04EEB1DA5967448D7E831C08C8FA822809F74C720A9");
 
 
+INSERT INTO `mydb`.`Empleado` (`name`, `fechaIngreso`, `Ciudad_id`, `Aerolinia_id`, `TripulacionRol_id`, `TipoDocumento_id`, `usuario`, `contraseña`) VALUES
+('Juan Pérez', '2022-01-15', 1, 1, 6, 1, 'jperez', 'pwd1'),
+('Ana Gómez', '2021-05-22', 2, 2, 7, 2, 'agomez', 'pwd2'),
+('Carlos López', '2020-03-10', 3, 3, 8, 3, 'clopez', 'pwd3'),
+('María Fernández', '2019-08-05', 4, 4, 9, 4, 'mfernandez', 'pwd4'),
+('Luis Martínez', '2018-12-20', 5, 5, 10, 5, 'lmartinez', 'pwd5'),
+('Carmen Torres', '2017-11-30', 6, 1, 1, 1, 'ctorres', 'pwd6'),
+('José Rodríguez', '2016-06-25', 7, 2, 2, 2, 'jrodriguez', 'pwd7'),
+('Laura Ramírez', '2015-09-12', 8, 3, 3, 3, 'lramirez', 'pwd8'),
+('Miguel Sánchez', '2014-04-17', 9, 4, 4, 4, 'msanchez', 'pwd9'),
+('Elena González', '2013-02-28', 10, 5, 5, 5, 'egonzalez', 'pwd10');
+
 -- Insertar datos en la tabla Estado
 INSERT INTO Estado(nombre) VALUES
-('Activo'), ('En reparacion');
+('Activo'), 
+('En reparacion');
 
+-- Insertar datos en la tabla fabricante
+INSERT INTO `mydb`.`Fabricante` (`nombre`) VALUES 
+('Boeing'),
+('Airbus'),
+('Embraer'),
+('Bombardier'),
+('Cessna');
 
--- Insertar datos en la tabla Fabricante
-INSERT INTO Fabricante(nombre) VALUES
-('Bombardier'), ('ACJ'), ('Airbus'), ('Beechcraft'), ('Boeing');
+-- Insertar datos en la tabla modelo avion
+INSERT INTO `mydb`.`ModeloAvion` (`nombre`, `Fabricante_id`) VALUES 
+('737-800', 1),
+('A320neo', 2),
+('E195-E2', 3),
+('CRJ700', 4),
+('Citation Longitude', 5),
+('787-9', 1),
+('A330-900', 2),
+('E175', 3),
+('Global Express', 4),
+('Citation Mustang', 5);
 
-
--- Insertar datos en la tabla ModeloAvion
-INSERT INTO ModeloAvion(nombre, Fabricante_id)
-VALUES ('CHALLENGER 350', 1), ('AIRBUS 320', 3);
-
+-- Insertar datos en la tabla tarifa
 INSERT INTO `mydb`.`Tarifa` (`descripcion`, `detalle`, `precioBase`, `impuesto`) VALUES 
 ('Tarifa Básica', 'Servicios básicos', 100.00, 15.00),
 ('Tarifa Premium', 'Servicios premium', 200.00, 30.00),
 ('Tarifa Económica', 'Servicios económicos', 50.00, 7.50),
 ('Tarifa Corporativa', 'Servicios para empresas', 500.00, 75.00),
 ('Tarifa Estudiante', 'Descuento para estudiantes', 75.00, 11.25);
+
+
+-- Insertar datos en la tabla avion
+INSERT INTO `mydb`.`Avion` (`placa`, `capacidad`, `fechaFabricacion`, `ModeloAvion_id`, `Estado_id`) VALUES 
+('N737800', 189, '2018-05-20', 1, 1),
+('F-A320NEO', 195, '2019-03-15', 2, 1),
+('PR-E195E2', 146, '2020-07-10', 3, 2),
+('C-CRJ700', 78, '2016-08-30', 4, 1),
+('N-CLONG', 12, '2021-11-25', 5, 1),
+('N7879', 296, '2017-12-05', 6, 2),
+('F-A330900', 287, '2022-09-18', 7, 1),
+('PR-E175', 88, '2015-02-20', 8, 1),
+('C-GEXPRESS', 19, '2018-10-10', 9, 2),
+('N-MUSTANG', 4, '2020-04-14', 10, 1);
+
+INSERT INTO `mydb`.`Revision` (`fecha`, `Avion_id`, `descripcion`) VALUES 
+('2024-01-15', 1, 'Revisión general de mantenimiento con cambio de filtros y aceite.'),
+('2024-02-10', 2, 'Inspección de motores y pruebas de vuelo después de actualización de software.'),
+('2024-03-20', 3, 'Revisión de sistema de frenos y reemplazo de llantas.'),
+('2024-04-05', 4, 'Chequeo de sistemas electrónicos y calibración de instrumentos.'),
+('2024-05-18', 5, 'Revisión completa de fuselaje y limpieza profunda de interiores.');
+
+
+INSERT INTO `mydb`.`RevisionEmpleado` (`Revision_id`, `Empleado_id`) VALUES 
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4),
+(3, 5),
+(3, 6),
+(4, 7),
+(4, 8),
+(5, 9),
+(5, 10);
+
+
+
 
 
 -- ----------------------------------------------------------------------------- ---------------------------------------------------------------------
@@ -1017,7 +1080,9 @@ END $$
 DELIMITER ;
 
 
--- PROCEDIMIENTOS RELACIONADOS CON TARIFA
+-- -----------------------------------------------------------------------------------------------------------------------
+-- 											PROCEDIMIENTOS RELACIONADOS CON TARIFA
+-- -----------------------------------------------------------------------------------------------------------------------
 
 
 -- BUSCAR TARIFA 
@@ -1154,4 +1219,48 @@ END $$
 
 DELIMITER ;
 
+-- -----------------------------------------------------------------------------------------------------------------------
+-- 										PROCEDIMIENTOS RELACIONADOS CON REVISION MANTENIMIENTO
+-- -----------------------------------------------------------------------------------------------------------------------
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS consultarAvion $$
+CREATE PROCEDURE consultarAvion
+    (IN placaEntrante varchar(10))
+BEGIN
+
+	select av.placa as Placa , ma.nombre as Modelo , av.id as IdAvion from Avion as av , ModeloAvion as ma
+	where av.ModeloAvion_id = ma.id and av.placa = placaEntrante ;
+    
+	-- select * from Avion as av , ModeloAvion as ma where av.ModeloAvion_id = ma.id ;
+    
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS crearRevision $$
+CREATE PROCEDURE crearRevision
+    ( IN in_fecha date , IN in_Descripcion varchar(50) , in in_idAvion int)
+BEGIN
+
+	declare idRevision int;
+	
+    -- Insertar la nueva tarifa
+    INSERT INTO Revision (descripcion, fecha, Avion_id ) 
+    VALUES (in_Descripcion, in_fecha , in_idAvion);
+    
+	SELECT LAST_INSERT_ID() into idRevision;
+
+
+	select id , fecha , descripcion , Avion_id  from Revision where id = idRevision ;
+    
+    
+END $$
+DELIMITER ;
 -- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
+
+select * from Revision;
