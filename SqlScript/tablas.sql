@@ -749,8 +749,8 @@ INSERT INTO `mydb`.`RevisionEmpleado` (`Revision_id`, `Empleado_id`) VALUES
 (5, 9),
 (5, 10);
 
--- select * from Revision;
-
+-- select * from Revision 
+ Select * from Avion;
 
 
 -- ----------------------------------------------------------------------------- ---------------------------------------------------------------------
@@ -1231,7 +1231,7 @@ CREATE PROCEDURE consultarAvion
     (IN placaEntrante varchar(10))
 BEGIN
 
-	select av.placa as Placa , ma.nombre as Modelo , av.id as IdAvion from Avion as av , ModeloAvion as ma
+	select av.placa as Placa , ma.nombre as Modelo , av.id as AvionId from Avion as av , ModeloAvion as ma
 	where av.ModeloAvion_id = ma.id and av.placa = placaEntrante ;
     
 	-- select * from Avion as av , ModeloAvion as ma where av.ModeloAvion_id = ma.id ;
@@ -1310,6 +1310,24 @@ BEGIN
     -- "N737800"
     
 END $$
+DELIMITER ;
+
+-- PROCEDURE PARA ACTUALIZAR EL AVION DE UNA REVISION
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarAvionRevision $$
+CREATE PROCEDURE actualizarAvionRevision
+    (IN in_IdRevision int , in in_IdAvion int)
+BEGIN
+
+	update Revision 
+    set Avion_id = in_IdAvion 
+    where id = in_IdRevision;
+    
+	select id , fecha , Avion_id , descripcion  from Revision where id =in_IdRevision  ;
+    
+END $$
+
 DELIMITER ;
 
 
