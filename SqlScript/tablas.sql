@@ -1027,8 +1027,6 @@ END $$
 
 DELIMITER ;
 
-
-<<<<<<< HEAD
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarContraseñaCliente $$
@@ -1324,7 +1322,44 @@ BEGIN
     set Avion_id = in_IdAvion 
     where id = in_IdRevision;
     
-	select id , fecha , Avion_id , descripcion  from Revision where id =in_IdRevision  ;
+	select id  , fecha , Avion_id  AS idAvion , descripcion  from Revision where id = Avion_id  ;
+    
+END $$
+
+DELIMITER ;
+
+-- Actualizar descripciòn de una Revisiòn 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarDescripcionRevision $$
+CREATE PROCEDURE actualizarDescripcionRevision
+    (IN in_IdRevision int , in in_descripcion varchar(70))
+BEGIN
+
+	update Revision 
+    set descripcion = in_descripcion 
+    where id = in_IdRevision;
+    
+	select id , fecha , Avion_id  AS idAvion , descripcion from Revision where id = in_IdRevision  ;
+    
+END $$
+
+DELIMITER ;
+
+
+-- Actualizar fecha de revision 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarFechaRevision $$
+CREATE PROCEDURE actualizarFechaRevision
+    (IN in_IdRevision int , in in_fecha varchar(12))
+BEGIN
+
+	update Revision 
+    set fecha = in_fecha 
+    where id = in_IdRevision;
+    
+	select id , fecha , Avion_id  AS idAvion , descripcion from Revision where id = in_IdRevision  ;
     
 END $$
 
@@ -1406,14 +1441,12 @@ END &&
 delimiter ;
 
 -- Procedure para consultar Avión
-
+/*
 DROP PROCEDURE if EXISTS ConsultarAvion;
-
 delimiter &&
-
 CREATE PROCEDURE ConsultarAvion(IN placaInput VARCHAR(30))
 BEGIN
-		SELECT 	a.id,
+		SELECT 		a.id,
 					a.placa,
 					a.capacidad,
 					a.fechaFabricacion,
@@ -1432,9 +1465,8 @@ BEGIN
 					a.Estado_id = e.id AND
 					a.placa = placaInput;
 END &&
-	
 delimiter ;
-
+*/
 -- Procedure para Actualizar Capacidad  de un Avión
 DROP PROCEDURE if EXISTS ActualizarCapacidadAvion;
 
@@ -1507,3 +1539,5 @@ BEGIN
 END &&
 
 delimiter ;
+
+select * from Cliente;
