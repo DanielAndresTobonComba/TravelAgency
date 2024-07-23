@@ -9,7 +9,7 @@ import java.sql.Date;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
 import com.agencia.RevisionMantenimiento.Domain.revision;
-import com.agencia.RevisionMantenimiento.Utilities.imprimirDatosRevision;
+import com.agencia.RevisionMantenimiento.Utilities.imprimirTablaDatosRevision;
 import com.mysql.cj.jdbc.CallableStatement;
 import java.util.Scanner;
 
@@ -44,7 +44,7 @@ public class repoCrearRevision {
                 System.out.println("Avión no encontrado.");
                 System.out.println("Presiona enter para volver al menú");
                 sc.nextLine();
-                MainRevisionMantenimiento.main(null);
+                MainRevisionMantenimiento.main();
             } 
 
             // Crear la revisión
@@ -65,7 +65,7 @@ public class repoCrearRevision {
                 System.out.println("Error al crear la revisión");
             } else {
 
-                imprimirDatosRevision imprimirDatosRevision = new imprimirDatosRevision();
+                imprimirTablaDatosRevision imprimirDatosRevision = new imprimirTablaDatosRevision();
                 rs = stmt.getResultSet();
                 imprimirDatosRevision.imprimir(rs);
 
@@ -73,7 +73,7 @@ public class repoCrearRevision {
 
                 System.out.println("Presiona enter para volver al menú");
                 sc.nextLine();
-                MainRevisionMantenimiento.main(null);
+                MainRevisionMantenimiento.main();
             }
 
         } catch (SQLIntegrityConstraintViolationException b) {
@@ -87,12 +87,12 @@ public class repoCrearRevision {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            try {
+/*             try {
                 if (rs != null) rs.close();
                 if (stmt != null) stmt.close();
             } catch (SQLException e) {
                 e.printStackTrace();
-            }
+            } */
         }
     }
 }

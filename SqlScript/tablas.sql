@@ -1270,8 +1270,57 @@ BEGIN
 END $$
 DELIMITER ;
 -- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
-=======
 
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS imprimirRevision $$
+CREATE PROCEDURE imprimirRevision
+    ( IN in_numero int)
+BEGIN
+
+	select r.id as IdRevision , r.fecha as Fecha , r.descripcion as Descripcion , av.placa as Placa_Avion 
+    from Revision as r , Avion as av where r.id = in_numero and r.Avion_id = av.id ;
+    
+    
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS eliminarRevision $$
+CREATE PROCEDURE eliminarRevision
+    ( IN in_numero int)
+BEGIN
+
+	delete 
+    from Revision 
+    where id = in_numero;
+    
+    
+END $$
+DELIMITER ;
+
+
+-- PROCEDURE PARA CONSULTAR HISTORIAL DE REVISION DE UN AVION
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS consultarHistorialRevision $$
+CREATE PROCEDURE consultarHistorialRevision
+    ( IN in_placa varchar(10))
+BEGIN
+	
+    Select r.id as IdRevision , r.fecha as fechaMantenimiento , av.placa as Placa , mv.nombre as Modelo , av.fechaFabricacion as fechaFabricacion , av.capacidad as Capacidad ,
+    r.descripcion as Descripcion
+    from Avion as av , Revision as r , ModeloAvion as mv
+    where av.id = r.Avion_id and av.placa = in_placa  and av.ModeloAvion_id = mv.id  ;
+    -- "N737800"
+    
+END $$
+DELIMITER ;
+
+select * from Revision;
+Select * from Avion;
 
 -- Procedure para obtener los Modelos de Avion ya registrados
 
@@ -1447,10 +1496,3 @@ BEGIN
 END &&
 
 delimiter ;
-
-
-
-
->>>>>>> 7519df5a7633b6a54af4bc175ec72f8ec30eaab3
-
-select * from Revision;

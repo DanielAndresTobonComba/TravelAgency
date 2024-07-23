@@ -26,6 +26,7 @@ import com.agencia.GestionAvion.Adapter.GoToEliminarAvion;
 import com.agencia.GestionAvion.Adapter.GoToRegistrarAvion;
 import com.agencia.IntroView.Domain.IntroLogIn;
 import com.agencia.RevisionMantenimiento.Application.actualizarRevision;
+import com.agencia.RevisionMantenimiento.Application.consultarHistorial;
 import com.agencia.RevisionMantenimiento.Application.crearRevision;
 import com.agencia.RevisionMantenimiento.Application.eliminarRevision;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDescripcionTarifa;
@@ -67,6 +68,7 @@ public class CasesListController {
         Funcionalidad crearRevision = new crearRevision("Crear revisión"); 
         Funcionalidad eliminarRevision = new eliminarRevision("Eliminar revisión");
         Funcionalidad actualizarRevision = new actualizarRevision("Actualizar revisión");
+        Funcionalidad consultarHistorial = new consultarHistorial("Consultar Historial");
 
         // AGREGAR FUNCIONALIDADES A ACTUALIZAR TARIFA 
         actualizarDatosTarifa actualizarDescripcion = new actualizarDescripcionTarifa ("Actualizar descripción");
@@ -146,6 +148,7 @@ public class CasesListController {
         lstFuncionalidadRevisionMantenimiento.add(crearRevision);
         lstFuncionalidadRevisionMantenimiento.add(eliminarRevision);
         lstFuncionalidadRevisionMantenimiento.add(actualizarRevision);
+        lstFuncionalidadRevisionMantenimiento.add(consultarHistorial);
 
 
         // AGREGAR LA FUNCIONALIDAD A LA LISTA DE CASOS DE USO DE ACTUALIZAR TATIFA
