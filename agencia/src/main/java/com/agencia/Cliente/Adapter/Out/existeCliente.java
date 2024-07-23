@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import com.agencia.Cliente.Utilities.imprimirEnPlacaCliente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.mysql.cj.jdbc.CallableStatement;
 public class existeCliente {
@@ -38,8 +39,11 @@ public class existeCliente {
                         System.out.println("Cliente no encontrado en la base de datos");
                         return false;
                     }
+
+                    imprimirEnPlacaCliente imprimir = new imprimirEnPlacaCliente(); 
+                    imprimir.imprimir(rs);
                     
-                    System.out.println("\nCLIENTE ENCONTRADO");
+/*                     System.out.println("\nCLIENTE ENCONTRADO");
                         
                     System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+-----------------------------+");
                     System.out.printf("| %-30s | %-5s | %-15s | %-20s | %-15s | %-70s |\n", "Nombre", "Edad", "TipoDocumento", "NumeroDocumento", "Usuario", "Contraseña");
@@ -58,7 +62,7 @@ public class existeCliente {
 
                     System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+----------------------------+");
                     System.out.println("\n\nPresiona enter para continuar");
-                    sc.nextLine();
+                    sc.nextLine(); */
                 }
             }
             

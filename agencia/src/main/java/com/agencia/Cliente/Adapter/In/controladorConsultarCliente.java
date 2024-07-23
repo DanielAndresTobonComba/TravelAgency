@@ -18,7 +18,12 @@ public class controladorConsultarCliente {
 
     public void tomarDocumentoCliente() {
 
-        System.out.println("Ingresa el numero de documento del cliente");
+
+        System.out.println("===================================");
+        System.out.println("          CONSULTAR CLIENTE");
+        System.out.println("===================================");
+
+        System.out.print("Documento >>>> ");
         String numero = CheckString.check("Digita de nuevo el documento");
 
         consultarCliente.ejecutarConsultarAeropuerto(numero);

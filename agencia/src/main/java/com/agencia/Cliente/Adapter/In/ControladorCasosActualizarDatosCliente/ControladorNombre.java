@@ -7,7 +7,7 @@ public class ControladorNombre {
 
     public void tomarNuevoNombre (String numeroDocumento) {
         
-        System.out.println("Digita el nuevo nombre");
+        System.out.print("Nuevo nombre >>>> ");
         String nombre = CheckString.check("Digita de nuevo el nombre"); 
 
         RepoNombre repoNombre = new RepoNombre();

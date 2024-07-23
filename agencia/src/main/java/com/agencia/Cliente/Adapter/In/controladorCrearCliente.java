@@ -26,23 +26,27 @@ public class controladorCrearCliente {
 
         Cliente cliente = new Cliente();
 
-        System.out.println("Digite el nombre");
+        System.out.println("===================================");
+        System.out.println("          CREAR CLIENTE");
+        System.out.println("===================================");
+
+        System.out.print("Digite el nombre >>>> ");
+        
         String nombre = CheckString.check("Digite de nuevo el nombre");
 
-        System.out.println("Digite la edad");
+        System.out.print("Digite la edad >>>> ");
         int edad = CheckInt.check("Digite de nuevo la edad");
 
-        System.out.println("Digita el id del tipo del documento");
+        System.out.print("Digita el id del tipo del documento >>>> ");
         int tipoDocumento = CheckInt.check("Digita de nuevo el id de tipo del documento");
 
 
-        System.out.println("Digita el documento del cliente");
-        String numeroDocumento = CheckString.check("Digita el documento");
+        System.out.print("Digita el documento del cliente >>>> ");
+        String numeroDocumento = CheckString.check("Digita el documento ");
 
-        System.out.println("Digita el usuario del cliente");
-        String usuario = CheckString.check("Digita de nuevo el usuarip"); 
+        System.out.print("Digita el usuario del cliente >>>> ");
+        String usuario = CheckString.check("Digita de nuevo el usuario >>>>"); 
 
-        System.out.println("Digita la contraseña");
         String contraseña = CheckPassword.check();
 
 

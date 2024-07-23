@@ -3,7 +3,10 @@ package com.agencia.Cliente.Adapter.Out.RepositoriosActualizarDatosCliente;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Scanner;
 
+import com.agencia.Cliente.MainCliente;
+import com.agencia.Cliente.Utilities.imprimirEnPlacaCliente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.Verifiers.PasswordEncripted;
 import com.mysql.cj.jdbc.CallableStatement;
@@ -15,7 +18,7 @@ public class RepoEdad {
 
         System.out.println("LLEGUE A LA DB CON : " + edadNueva + numeroDocumento);
 
-
+        Scanner sc = new Scanner(System.in);
         CallableStatement stmt = null;
         DataBaseConfig.getConnection();
 
@@ -40,28 +43,19 @@ public class RepoEdad {
                     System.out.println("Error al buscar el cliente");
 
                 } else {
-                    try (ResultSet rs = stmt.getResultSet()) {
-                        System.out.println("\nCLIENTE ENCONTRADO");
-                        
-                        System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+-----------------------------+");
-                        System.out.printf("| %-30s | %-5s | %-15s | %-20s | %-15s | %-70s |\n", "Nombre", "Edad", "TipoDocumento", "NumeroDocumento", "Usuario", "Contraseña");
-                        System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+-----------------------------+");
-                        
-                        while (rs.next()) {
-                            // Obtener y mostrar los datos del cliente creado 
-                            String nombre = rs.getString("nombre");
-                            int edad = rs.getInt("edad");
-                            int tipoDocumento = rs.getInt("TipoDocumento_id");
-                            String documento = rs.getString("numeroDocumento");
-                            String usuario = rs.getString("usuario");
-                            String contraseña = rs.getString("contraseña");
-            
-                            System.out.printf("| %-30s | %-5d | %-15d | %-20s | %-15s | %-70s |\n", nombre, edad, tipoDocumento, documento, usuario, contraseña);
-                        }
-                    }
+                    ResultSet rs = stmt.getResultSet(); 
+
+                    imprimirEnPlacaCliente imprimir = new imprimirEnPlacaCliente(); 
+                    imprimir.imprimir(rs);
+
+
+                    System.out.println("Proceso finalizado ");
+                    System.out.println("Presiona enter para volver al menu");
+                    sc.nextLine(); 
+                    MainCliente.main(null);
                 }
             
-                stmt.close();
+                
                 
             } catch (SQLIntegrityConstraintViolationException b) {
                 String mensaString = b.getMessage();
@@ -69,6 +63,8 @@ public class RepoEdad {
                 if (mensaString.contains("edad")) {
                     System.out.println("Error la edad es invalida");
                 }
+
+                
             } catch (Exception e) {
                 System.out.println("ERROR AL MODIFICAR LA EDAD DEL CLIENTE");
                 
@@ -79,6 +75,12 @@ public class RepoEdad {
         
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+
+            System.out.println("Proceso finalizado ");
+            System.out.println("Presiona enter para volver al menu");
+            sc.nextLine(); 
+            MainCliente.main(null);
         }
 
     }

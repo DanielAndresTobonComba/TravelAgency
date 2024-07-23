@@ -8,7 +8,7 @@ import com.mysql.cj.jdbc.CallableStatement;
 
 public class imprimirTablaTipoDocumento {
 
-    public static void imprimirTablaTipoDoc () {
+    public static void imprimir () {
 
         CallableStatement stmt = null;
         DataBaseConfig.getConnection();
@@ -30,10 +30,10 @@ public class imprimirTablaTipoDocumento {
                 } else {
                     ResultSet rs = stmt.getResultSet();
 
-                    System.out.println("\nTablas tipo doc");
-                    System.out.println("+--------+--------------------------------------------------+");
+                    System.out.println("\nTabla tipo doc");
+                    System.out.println("+--------+----------------------------------------------------+");
                     System.out.printf("| %-6s | %-50s |\n", "ID", "Tipo Documento");
-                    System.out.println("+--------+--------------------------------------------------+");
+                    System.out.println("+--------+----------------------------------------------------+");
 
                     while (rs.next()) {
                         int id = rs.getInt("id");
@@ -42,7 +42,7 @@ public class imprimirTablaTipoDocumento {
                         System.out.printf("| %-6d | %-50s |\n", id, tipoDoc);
                     }
 
-                    System.out.println("+--------+--------------------------------------------------+");
+                    System.out.println("+--------+----------------------------------------------------+");
                 }
             
                 stmt.close();

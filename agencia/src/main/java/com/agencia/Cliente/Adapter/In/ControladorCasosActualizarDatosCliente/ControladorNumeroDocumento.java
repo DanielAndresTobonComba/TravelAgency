@@ -7,7 +7,7 @@ public class ControladorNumeroDocumento {
 
     public void tomarNuevoNumeroDocumento (String numeroDocumento) {
         
-        System.out.println("Digita el nuevo numero de documento");
+        System.out.print("Nuevo numero de documento >>>> ");
         String nuevoNumeroDocumento = CheckString.check("Digita de nuevo el numero de documento"); 
 
         RepoNumeroDocumento repoNumeroDocumento = new RepoNumeroDocumento(); 

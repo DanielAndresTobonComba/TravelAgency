@@ -6,6 +6,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 import com.agencia.Cliente.Domian.Entity.Cliente;
 import com.agencia.Cliente.Domian.Service.interfazCrearCliente;
+import com.agencia.Cliente.Utilities.imprimirEnPlacaCliente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.Verifiers.PasswordEncripted;
 import com.mysql.cj.jdbc.CallableStatement;
@@ -41,8 +42,14 @@ public class repositorioCrearCliente implements interfazCrearCliente {
     
                     System.out.println("Error al crear el Cliente");
                     
-                } else {
-                    try (ResultSet rs = stmt.getResultSet()) {
+                } else {    
+
+                        ResultSet rs = stmt.getResultSet();
+                        imprimirEnPlacaCliente imprimirEnPlacaCLiente = new imprimirEnPlacaCliente(); 
+
+                        imprimirEnPlacaCLiente.imprimir(rs);
+
+/*                     try () {
                         System.out.println("\nCLIENTE CREADO");
                         
                         System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+");
@@ -60,10 +67,10 @@ public class repositorioCrearCliente implements interfazCrearCliente {
             
                             System.out.printf("| %-30s | %-5d | %-15d | %-20s | %-20s | %-70s |\n", nombre, edad, tipoDocumento, numeroDocumento, usuario, contraseña);
                         }
-                    }
+                    } */
                 }
             
-                stmt.close();
+                
                 
             } catch (SQLIntegrityConstraintViolationException b) {
                 String mensaString = b.getMessage();

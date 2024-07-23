@@ -16,20 +16,18 @@ public class menuActualizarCliente {
 
     public void ejecutarMenu() {
 
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("ACTUALIZAR CLIENTE");
-        System.out.println("Ingresa el numero de documento del cliente");
-        String numeroDocumento = CheckString.check("Digita el numero de nuevo");
-
-
-
         existeCliente existenciaCliente = new existeCliente();
 
         List<actualizarDatosCliente> lista = CasesListController.getController().lstActualizarDatosClientes;
 
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("===================================");
+        System.out.println("          ACTUALIZAR CLIENTE");
+        System.out.println("===================================");
 
+        System.out.print("Documento >>>> ");
+        String numeroDocumento = CheckString.check("Digita el documento de nuevo");
 
         if (!existenciaCliente.verificarCliente(numeroDocumento)) {
             System.out.println("Presiona Enter para volver al menú");
@@ -38,9 +36,9 @@ public class menuActualizarCliente {
             return;
         }
 
-        
-
-        System.out.println("MENU DE ACTUALIZACIÓN");
+        System.out.println("===================================");
+        System.out.println("          MENU DE ACTUALIZACIÓN");
+        System.out.println("===================================");
 
         int item = 1;
         for (actualizarDatosCliente atributo : lista) {
@@ -49,6 +47,8 @@ public class menuActualizarCliente {
         }
 
         System.out.println(item + ". " + "Salir");
+
+        System.out.print("\nOpcion >>>> ");
 
         int opcion = 0;
         boolean checkOption = false;

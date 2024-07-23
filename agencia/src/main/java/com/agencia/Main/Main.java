@@ -27,6 +27,7 @@ import com.agencia.AbstractClasses.Funcionalidad;
 //import com.agencia.Aeropuerto.Infraestructure.In.controladorCrearAeropuerto;
 //import com.agencia.Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
 import com.agencia.CasesListController.CasesListController;
+import com.agencia.Cliente.MainCliente;
 //import com.agencia.Cliente.Adapter.In.controladorCrearCliente;
 //import com.agencia.Cliente.Adapter.Out.repositorioCrearCliente;
 //import com.agencia.Cliente.Application.crearCliente;
@@ -53,7 +54,9 @@ public class Main {
             intro.start();
         } */
 
-        MainRevisionMantenimiento.main();
+        //MainRevisionMantenimiento.main();
+
+        MainCliente.main(args);
 
 
 

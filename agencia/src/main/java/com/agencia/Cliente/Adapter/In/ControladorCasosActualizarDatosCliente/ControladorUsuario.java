@@ -7,7 +7,7 @@ public class ControladorUsuario {
 
     public void tomarNuevoUsuario (String numeroDocumento) {
 
-        System.out.println("Digita el nuevo usuario");
+        System.out.println("Nuevo usuario >>>> ");
         String usuario = CheckString.check("Digita de nuevo el usuario"); 
 
         RepoUsuario repoUsuario = new RepoUsuario(); 

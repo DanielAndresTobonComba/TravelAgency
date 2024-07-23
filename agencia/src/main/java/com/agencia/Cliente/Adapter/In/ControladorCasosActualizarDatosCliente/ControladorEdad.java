@@ -8,7 +8,7 @@ public class ControladorEdad {
 
     public void tomarEdadNueva (String numeroDocumento) {
         
-        System.out.println("Digita la nueva edad");
+        System.out.print("Nueva edad >>>>");
         String edad = CheckString.check("Digita de nuevo la edad"); 
 
         RepoEdad repoEdad = new RepoEdad(); 
