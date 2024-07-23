@@ -705,23 +705,16 @@ INSERT INTO `mydb`.`Tarifa` (`descripcion`, `detalle`, `precioBase`, `impuesto`)
 
 -- Insertar datos en la tabla avion
 INSERT INTO `mydb`.`Avion` (`placa`, `capacidad`, `fechaFabricacion`, `ModeloAvion_id`, `Estado_id`) VALUES 
-('N737800', 189, '2018-05-20', 1, 1),
+('EC-130', 189, '2018-05-20', 1, 1),
 ('F-A320NEO', 195, '2019-03-15', 2, 1),
-('PR-E195E2', 146, '2020-07-10', 3, 2),
-('C-CRJ700', 78, '2016-08-30', 4, 1),
-('N-CLONG', 12, '2021-11-25', 5, 1),
-('N7879', 296, '2017-12-05', 6, 2),
-('F-A330900', 287, '2022-09-18', 7, 1),
-('PR-E175', 88, '2015-02-20', 8, 1),
-('C-GEXPRESS', 19, '2018-10-10', 9, 2),
-('N-MUSTANG', 4, '2020-04-14', 10, 1);
+('PR-E195E2', 146, '2020-07-10', 3, 2);
 
 INSERT INTO `mydb`.`Revision` (`fecha`, `Avion_id`, `descripcion`) VALUES 
 ('2024-01-15', 1, 'Revisión general de mantenimiento con cambio de filtros y aceite.'),
 ('2024-02-10', 2, 'Inspección de motores y pruebas de vuelo después de actualización de software.'),
 ('2024-03-20', 3, 'Revisión de sistema de frenos y reemplazo de llantas.'),
-('2024-04-05', 4, 'Chequeo de sistemas electrónicos y calibración de instrumentos.'),
-('2024-05-18', 5, 'Revisión completa de fuselaje y limpieza profunda de interiores.');
+('2024-04-05', 2, 'Chequeo de sistemas electrónicos y calibración de instrumentos.'),
+('2024-05-18', 1, 'Revisión completa de fuselaje y limpieza profunda de interiores.');
 
 
 INSERT INTO `mydb`.`RevisionEmpleado` (`Revision_id`, `Empleado_id`) VALUES 
@@ -1012,7 +1005,7 @@ END $$
 DELIMITER ;
 
 
-<<<<<<< HEAD
+-- Procedure para Actualizar Contraseña del cliente
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarContraseñaCliente $$
@@ -1030,6 +1023,7 @@ END $$
 DELIMITER ;
 
 
+-- Procedure para Actualizar usuario del Cliente
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarUsuarioCliente $$
@@ -1047,7 +1041,7 @@ END $$
 DELIMITER ;
 
 
-
+-- Procedure para Actualizar Tipo Documento del Cliente
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarTipoDocumentoCliente $$
@@ -1070,7 +1064,7 @@ DELIMITER ;
 -- -----------------------------------------------------------------------------------------------------------------------
 
 
--- BUSCAR TARIFA 
+-- Procedure para BUSCAR TARIFA 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS buscarTarifa $$
@@ -1085,7 +1079,7 @@ END $$
 DELIMITER ;
 
 
--- CREAR TARIFA 
+-- procedure para CREAR TARIFA 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS crearTarifa $$
@@ -1115,7 +1109,7 @@ DELIMITER ;
 select * from Tarifa;
 
 
--- Actualizar descripcion tarifa 
+-- Procedure para Actualizar Descripcion tarifa 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarDescripcionTarifa $$
@@ -1133,7 +1127,7 @@ END $$
 
 DELIMITER ;
 
--- Actualizar detalle tarifa 
+-- Procedure para Actualizar detalle tarifa 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarDetalleTarifa $$
@@ -1152,7 +1146,7 @@ END $$
 DELIMITER ;
 
 
--- Actualizar impuesto tarifa 
+-- Procedure Actualizar impuesto tarifa 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarImpuestoTarifa $$
@@ -1171,7 +1165,7 @@ END $$
 DELIMITER ;
 
 
--- Actualizar precio tarifa 
+-- Procedure Actualizar precio tarifa 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarPrecioTarifa $$
@@ -1189,7 +1183,7 @@ END $$
 
 DELIMITER ;
 
-
+-- Procedure para Eliminar Tarifa
 
 DELIMITER $$
 
@@ -1208,6 +1202,7 @@ DELIMITER ;
 -- 										PROCEDIMIENTOS RELACIONADOS CON REVISION MANTENIMIENTO
 -- -----------------------------------------------------------------------------------------------------------------------
 
+-- Procedure para COnsutar Avion (utilizada en Revisión)
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS consultarAvion $$
@@ -1225,6 +1220,7 @@ END $$
 DELIMITER ;
 
 
+-- Procedure para Crear Revisión
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS crearRevision $$
@@ -1247,11 +1243,9 @@ BEGIN
 END $$
 DELIMITER ;
 -- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
-=======
 
 
 -- Procedure para obtener los Modelos de Avion ya registrados
-
 DROP PROCEDURE IF EXISTS ObtainModeloAvion;
 
 delimiter &&
@@ -1425,9 +1419,3 @@ END &&
 
 delimiter ;
 
-
-
-
->>>>>>> 7519df5a7633b6a54af4bc175ec72f8ec30eaab3
-
-select * from Revision;
