@@ -730,6 +730,27 @@ INSERT INTO `mydb`.`RevisionEmpleado` (`Revision_id`, `Empleado_id`) VALUES
 (5, 10);
 
 
+-- Inserciones en la tabla Viaje
+INSERT INTO Viaje (fecha, idAeropuertoOrigen, idAeropuertoDestino) VALUES 
+('2024-07-28', 3, 2); 
+
+
+-- Inserciones en la tabla VueloConexion
+INSERT INTO VueloConexion (numeroConexion,idAeropuertoOrigen, Viaje_id ,Avion_id, idAeropuertoDestino)
+VALUES ('AUV235', 3, 1, 1, 2);
+
+
+-- Inserciones en la tabla MetodoPago
+INSERT INTO MetodoPago (nombre) VALUES
+('Tarjeta Débito'), ('Tarjeta Crédito'), ('En establecimiento'), ('PayPal');
+
+-- Inserciones en la tabla Reservacion
+INSERT INTO Reservacion (fecha, Viaje_id, Tarifa_id, Cliente_id, MetodoPago_id, estadoPago, nombrePasajero, edad, dni, TipoDocumento_id) VALUES
+('2024-07-12', 1, 1, 1,  1, 1, 'Daniel Alfonso Buitrago', 29, 'AGC235C', 2),
+('2024-06-04', 1, 3, 2, 1, 1, 'Andrea Carolina Delgado Florez', 25, 'ABB152A', 2);
+
+
+
 
 
 
@@ -1416,6 +1437,50 @@ BEGIN
 		WHERE 	a.placa = placaInput;
     
 END &&
+
+delimiter ;
+
+
+-- Procedure para extraer los códigos de la tabla Reservacion
+DROP PROCEDURE IF EXISTS ExtraerReservaciones;
+
+delimiter $$
+
+CREATE PROCEDURE ExtraerReservaciones ()
+BEGIN
+		  SELECT 	id
+      FROM 	Reservacion;
+
+END $$
+
+delimiter ;
+
+
+-- Procedure para extraer Reservación
+DROP PROCEDURE IF EXISTS 	ExtraerInfoReservacion;
+
+delimiter $$
+
+CREATE PROCEDURE ExtraerInfoReservacion(IN idInput INT)
+BEGIN
+		SELECT 	id, Viaje_id, Tarifa_id, Cliente_id, MetodoPago_id, estadoPago, nombrePasajero, edad, dni, TipoDocumento_id
+        FROM 	Reservacion
+        WHERE	id = idInput;
+END $$
+
+delimiter ;
+
+-- Procedure para extraer VueloConexion
+DROP PROCEDURE IF EXISTS ExtraerVueloConexion;
+
+delimiter $$
+
+CREATE PROCEDURE ExtraerVueloConexion (IN numeroConexionInput VARCHAR(20))
+BEGIN
+		SELECT 	id, idAeropuertoOrigen, Viaje_id, Avion_id, idAeropuertoDestino
+        FROM	VueloConexion
+        WHERE	numeroConexion = numeroConexionInput;
+END $$
 
 delimiter ;
 

@@ -19,7 +19,7 @@ public class AvailableChairsList {
         String GREEN = "\u001B[32m";
         String RED = "\u001B[31m";
 
-        String [] alphabet = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z".toUpperCase().split(",", 26);
+        String [] alphabet = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z, aa, bb, cc, dd, ee, ff, gg, hh, ii, jj, kk".toUpperCase().split(",", 37);
         List <String> alphabetList = new ArrayList<>(Arrays.asList(alphabet));
 
         
