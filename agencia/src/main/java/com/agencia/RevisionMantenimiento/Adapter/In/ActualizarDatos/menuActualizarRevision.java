@@ -24,8 +24,6 @@ public class menuActualizarRevision {
             boolean checkOption = false;
 
             try {
-
-                System.out.println("MENU ACTUALIZAR REVISÓN");
                 System.out.println("Ingresa el numero de revisión");
                 String numeroRevision = CheckString.check("Digita el numero de nuevo");
         
@@ -36,7 +34,7 @@ public class menuActualizarRevision {
                 if (!existeRevision.verficiar(numeroRevision)) {
                     System.out.println("Presiona Enter para volver al menú");
                     sc.nextLine();
-                    MainTarifa.main(null); // Llama al método main del Main para volver al menú principal
+                    MainRevisionMantenimiento.main(); // Llama al método main del Main para volver al menú principal
                     return;
                 }
 
@@ -74,7 +72,7 @@ public class menuActualizarRevision {
             catch (Exception e) {
 
 
-                System.out.println("Error al momento de buscar la tarifa...");
+                System.out.println("Error al momento de buscar la revision...");
                 System.out.println("Presiona Enter para volver al menú");
                 sc.nextLine();
                 MainRevisionMantenimiento.main();

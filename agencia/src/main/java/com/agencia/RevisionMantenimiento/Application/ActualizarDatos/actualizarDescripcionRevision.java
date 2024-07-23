@@ -1,5 +1,6 @@
 package com.agencia.RevisionMantenimiento.Application.ActualizarDatos;
 
+import com.agencia.RevisionMantenimiento.Adapter.In.ActualizarDatos.controladorActualizarDescripcion;
 import com.agencia.RevisionMantenimiento.Domain.actualizarDatosRevision;
 
 public class actualizarDescripcionRevision extends actualizarDatosRevision {
@@ -11,6 +12,10 @@ public class actualizarDescripcionRevision extends actualizarDatosRevision {
 
     @Override
     public void actualizar(String numeroRevision) {
+
+        controladorActualizarDescripcion actualizarDescripcion = new controladorActualizarDescripcion(); 
+        
+        actualizarDescripcion.tomarDatos(numeroRevision);
         
     }
 
