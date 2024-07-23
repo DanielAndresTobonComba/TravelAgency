@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.agencia.AbstractClasses.Funcionalidad;
 import com.agencia.CasesListController.CasesListController;
-import com.agencia.LogIn.Domain.Empleado;
+
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
 import com.agencia.Verifiers.CheckInt;
 

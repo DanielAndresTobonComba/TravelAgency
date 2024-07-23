@@ -14,13 +14,13 @@ public class imprimirExisteAvion extends imprimirTabla {
 
         System.out.println("+------------------------------+------------+");
         System.out.printf("| %-10s | %-15s | %-10s |\n", 
-            "Placa", "Modelo" , "idAvion");
+            "Placa", "Modelo" , "IdAvion");
         System.out.println("+------------------------------+------------+");
 
         while (rs.next()) {
             String placa = rs.getString("Placa");
             String modelo = rs.getString("Modelo");
-            int id = rs.getInt("IdAvion");
+            int id = rs.getInt("AvionId");
 
             System.out.printf("| %-10s | %-15s | %-10d |\n", 
                 placa, modelo , id);

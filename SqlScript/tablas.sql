@@ -749,7 +749,7 @@ INSERT INTO `mydb`.`RevisionEmpleado` (`Revision_id`, `Empleado_id`) VALUES
 (5, 9),
 (5, 10);
 
-
+-- select * from Revision;
 
 
 
@@ -986,15 +986,8 @@ BEGIN
 END $$
 
 DELIMITER ;
-
-
-<<<<<<< HEAD
--- Procedure para actualizar edad del cliente
-
-=======
-
 -- Procedure para Actualizar la Edad del Cliente
->>>>>>> 7519df5a7633b6a54af4bc175ec72f8ec30eaab3
+
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarEdadCliente $$
@@ -1319,8 +1312,8 @@ BEGIN
 END $$
 DELIMITER ;
 
-select * from Revision;
-Select * from Avion;
+
+
 
 -- Procedure para obtener los Modelos de Avion ya registrados
 

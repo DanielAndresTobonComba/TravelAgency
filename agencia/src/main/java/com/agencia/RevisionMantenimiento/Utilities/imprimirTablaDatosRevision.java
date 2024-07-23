@@ -13,10 +13,10 @@ public class imprimirTablaDatosRevision extends imprimirTabla {
 
         System.out.println("\nREVISIÓN ENCONTRADA");
 
-        System.out.println("+------------+------------+----------+--------------------------------------------------+");
+        System.out.println("+------------+------------+----------+----------------------------------------------------+");
         System.out.printf("| %-10s | %-10s | %-8s | %-50s |\n", 
             "Id", "Fecha", "Avion ID", "Descripción");
-        System.out.println("+------------+------------+----------+--------------------------------------------------+");
+        System.out.println("+------------+------------+----------+----------------------------------------------------+");
 
         while (rs.next()) {
             int id = rs.getInt("id");
@@ -28,7 +28,7 @@ public class imprimirTablaDatosRevision extends imprimirTabla {
                 id, fecha, avionId, descripcion);
         }
 
-        System.out.println("+------------+------------+----------+--------------------------------------------------+");
+        System.out.println("+------------+------------+----------+----------------------------------------------------+");
     }
 
 }

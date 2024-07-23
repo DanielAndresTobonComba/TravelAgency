@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.agencia.AbstractClasses.Funcionalidad;
-//import com.agencia.AbstractClasses.actualizarDatosCliente;
 import com.agencia.ActualizarAvion.Adapter.In.GoToActualizarCapacidadAvion;
 import com.agencia.ActualizarAvion.Adapter.In.GoToActualizarEstadoAvion;
 import com.agencia.Aeropuerto.Infraestructure.In.GoToActualizarAeropuerto;
@@ -25,10 +24,14 @@ import com.agencia.GestionAvion.Adapter.GoToConsultarAvion;
 import com.agencia.GestionAvion.Adapter.GoToEliminarAvion;
 import com.agencia.GestionAvion.Adapter.GoToRegistrarAvion;
 import com.agencia.IntroView.Domain.IntroLogIn;
-import com.agencia.RevisionMantenimiento.Application.actualizarRevision;
 import com.agencia.RevisionMantenimiento.Application.consultarHistorial;
 import com.agencia.RevisionMantenimiento.Application.crearRevision;
 import com.agencia.RevisionMantenimiento.Application.eliminarRevision;
+import com.agencia.RevisionMantenimiento.Application.ActualizarDatos.actualizarAvion;
+import com.agencia.RevisionMantenimiento.Application.ActualizarDatos.actualizarDescripcionRevision;
+import com.agencia.RevisionMantenimiento.Application.ActualizarDatos.actualizarFecha;
+import com.agencia.RevisionMantenimiento.Application.ActualizarDatos.actualizarRevision;
+import com.agencia.RevisionMantenimiento.Domain.actualizarDatosRevision;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDescripcionTarifa;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDetallesTarifa;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarImpuestoTarifa;
@@ -42,6 +45,7 @@ public class CasesListController {
     public static List<Funcionalidad> lstFuncionalidades;
     public static List<actualizarDatosCliente> lstActualizarDatosClientes;
     public static List<actualizarDatosTarifa> lstActualizarDatosTarifas;
+    public static List<actualizarDatosRevision> lstActualizarDatosRevisionMantenimiento;
 
     public static List<Funcionalidad> lstFuncionalidadRevisionMantenimiento;
     public static List<Funcionalidad> lstGestionarAeropuerto;
@@ -58,11 +62,21 @@ public class CasesListController {
         lstActualizarDatosClientes = new ArrayList<>();
         lstActualizarDatosTarifas = new ArrayList<>();
         lstFuncionalidadRevisionMantenimiento = new ArrayList<>();
+        lstActualizarDatosRevisionMantenimiento = new ArrayList<>();
 
         // Crear las funciones del menu principal de inicio de sesion        
         lstGestionarAvion = new ArrayList<>();
         lstActualizarAvion = new ArrayList<>();
         lstGestionarAeropuerto = new ArrayList<>();
+
+
+        // AGREGREGARfUNCIONALIDADE A ACTUALIZAR REVISION MANTENIMIENTO 
+
+        actualizarDatosRevision actualizarFechaRevision = new actualizarFecha("Actualizar fecha"); 
+
+        actualizarDatosRevision actualizarDescripcionRevision = new actualizarDescripcionRevision("Actualizar descripción");
+
+        actualizarDatosRevision actualizarAvionRevision = new actualizarAvion("Actualizar avion");
 
         //Agregar FUNCIONALIDADES A REVISION MANTENIMIENTO 
         Funcionalidad crearRevision = new crearRevision("Crear revisión"); 
@@ -71,7 +85,7 @@ public class CasesListController {
         Funcionalidad consultarHistorial = new consultarHistorial("Consultar Historial");
 
         // AGREGAR FUNCIONALIDADES A ACTUALIZAR TARIFA 
-        actualizarDatosTarifa actualizarDescripcion = new actualizarDescripcionTarifa ("Actualizar descripción");
+        actualizarDatosTarifa actualizarDescripcionTarifa = new actualizarDescripcionTarifa ("Actualizar descripción");
         actualizarDatosTarifa actualizarDetalles = new actualizarDetallesTarifa("Actualizar detalle"); 
         actualizarDatosTarifa actualizarPrecio = new actualizarPrecioTarifa("Actualizar precio");
         actualizarDatosTarifa actualizarImpuesto = new actualizarImpuestoTarifa("Actualizar impuesto");
@@ -152,10 +166,18 @@ public class CasesListController {
 
 
         // AGREGAR LA FUNCIONALIDAD A LA LISTA DE CASOS DE USO DE ACTUALIZAR TATIFA
-        lstActualizarDatosTarifas.add(actualizarDescripcion);
+        lstActualizarDatosTarifas.add(actualizarDescripcionTarifa);
         lstActualizarDatosTarifas.add(actualizarDetalles);
         lstActualizarDatosTarifas.add(actualizarPrecio);
         lstActualizarDatosTarifas.add(actualizarImpuesto);
+
+
+
+        // AGREGAR FUNCIONALIDAD AL LA LISTA DE CASOS DE USO DE ACTUALIZAR REVISION MANTENIMIENTO
+        lstActualizarDatosRevisionMantenimiento.add(actualizarAvionRevision); 
+        lstActualizarDatosRevisionMantenimiento.add(actualizarFechaRevision);
+        lstActualizarDatosRevisionMantenimiento.add(actualizarDescripcionRevision);
+        
         
     }
 

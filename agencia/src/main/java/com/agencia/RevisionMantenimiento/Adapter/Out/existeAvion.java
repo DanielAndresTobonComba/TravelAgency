@@ -43,12 +43,6 @@ public class existeAvion extends verificarExistencia {
                         System.out.println("Avion no encontrado en la base de datos");
                         return false;
                     }
-
-/*                     if (!rs.isBeforeFirst()) {
-                        System.out.println("Avion no encontrado en la base de datos");
-                        stmt.close();
-                        return false;
-                    } */
                     
                     imprimirExisteAvion imprimirExisteAvion = new imprimirExisteAvion(); 
                     imprimirExisteAvion.imprimir(rs);

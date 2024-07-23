@@ -1,7 +1,8 @@
-package com.agencia.RevisionMantenimiento.Application;
+package com.agencia.RevisionMantenimiento.Application.ActualizarDatos;
 
 import com.agencia.AbstractClasses.Funcionalidad;
 import com.agencia.LogIn.Domain.Empleado;
+import com.agencia.RevisionMantenimiento.Adapter.In.ActualizarDatos.menuActualizarRevision;
 
 public class actualizarRevision extends Funcionalidad {
 
@@ -11,8 +12,9 @@ public class actualizarRevision extends Funcionalidad {
 
     @Override
     public void ejecutar(Empleado empleado) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ejecutar'");
+        menuActualizarRevision menuActualizarRevision = new menuActualizarRevision(); 
+
+        menuActualizarRevision.ejecutarMenu(empleado);
     }
 
 }
