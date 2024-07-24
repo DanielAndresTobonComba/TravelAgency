@@ -1496,11 +1496,11 @@ delimiter ;
 
 
 -- Procedure para Actualizar Estado  de un Avión
-DROP PROCEDURE if EXISTS ActualizarEstadoAvion
+DROP PROCEDURE if EXISTS ActualizarEstadoAvion;
 
 delimiter &&
 
-CREATE PROCEDURE ActualizarEstadoAvion(IN placaIpunt VARCHAR(30), IN estadoIdInput INT)
+CREATE PROCEDURE ActualizarEstadoAvion(IN placaInput VARCHAR(30), IN estadoIdInput INT)
 BEGIN
 		DECLARE TIME_BEFORE DATETIME;
 		DECLARE TIME_AFTER DATETIME;
