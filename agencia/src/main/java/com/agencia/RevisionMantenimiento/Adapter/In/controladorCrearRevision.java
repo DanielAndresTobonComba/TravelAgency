@@ -1,14 +1,13 @@
 package com.agencia.RevisionMantenimiento.Adapter.In;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.Scanner;
+
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
 import com.agencia.RevisionMantenimiento.Adapter.Out.existeAvion;
 import com.agencia.RevisionMantenimiento.Adapter.Out.repoCrearRevision;
 import com.agencia.RevisionMantenimiento.Domain.revision;
 import com.agencia.RevisionMantenimiento.Utilities.tomarDatosRevision;
+import com.agencia.Verifiers.CheckDate;
 import com.agencia.Verifiers.CheckString;
-
-import java.util.Scanner;
 
 public class controladorCrearRevision extends tomarDatosRevision {
 
@@ -21,8 +20,12 @@ public class controladorCrearRevision extends tomarDatosRevision {
 
         revision revision = new revision();
 
-        System.out.println("Digita la placa del avion en revisión");
-        String placaAvion = CheckString.check("Digita de nuevo el id del avion");
+        System.out.println("\n===================================");
+        System.out.println("          CREAR REVISIÒN");
+        System.out.println("===================================");
+
+        System.out.print("Placa del aviòn >>>> ");
+        String placaAvion = CheckString.check("Digita de nuevo la placa del aviòn.");
 
         existeAvion existeAvion = new existeAvion(); 
         
@@ -32,14 +35,16 @@ public class controladorCrearRevision extends tomarDatosRevision {
             sc.nextLine(); 
             MainRevisionMantenimiento.main();
         }
-
+/* 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        dateFormat.setLenient(false);  // No permitir fechas no válidas
 
+
+        dateFormat.setLenient(false); 
+ 
         String fecha = null;
         java.sql.Date sqlDate = null;
 
-        while (true) {
+       while (true) {
             System.out.println("Ingresa la fecha de revisión en este formato yyyy/MM/dd");
             fecha = sc.nextLine();
 
@@ -53,15 +58,18 @@ public class controladorCrearRevision extends tomarDatosRevision {
                 System.out.println("Fecha no válida. Digita de nuevo la fecha en el formato correcto (yyyy/MM/dd).");
             }
         }
-
+ 
         System.out.println("Fecha válida: " + sqlDate);
 
-        
-        System.out.println("Digita la descripcion de la revisión");
+     */   
+        System.out.print("Descripciòn de la revisiòn >>>> ");
         String descripcion = CheckString.check("Digita de nuevo la descripción"); 
+        
+        System.out.print("Fecha de revisiòn [AAAA-MM-DD]  >>> ");
+        String fecha = CheckDate.check("Digita de nuevo la fecha");
 
 
-        revision.setFecha(sqlDate);
+        revision.setFecha(fecha);
         revision.setDescripcion(descripcion);
         revision.setPlacaAvion(placaAvion);
         

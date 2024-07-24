@@ -26,7 +26,7 @@ public class repoActualizarAvion {
             Connection connection = DataBaseConfig.DBconnection;
 
             // Consultar el avión
-            sql = "{call consultarAvion(?)}";
+            sql = "{call consultarAvionDaniel(?)}";
             stmt = (CallableStatement) connection.prepareCall(sql);
             stmt.setString(1, placaAvion);
             rs = stmt.executeQuery();
@@ -67,9 +67,7 @@ public class repoActualizarAvion {
 
                 System.out.println("Revisión actualizada exitosamente");
 
-                System.out.println("Presiona enter para volver al menú");
-                sc.nextLine();
-                MainRevisionMantenimiento.main();
+
             }
 
         } catch (SQLIntegrityConstraintViolationException b) {
@@ -83,6 +81,10 @@ public class repoActualizarAvion {
             } catch (SQLException e) {
                 e.printStackTrace();
             } */
+
+            System.out.println("Presiona enter para volver al menú");
+            sc.nextLine();
+            MainRevisionMantenimiento.main();
         }
     }
 

@@ -48,9 +48,7 @@ public class repoActualizarDescripcionRevision {
 
                 System.out.println("Revisión actualizada exitosamente");
 
-                System.out.println("Presiona enter para volver al menú");
-                sc.nextLine();
-                MainRevisionMantenimiento.main();
+
             }
 
         } catch (SQLIntegrityConstraintViolationException b) {
@@ -64,6 +62,10 @@ public class repoActualizarDescripcionRevision {
             } catch (SQLException e) {
                 e.printStackTrace();
             } */
+
+            System.out.println("Presiona enter para volver al menú");
+            sc.nextLine();
+            MainRevisionMantenimiento.main();
         }
 
     }

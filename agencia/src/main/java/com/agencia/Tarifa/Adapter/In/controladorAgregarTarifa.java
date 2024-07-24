@@ -2,30 +2,30 @@ package com.agencia.Tarifa.Adapter.In;
 
 import java.util.Scanner;
 
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.Tarifa.Adapter.Out.repoAgregarTarifa;
 import com.agencia.Tarifa.Application.Casos.agregarTarifa;
 import com.agencia.Tarifa.Domain.Tarifa;
+import com.agencia.Tarifa.MainTarifa.MainTarifa;
 import com.agencia.Verifiers.CheckDecimal;
-import com.agencia.Verifiers.CheckInt;
 import com.agencia.Verifiers.CheckString;
 
 public class controladorAgregarTarifa { 
 
-    private final agregarTarifa servicioAgregarTarifa; 
+/*     private final agregarTarifa servicioAgregarTarifa; 
 
     
 
     public controladorAgregarTarifa(agregarTarifa servicioAgregarTarifa) {
         this.servicioAgregarTarifa = servicioAgregarTarifa;
-    }
+    } */
 
 
 
-    public void tomarDatosTarifa () {
+    public static void tomarDatosTarifa (Empleado empleado) {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("llege a pedir datos de tarifa");
 
         Tarifa tarifa = new Tarifa(); 
 
@@ -53,6 +53,8 @@ public class controladorAgregarTarifa {
         repoAgregarTarifa repoAgregarTarifa = new repoAgregarTarifa();
 
         repoAgregarTarifa.agregar(tarifa);
+
+        MainTarifa.main(empleado);
  
 
 

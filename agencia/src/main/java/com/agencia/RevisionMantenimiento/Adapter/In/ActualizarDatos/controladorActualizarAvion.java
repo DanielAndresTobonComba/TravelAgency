@@ -13,7 +13,11 @@ public class controladorActualizarAvion {
 
         Scanner sc = new Scanner(System.in);
 
-       System.out.println("Digita la placa del avion");
+        System.out.println("===================================");
+        System.out.println("    ACTUALIZAR AVION");
+        System.out.println("===================================\n");
+
+       System.out.print("Placa del aviòn >>>>");
        String placa = CheckString.check("Digita de nuevo la placa"); 
        
        existeAvion existeAvion = new existeAvion(); 

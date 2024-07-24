@@ -31,11 +31,8 @@ public class repoActualizarFechaRevision {
             stmt.setString(1, numeroRevision);
             stmt.setString(2, fecha);
 
-            rs = stmt.executeQuery();
-            
-
-            boolean hasResult = stmt.execute();
-
+            boolean hasResult =  stmt.execute();
+            rs = stmt.getResultSet();
             if (!hasResult) {
                 System.out.println("Error al actualizar la fecha");
             } else {
@@ -45,10 +42,6 @@ public class repoActualizarFechaRevision {
                 imprimirDatosRevision.imprimir(rs);
 
                 System.out.println("Revisión actualizada exitosamente");
-
-                System.out.println("Presiona enter para volver al menú");
-                sc.nextLine();
-                MainRevisionMantenimiento.main();
             }
 
         } catch (SQLIntegrityConstraintViolationException b) {
@@ -62,6 +55,12 @@ public class repoActualizarFechaRevision {
             } catch (SQLException e) {
                 e.printStackTrace();
             } */
+
+
+            System.out.println("Proceso finalizado");
+            System.out.println("Presiona enter para volver al menú");
+            sc.nextLine();
+            MainRevisionMantenimiento.main();
         }
 
     }

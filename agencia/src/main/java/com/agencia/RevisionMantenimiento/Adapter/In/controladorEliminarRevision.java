@@ -8,9 +8,12 @@ public class controladorEliminarRevision extends tomarDatosRevision{
 
     @Override
     public void tomarDatos() {
-        
-        System.out.println("Digita el numero de revisiòn");
-        int numeroRevision = CheckInt.check("Digita de neuvo el numero de revisiòn"); 
+        System.out.println("\n===================================");
+        System.out.println("          ELIMINAR REVISIÒN");
+        System.out.println("===================================");
+
+        System.out.print("Numero revisiòn >>>> ");
+        int numeroRevision = CheckInt.check("Digita de nuevo el numero de revisiòn"); 
 
         repoEliminarRevision eliminarRevision = new repoEliminarRevision(); 
         eliminarRevision.ejecutarEliminarRevision(numeroRevision);

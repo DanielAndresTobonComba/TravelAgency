@@ -6,7 +6,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Scanner;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
-import com.agencia.Tarifa.MainTarifa;
+import com.agencia.Tarifa.MainTarifa.MainTarifa;
 import com.agencia.Tarifa.Utilities.imprimirDatosTarifa;
 import com.mysql.cj.jdbc.CallableStatement;
 
@@ -38,24 +38,15 @@ public class repoActualizarDescripcion {
 
            boolean hasResult = stmt.execute();
 
-           if (hasResult) {
+           if (!hasResult) {
 
-            ResultSet rs = stmt.getResultSet();
-
-            if (rs.next()) {
-                // Si hay resultado, imprimir los datos de la tarifa
+            System.out.println("No se encontró ninguna tarifa con el ID ingresado.");
+            
+        
+            } else {
+                ResultSet rs = stmt.getResultSet();
                 imprimirDatosTarifa.imprimir(rs);
                 System.out.println("TARIFA ACTUALIZADA CORRECTAMENTE");
-                System.out.println("Presiona enter para volver al menu");
-                sc.nextLine();
-                MainTarifa.main(null);
-            } else {
-                // Si no hay resultados, imprimir el mensaje de error
-                System.out.println("No se encontró ninguna tarifa con el ID ingresado.");
-            }
-            
-            } else {
-                System.out.println("Error al encontrar la tarifa");
             }
 
 

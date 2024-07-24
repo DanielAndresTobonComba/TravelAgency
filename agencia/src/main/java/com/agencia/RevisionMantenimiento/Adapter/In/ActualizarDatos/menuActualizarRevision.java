@@ -8,9 +8,7 @@ import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
 import com.agencia.RevisionMantenimiento.Adapter.Out.existeRevision;
 import com.agencia.RevisionMantenimiento.Domain.actualizarDatosRevision;
-import com.agencia.Tarifa.MainTarifa;
-
-
+import com.agencia.Tarifa.MainTarifa.MainTarifa;
 import com.agencia.Verifiers.CheckInt;
 import com.agencia.Verifiers.CheckString;
 
@@ -24,7 +22,10 @@ public class menuActualizarRevision {
             boolean checkOption = false;
 
             try {
-                System.out.println("Ingresa el numero de revisión");
+                System.out.println("===================================");
+                System.out.println("        ACTUALIZAR REVISIÒN");
+                System.out.println("===================================\n");
+                System.out.print("\nNùmero de revisìon >>>> ");
                 String numeroRevision = CheckString.check("Digita el numero de nuevo");
         
                 existeRevision existeRevision = new existeRevision();
@@ -38,8 +39,9 @@ public class menuActualizarRevision {
                     return;
                 }
 
-
-                System.out.println("MENU DE ACTUALIZACIÓN");
+                System.out.println("===================================");
+                System.out.println("      MENU DE ACTUALIZACIÓN");
+                System.out.println("===================================\n");
     
                 int item = 1;
                 for (actualizarDatosRevision atributo : lista) {
@@ -47,7 +49,8 @@ public class menuActualizarRevision {
                     item++;
                 }
         
-                System.out.println(item + ". " + "Salir");
+                System.out.println(item + ". " + "Salir\n");
+                System.out.print("Opciòn >>>> ");
         
     
         

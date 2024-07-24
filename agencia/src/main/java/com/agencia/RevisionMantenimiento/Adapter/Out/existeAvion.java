@@ -26,7 +26,7 @@ public class existeAvion extends verificarExistencia {
 
             System.out.println("Buscando avion con la placa..." + id);
             
-            String sql = "{call consultarAvion (?)}";
+            String sql = "{call consultarAvionDaniel (?)}";
             stmt = (CallableStatement) connection.prepareCall(sql);
         
             stmt.setString(1, id );

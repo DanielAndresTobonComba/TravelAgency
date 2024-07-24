@@ -7,8 +7,11 @@ import com.agencia.Verifiers.CheckString;
 public class controladorActualizarDescripcion {
     
     public void tomarDatos (String numeroRevision) {
+        System.out.println("\n===================================");
+        System.out.println("        ACTUALIZAR REVISIÒN");
+        System.out.println("===================================\n");
 
-        System.out.println("Digita la nueva descripciòn");
+        System.out.print("Nueva descripciòn >>>> ");
 
         String descripcion = CheckString.check("Digita de nuevo la descripciòn"); 
 

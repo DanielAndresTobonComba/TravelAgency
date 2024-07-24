@@ -15,7 +15,7 @@ public class repoConsultarTarifa implements InterfazConsultaTarifa {
     @Override
     public void consultarTarifa(int idTarifa) {
        
-         CallableStatement stmt = null;
+        CallableStatement stmt = null;
         DataBaseConfig.getConnection();
 
         try {
@@ -26,7 +26,7 @@ public class repoConsultarTarifa implements InterfazConsultaTarifa {
         
             stmt.setInt(1, idTarifa);
         
-            System.out.println("Ejecutando el procedimiento almacenado de buscar tarifa...");
+            System.out.println("Ejecutando el procedimiento de buscar tarifa...");
 
             try {
 
@@ -35,6 +35,7 @@ public class repoConsultarTarifa implements InterfazConsultaTarifa {
                 if (!hasResult) {
     
                     System.out.println("Error al buscar la tarifa");
+                    
                 } else {
                     
                     ResultSet rs = stmt.getResultSet();

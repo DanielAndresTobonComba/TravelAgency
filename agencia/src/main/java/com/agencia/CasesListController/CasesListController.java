@@ -32,6 +32,11 @@ import com.agencia.RevisionMantenimiento.Application.ActualizarDatos.actualizarD
 import com.agencia.RevisionMantenimiento.Application.ActualizarDatos.actualizarFecha;
 import com.agencia.RevisionMantenimiento.Application.ActualizarDatos.actualizarRevision;
 import com.agencia.RevisionMantenimiento.Domain.actualizarDatosRevision;
+import com.agencia.Tarifa.Application.Casos.GestionTarifa;
+import com.agencia.Tarifa.Application.Casos.IrCrearTarifa;
+import com.agencia.Tarifa.Application.Casos.irActualizarTarifa;
+import com.agencia.Tarifa.Application.Casos.irConsultarTarifa;
+import com.agencia.Tarifa.Application.Casos.irEliminarTarifa;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDescripcionTarifa;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDetallesTarifa;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarImpuestoTarifa;
@@ -52,6 +57,8 @@ public class CasesListController {
     public static List<Funcionalidad> lstActualizarAvion;
     public static List<Funcionalidad> lstGestionarAvion;
 
+    public static List<Funcionalidad> lstFuncionalidadesTarifa; 
+
     private static CasesListController CONTROLLER = new CasesListController();
 
     private CasesListController() {
@@ -63,6 +70,7 @@ public class CasesListController {
         lstActualizarDatosTarifas = new ArrayList<>();
         lstFuncionalidadRevisionMantenimiento = new ArrayList<>();
         lstActualizarDatosRevisionMantenimiento = new ArrayList<>();
+        lstFuncionalidadesTarifa = new ArrayList<>();
 
         // Crear las funciones del menu principal de inicio de sesion        
         lstGestionarAvion = new ArrayList<>();
@@ -70,12 +78,28 @@ public class CasesListController {
         lstGestionarAeropuerto = new ArrayList<>();
 
 
-        // AGREGREGARfUNCIONALIDADE A ACTUALIZAR REVISION MANTENIMIENTO 
+        // CREAR LAS FUNCIONALIDADES PARA TARIFA 
 
+        Funcionalidad crearTarifa = new IrCrearTarifa("Crear Tarifa" , ""); 
+
+        Funcionalidad eliminarTarifa = new irEliminarTarifa("Eliminar Tarifa" , ""); 
+
+        Funcionalidad actualizarTarifa = new irActualizarTarifa ("Actualizar Tarifa" , ""); 
+
+        Funcionalidad consultarTarifa = new irConsultarTarifa("Consultar Tarifa", ""); 
+
+
+        // AGREGAR LAS FUNCIONALIDADES AL MENU TARIFA 
+
+        lstFuncionalidadesTarifa.add(crearTarifa);
+        lstFuncionalidadesTarifa.add(eliminarTarifa);
+        lstFuncionalidadesTarifa.add(actualizarTarifa);
+        lstFuncionalidadesTarifa.add(consultarTarifa);
+
+
+        // AGREGREGARfUNCIONALIDADE A ACTUALIZAR REVISION MANTENIMIENTO
         actualizarDatosRevision actualizarFechaRevision = new actualizarFecha("Actualizar fecha"); 
-
         actualizarDatosRevision actualizarDescripcionRevision = new actualizarDescripcionRevision("Actualizar descripción");
-
         actualizarDatosRevision actualizarAvionRevision = new actualizarAvion("Actualizar avion");
 
         //Agregar FUNCIONALIDADES A REVISION MANTENIMIENTO 
@@ -99,6 +123,7 @@ public class CasesListController {
         // Instanciación funciones del empleado
         Funcionalidad gestionarAvion = new GestionarAvion("Gestionar Avión", "gav");
         Funcionalidad gestionarAeropuerto = new GestionarAeropuerto("Gestionar Aeropuerto", "gae");
+        Funcionalidad gestionTarifa = new GestionTarifa("Gestion Tarifa" , "gta");
 
         // INSTANCICIÓN FUNCIONALIDADES ACTUALIZAR CLIENTE
         actualizarDatosCliente actualizarNombre = new Nombre("Actualizar nombre");       
@@ -139,6 +164,7 @@ public class CasesListController {
         // FUNCIONALIDADES DE LOS EMPLEADOS
         lstFuncionalidades.add(gestionarAvion);
         lstFuncionalidades.add(gestionarAeropuerto);
+        lstFuncionalidades.add(gestionTarifa);
 
         //FUNCIONALIDADES PARA GESTIONAR AVIÓN
         lstGestionarAvion.add(registrarAvion);

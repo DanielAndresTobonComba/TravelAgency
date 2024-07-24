@@ -1,5 +1,7 @@
 package com.agencia.Tarifa.Application.Casos;
 
+import com.agencia.AbstractClasses.Funcionalidad;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.Tarifa.Application.Service.InterfazAgregarTarifa;
 import com.agencia.Tarifa.Domain.Tarifa;
 
@@ -16,5 +18,8 @@ public class agregarTarifa {
 
         servicioAgregarTarifa.agregar(tarifa);
     }
+
+
+
 
 }

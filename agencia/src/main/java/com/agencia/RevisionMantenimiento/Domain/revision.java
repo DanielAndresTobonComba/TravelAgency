@@ -1,9 +1,8 @@
 package com.agencia.RevisionMantenimiento.Domain;
-import java.util.Date;
 
 public class revision {
 
-    private Date fecha;
+    private String fecha;
     private String placaAvion; 
     private String descripcion;
 
@@ -12,19 +11,19 @@ public class revision {
     }
 
 
-    public revision(Date fecha, String placaAvion, String descripcion) {
+    public revision(String fecha, String placaAvion, String descripcion) {
         this.fecha = fecha;
         this.placaAvion = placaAvion;
         this.descripcion = descripcion;
     }
 
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -47,6 +46,9 @@ public class revision {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    
+    
 
 
     
