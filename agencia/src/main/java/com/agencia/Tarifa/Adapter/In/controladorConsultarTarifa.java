@@ -2,7 +2,7 @@ package com.agencia.Tarifa.Adapter.In;
 
 import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.Tarifa.Adapter.Out.repoConsultarTarifa;
-import com.agencia.Tarifa.Application.Casos.consultarTarifa;
+import com.agencia.Tarifa.MainTarifa.MainTarifa;
 import com.agencia.Verifiers.CheckInt;
 
 public class controladorConsultarTarifa { 
@@ -27,6 +27,7 @@ public class controladorConsultarTarifa {
         repoConsultarTarifa consultarTarifa = new repoConsultarTarifa(); 
 
         consultarTarifa.consultarTarifa(numeroTarifa);
+        MainTarifa.main(empleado);
 
     }
 
