@@ -79,13 +79,7 @@ public class repoEliminarTarifa implements InterfazEliminaTarifa {
             System.out.println("Error de integridad al eliminar la tarifa: " + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Error SQL: " + e.getMessage());
-        } finally {
-
-            System.out.println("Presiona enter para volver al menu");
-            sc.nextLine();
-            MainTarifa.main(null);
-            
-        }
+        } 
 
 
 

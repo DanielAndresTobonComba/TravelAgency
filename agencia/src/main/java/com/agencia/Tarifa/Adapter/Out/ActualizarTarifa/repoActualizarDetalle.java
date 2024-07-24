@@ -6,13 +6,14 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Scanner;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.Tarifa.MainTarifa.MainTarifa;
 import com.agencia.Tarifa.Utilities.imprimirDatosTarifa;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class repoActualizarDetalle {
 
-    public void ejecutarActualizarDetalle (String numeroTarifa , String nuevoDetalle){
+    public void ejecutarActualizarDetalle (String numeroTarifa , String nuevoDetalle , Empleado empleado){
 
         
         Scanner sc = new Scanner(System.in);
@@ -23,7 +24,7 @@ public class repoActualizarDetalle {
             System.out.println("La longitud del detalle excede el rango (50)");
             System.out.println("Presiona enter para volver al menu");
             sc.nextLine();
-            MainTarifa.main(null);
+            MainTarifa.main(empleado);
         }
 
         try {
@@ -39,7 +40,25 @@ public class repoActualizarDetalle {
 
            boolean hasResult = stmt.execute();
 
-           if (hasResult) {
+           if (!hasResult) {
+
+            System.out.println("No se encontró ninguna tarifa con el ID ingresado.");
+/*             System.out.println("Presiona enter para volver al menu");
+            sc.nextLine();
+            MainTarifa.main(empleado); */
+            
+        
+            } else {
+                ResultSet rs = stmt.getResultSet();
+                imprimirDatosTarifa.imprimir(rs);
+                System.out.println("TARIFA ACTUALIZADA CORRECTAMENTE");
+
+/*                 System.out.println("Presiona enter para volver al menu");
+                sc.nextLine();
+                MainTarifa.main(empleado); */
+            }
+
+           /* if (hasResult) {
 
             ResultSet rs = stmt.getResultSet();
 
@@ -49,7 +68,7 @@ public class repoActualizarDetalle {
                 System.out.println("TARIFA ACTUALIZADA CORRECTAMENTE");
                 System.out.println("Presiona enter para volver al menu");
                 sc.nextLine();
-                MainTarifa.main(null);
+                MainTarifa.main(empleado);
             } else {
                 // Si no hay resultados, imprimir el mensaje de error
                 System.out.println("No se encontró ninguna tarifa con el ID ingresado.");
@@ -57,7 +76,7 @@ public class repoActualizarDetalle {
             
             } else {
                 System.out.println("Error al encontrar la tarifa");
-            }
+            } */
 
 
         // El try me jode el stmt nose porque 
@@ -92,12 +111,20 @@ public class repoActualizarDetalle {
             if (mensaString.contains("descripcion")) {
                 System.out.println("Error con la descripción ingresada");
             }
+
+/*             System.out.println("Presiona enter para volver al menu");
+            sc.nextLine();
+            MainTarifa.main(empleado); */
         
         }catch (Exception e) {
             System.err.println("Error con los datos ingresados.");
+/*             System.out.println("Presiona enter para volver al menu");
+            sc.nextLine();
+            MainTarifa.main(empleado); */
+        } finally {
             System.out.println("Presiona enter para volver al menu");
             sc.nextLine();
-            MainTarifa.main(null);
+            MainTarifa.main(empleado); 
         }
         
     }
