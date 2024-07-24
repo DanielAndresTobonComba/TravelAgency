@@ -6,13 +6,14 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Scanner;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.Tarifa.MainTarifa.MainTarifa;
 import com.agencia.Tarifa.Utilities.imprimirDatosTarifa;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class repoActualizarPrecio {
 
-    public void ejecutarActualizarPrecio (String numeroTarifa , String nuevoPrecio){
+    public void ejecutarActualizarPrecio (String numeroTarifa , String nuevoPrecio , Empleado empleado){
 
 
         Scanner sc = new Scanner(System.in);
@@ -39,7 +40,25 @@ public class repoActualizarPrecio {
 
            boolean hasResult = stmt.execute();
 
-           if (hasResult) {
+           if (!hasResult) {
+
+            System.out.println("No se encontró ninguna tarifa con el ID ingresado.");
+/*             System.out.println("Presiona enter para volver al menu");
+            sc.nextLine();
+            MainTarifa.main(empleado); */
+            
+        
+            } else {
+                ResultSet rs = stmt.getResultSet();
+                imprimirDatosTarifa.imprimir(rs);
+                System.out.println("TARIFA ACTUALIZADA CORRECTAMENTE");
+/* 
+                System.out.println("Presiona enter para volver al menu");
+                sc.nextLine();
+                MainTarifa.main(empleado); */
+            }
+
+/*            if (hasResult) {
 
             ResultSet rs = stmt.getResultSet();
 
@@ -57,7 +76,7 @@ public class repoActualizarPrecio {
             
             } else {
                 System.out.println("Error al encontrar la tarifa");
-            }
+            } */
 
 
         // El try me jode el stmt nose porque 
@@ -91,13 +110,26 @@ public class repoActualizarPrecio {
             String mensaString = b.getMessage();
             if (mensaString.contains("precio")) {
                 System.out.println("Error con el precio ingresado ");
+
+/*                 System.out.println("Presiona enter para volver al menu");
+                sc.nextLine();
+                MainTarifa.main(empleado); */
             }
+
+           
         
         }catch (Exception e) {
             System.err.println("Error con los datos ingresados.");
+
+
+/*             System.out.println("Presiona enter para volver al menu");
+            sc.nextLine();
+            MainTarifa.main(empleado); */
+            
+        } finally {
             System.out.println("Presiona enter para volver al menu");
             sc.nextLine();
-            MainTarifa.main(null);
+            MainTarifa.main(empleado); 
         }
 
         

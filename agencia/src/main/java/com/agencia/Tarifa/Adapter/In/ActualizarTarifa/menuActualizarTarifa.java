@@ -33,12 +33,13 @@ public class menuActualizarTarifa {
                 if (!existeTarifa.verficiar(numeroTarifa)) {
                     System.out.println("Presiona Enter para volver al menú");
                     sc.nextLine();
-                    MainTarifa.main(null); // Llama al método main del Main para volver al menú principal
+                    MainTarifa.main(empleado); 
                     return;
-                }
+                } 
 
-
-                System.out.println("MENU DE ACTUALIZACIÓN");
+                System.out.println("===================================");
+                System.out.println("          MENU ACTUALIZACIÓN");
+                System.out.println("===================================");
     
                 int item = 1;
                 for (actualizarDatosTarifa atributo : lista) {
@@ -47,7 +48,7 @@ public class menuActualizarTarifa {
                 }
         
                 System.out.println(item + ". " + "Salir");
-        
+                System.out.print("\n Opcion >>>> ");
     
         
                 while (!checkOption) {
@@ -60,10 +61,13 @@ public class menuActualizarTarifa {
                 }
         
                 if (opcion <= lista.size()) {
-                    lista.get(opcion - 1).actualizar(numeroTarifa);
+                    lista.get(opcion - 1).actualizar(numeroTarifa , empleado);
+                    MainTarifa.main(empleado);
                 } else {
-                    MainTarifa.main(null); // Llama al método main del Main para volver al menú principal
+                    MainTarifa.main(empleado); // Llama al método main del Main para volver al menú principal
                 }
+
+                
                 
             } 
             
@@ -74,7 +78,7 @@ public class menuActualizarTarifa {
                 System.out.println("Error al momento de buscar la tarifa...");
                 System.out.println("Presiona Enter para volver al menú");
                 sc.nextLine();
-                MainTarifa.main(null);
+                MainTarifa.main(empleado);
             } 
 
            
