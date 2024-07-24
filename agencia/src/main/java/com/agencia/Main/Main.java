@@ -1,5 +1,25 @@
 package com.agencia.Main;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+/*import com.agencia.Aeropuerto.Application.actualizarAeropuerto;
+import com.agencia.Aeropuerto.Application.consultarAeropuerto;
+import com.agencia.Aeropuerto.Application.crearAeropuerto;
+import com.agencia.Aeropuerto.Application.eliminarAeropuerto;
+import com.agencia.Aeropuerto.Domain.Entity.Aeropuerto;
+import com.agencia.Aeropuerto.Domain.Service.interfazActualizarAeropuerto;
+import com.agencia.Aeropuerto.Domain.Service.interfazConsultarAeropuerto;
+import com.agencia.Aeropuerto.Domain.Service.interfazCrearAeropuerto;
+import com.agencia.Aeropuerto.Domain.Service.interfazEliminarAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.In.controladorActualizarAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.In.controladorConsultarAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.In.controladorCrearAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.In.controladorEliminarAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.Out.repositorioActualizarAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.Out.repositorioConsultarAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.Out.repositorioCrearAeropuerto;
+import com.agencia.Aeropuerto.Infraestructure.Out.repositorioEliminarAeropuerto;
+*/
 import java.util.List;
 
 import com.agencia.AbstractClasses.Funcionalidad;
@@ -8,16 +28,15 @@ import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.IntroView.Adapter.In.Intro;
 import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
-import com.agencia.Tarifa.MainTarifa.MainTarifa;
 
 public class Main {
 
 
     public static void main(String[] args) {
         
-      //Confirmación de la conexión a la Base de datos 
+         //Confirmación de la conexión a la Base de datos 
         String RESET = "\u001B[0m";
-        String GREEN = "\u001B[42m";
+        String GREEN = "\u001B[32m";
          System.out.println(GREEN + DataBaseConfig.getConnection().msjConnection + RESET);
 
         // Lanzar la aplicación
@@ -28,11 +47,7 @@ public class Main {
             intro.start();
         } 
 
-        //MainRevisionMantenimiento.main();
 
-        //MainCliente.main(args);
-
-        //MainRevisionMantenimiento.main();
 
      
     }
