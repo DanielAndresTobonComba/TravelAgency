@@ -1659,17 +1659,21 @@ delimiter $$
 
 CREATE PROCEDURE  AsignarAsiento(IN asiento VARCHAR(12), IN vueloConexIdInput INT, IN reservacionIdInput INT) 
 BEGIN
-		DECLARE TIME_BEFORE DATETIME;
-		DECLARE TIME_AFTER DATETIME;
-        
-		SELECT UPDATE_TIME INTO TIME_BEFORE FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Boleto';
+		
 		
         INSERT INTO Boleto (asiento, VueloConexion_id, Reservacion_id) VALUES
         (asiento, vueloConexIdInput, reservacionIdInput);
         
-        SELECT UPDATE_TIME INTO TIME_BEFORE FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Boleto';
-		
-        SELECT TIME_BEFORE, TIME_AFTER;
+        SELECT 	COUNT(b.Reservacion_id) as rowCounts
+        FROM 	Boleto as b,
+				Reservacion as r,
+                VueloConexion as vc
+		WHERE	vc.id = b.VueloConexion_id and
+				r.id = b.Reservacion_id and
+                r.id = reservacionIdInput and
+                vc.id = vueloConexIdInput;
+        
+        
         
 END $$
 
