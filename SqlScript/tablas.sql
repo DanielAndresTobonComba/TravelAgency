@@ -1226,8 +1226,8 @@ DELIMITER ;
 
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS consultarAvion $$
-CREATE PROCEDURE consultarAvion
+DROP PROCEDURE IF EXISTS consultarAvionDaniel $$
+CREATE PROCEDURE consultarAvionDaniel
     (IN placaEntrante varchar(10))
 BEGIN
 
@@ -1240,7 +1240,7 @@ END $$
 
 DELIMITER ;
 
-
+-- CREAR REVISION
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS crearRevision $$
@@ -1257,13 +1257,13 @@ BEGIN
 	SELECT LAST_INSERT_ID() into idRevision;
 
 
-	select id , fecha , descripcion , Avion_id  from Revision where id = idRevision ;
+	select r.id , r.fecha , r.descripcion , Avion_id   from Revision as r , Avion as av where r.id = idRevision  and av.id = r.Avion_id ;
     
     
 END $$
 DELIMITER ;
 -- call crearCliente ("Daniel" , 20 , 5 , "1002049154" , "dan123" , "dan123");
-
+SELECT * FROM Avion;
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS imprimirRevision $$
@@ -1278,6 +1278,7 @@ BEGIN
 END $$
 DELIMITER ;
 
+-- ELIMINAR REVISIÒN
 
 DELIMITER $$
 
@@ -1293,7 +1294,37 @@ BEGIN
     
 END $$
 DELIMITER ;
+-- ACTUALZIAR FECHA DE REVISIÒN 
+DELIMITER $$
 
+DROP PROCEDURE IF EXISTS actualizarFechaRevision $$
+CREATE PROCEDURE actualizarFechaRevision
+    ( IN in_numero int , IN in_fecha DATE)
+BEGIN
+
+	update Revision 
+    set fecha = in_fecha
+    where id = in_numero;
+    
+    select id , descripcion , fecha , Avion_id from Revision where id = in_numero;
+END $$
+DELIMITER ;
+
+-- actualizar descripcion de revision
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS actualizarDescripcionRevision $$
+CREATE PROCEDURE actualizarDescripcionRevision
+    ( IN in_numero int , IN in_descripcion varchar(70))
+BEGIN
+
+	update Revision 
+    set descripcion = in_descripcion
+    where id = in_numero;
+    
+    select id , descripcion , fecha , Avion_id from Revision where id = in_numero;
+END $$
+DELIMITER ;
 
 -- PROCEDURE PARA CONSULTAR HISTORIAL DE REVISION DE UN AVION
 DELIMITER $$
@@ -1354,6 +1385,7 @@ END &&
 delimiter ;
 
 
+
 -- Procedure para obtener el Estado del Avión
 DROP PROCEDURE IF EXISTS ObtainEstadoAvion;
 
@@ -1406,7 +1438,7 @@ END &&
 delimiter ;
 
 -- Procedure para consultar Avión
-
+/*
 DROP PROCEDURE if EXISTS ConsultarAvion;
 
 delimiter &&
@@ -1434,7 +1466,7 @@ BEGIN
 END &&
 	
 delimiter ;
-
+*/
 -- Procedure para Actualizar Capacidad  de un Avión
 DROP PROCEDURE if EXISTS ActualizarCapacidadAvion;
 

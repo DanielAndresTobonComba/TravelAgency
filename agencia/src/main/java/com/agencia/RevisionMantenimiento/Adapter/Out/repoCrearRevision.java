@@ -2,16 +2,15 @@ package com.agencia.RevisionMantenimiento.Adapter.Out;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.SQLException;
-import java.sql.Date;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Scanner;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
 import com.agencia.RevisionMantenimiento.Domain.revision;
 import com.agencia.RevisionMantenimiento.Utilities.imprimirTablaDatosRevision;
 import com.mysql.cj.jdbc.CallableStatement;
-import java.util.Scanner;
 
 public class repoCrearRevision {
 
@@ -27,7 +26,7 @@ public class repoCrearRevision {
             Connection connection = DataBaseConfig.DBconnection;
 
             // Consultar el avión
-            sql = "{call consultarAvion(?)}";
+            sql = "{call consultarAvionDaniel(?)}";
             stmt = (CallableStatement) connection.prepareCall(sql);
             stmt.setString(1, revision.getPlacaAvion());
             rs = stmt.executeQuery();
@@ -52,8 +51,8 @@ public class repoCrearRevision {
             stmt = (CallableStatement) connection.prepareCall(sql);
             
             // Convertir java.util.Date a java.sql.Date
-            java.sql.Date sqlDate = new java.sql.Date(revision.getFecha().getTime());
-            stmt.setDate(1, sqlDate);
+/*             java.sql.Date sqlDate = new java.sql.Date(revision.getFecha().getTime()); */
+            stmt.setString(1, revision.getFecha());
             stmt.setString(2, revision.getDescripcion());
             stmt.setInt(3, idAvion);
 

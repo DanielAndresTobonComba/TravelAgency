@@ -4,29 +4,31 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.agencia.CasesListController.CasesListController;
-import com.agencia.Tarifa.MainTarifa;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.Tarifa.Adapter.Out.existeTarifa;
 import com.agencia.Tarifa.Domain.actualizarDatosTarifa;
+import com.agencia.Tarifa.MainTarifa.MainTarifa;
 import com.agencia.Verifiers.CheckInt;
 import com.agencia.Verifiers.CheckString;
 
 public class menuActualizarTarifa {
 
-        public void ejecutarMenu () {
+        public static void ejecutarMenu (Empleado empleado) {
 
             Scanner sc = new Scanner(System.in);
             int opcion = 0;
             boolean checkOption = false;
+            List<actualizarDatosTarifa> lista = CasesListController.getController().lstActualizarDatosTarifas;
 
             try {
 
                 System.out.println("MENU TARIFA");
-                System.out.println("Ingresa el numero de tarifa");
+                System.out.print("Nùmero de tarifa >>>> ");
                 String numeroTarifa = CheckString.check("Digita el numero de nuevo");
         
                 existeTarifa existeTarifa = new existeTarifa();
         
-                List<actualizarDatosTarifa> lista = CasesListController.getController().lstActualizarDatosTarifas;
+                
 
                 if (!existeTarifa.verficiar(numeroTarifa)) {
                     System.out.println("Presiona Enter para volver al menú");

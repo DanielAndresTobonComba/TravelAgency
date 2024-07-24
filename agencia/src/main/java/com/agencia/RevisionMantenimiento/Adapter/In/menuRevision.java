@@ -19,9 +19,10 @@ public class menuRevision {
 
 
             try {
+                System.out.println("\n===================================");
+                System.out.println("    MENU REVISION MANTENIMIENTO");
+                System.out.println("===================================\n");
 
-                System.out.println("MENU REVISION MANTENIMIENTO");
-        
                 List<Funcionalidad> lista = CasesListController.getController().lstFuncionalidadRevisionMantenimiento;
 
     
@@ -31,7 +32,8 @@ public class menuRevision {
                     item++;
                 }
         
-                System.out.println(item + ". " + "Salir");
+                System.out.println(item + ". " + "Salir\n");
+                System.out.print("Opcion >>>> ");
         
     
         

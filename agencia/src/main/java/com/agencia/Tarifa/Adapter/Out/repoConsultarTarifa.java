@@ -15,7 +15,7 @@ public class repoConsultarTarifa implements InterfazConsultaTarifa {
     @Override
     public void consultarTarifa(int idTarifa) {
        
-         CallableStatement stmt = null;
+        CallableStatement stmt = null;
         DataBaseConfig.getConnection();
 
         try {

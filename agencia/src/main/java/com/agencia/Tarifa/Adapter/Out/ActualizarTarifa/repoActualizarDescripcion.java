@@ -6,7 +6,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Scanner;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
-import com.agencia.Tarifa.MainTarifa;
+import com.agencia.Tarifa.MainTarifa.MainTarifa;
 import com.agencia.Tarifa.Utilities.imprimirDatosTarifa;
 import com.mysql.cj.jdbc.CallableStatement;
 

@@ -30,9 +30,11 @@ public class existeTarifa extends verificarExistencia {
             System.out.println("Buscando tarifa con la..." + id);
 
             boolean hasResult = stmt.execute();
+
+            ResultSet rs = stmt.getResultSet();
             
             if (hasResult) {
-                ResultSet rs = stmt.getResultSet();
+                
 
                 if (rs.next()) {
                     // Si hay resultado, imprimir los datos de la tarifa
