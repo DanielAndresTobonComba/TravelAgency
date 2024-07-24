@@ -16,15 +16,27 @@ public class imprimirDatosTarifa extends imprimirTabla {
         System.out.printf("| %-10s | %-50s | %-50s | %-15s | %-15s |\n", "id", "Descripcion", "Detalles", "Precio Base", "Impuesto");
         System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+-------------------+-------------------+-----------+");
 
-        
+        if (!rs.next()) {
+            System.out.println("No se encontraron resultados.");
+        } else {
+            do {
+                int id = rs.getInt("id");
+                String descripcion = rs.getString("descripcion");
+                String detalle = rs.getString("detalle");
+                Double precioBase = rs.getDouble("precioBase");
+                Double impuesto = rs.getDouble("impuesto");
+    
+                System.out.printf("| %-10d | %-50s | %-50s | %-15.2f | %-16.2f|\n", id, descripcion, detalle, precioBase, impuesto);
+            } while (rs.next());
+        }
 
-        int id = rs.getInt("id");
+/*         int id = rs.getInt("id");
         String descripcion = rs.getString("descripcion");
         String detalle = rs.getString("detalle");
         Double precioBase = rs.getDouble("precioBase");
         Double impuesto = rs.getDouble("impuesto");
 
-        System.out.printf("| %-10d | %-50s | %-50s | %-15.2f | %-16.2f|\n", id, descripcion, detalle, precioBase, impuesto);  
+        System.out.printf("| %-10d | %-50s | %-50s | %-15.2f | %-16.2f|\n", id, descripcion, detalle, precioBase, impuesto);   */
 
 /*         while (rs.next()) {
 

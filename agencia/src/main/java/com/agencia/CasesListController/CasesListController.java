@@ -35,6 +35,7 @@ import com.agencia.RevisionMantenimiento.Domain.actualizarDatosRevision;
 import com.agencia.Tarifa.Application.Casos.GestionTarifa;
 import com.agencia.Tarifa.Application.Casos.IrCrearTarifa;
 import com.agencia.Tarifa.Application.Casos.irActualizarTarifa;
+import com.agencia.Tarifa.Application.Casos.irConsultarTarifa;
 import com.agencia.Tarifa.Application.Casos.irEliminarTarifa;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDescripcionTarifa;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDetallesTarifa;
@@ -85,12 +86,15 @@ public class CasesListController {
 
         Funcionalidad actualizarTarifa = new irActualizarTarifa ("Actualizar Tarifa" , ""); 
 
+        Funcionalidad consultarTarifa = new irConsultarTarifa("Consultar Tarifa", ""); 
+
 
         // AGREGAR LAS FUNCIONALIDADES AL MENU TARIFA 
 
         lstFuncionalidadesTarifa.add(crearTarifa);
         lstFuncionalidadesTarifa.add(eliminarTarifa);
         lstFuncionalidadesTarifa.add(actualizarTarifa);
+        lstFuncionalidadesTarifa.add(consultarTarifa);
 
 
         // AGREGREGARfUNCIONALIDADE A ACTUALIZAR REVISION MANTENIMIENTO

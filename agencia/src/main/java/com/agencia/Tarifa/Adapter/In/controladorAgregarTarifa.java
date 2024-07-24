@@ -26,7 +26,6 @@ public class controladorAgregarTarifa {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("llege a pedir datos de tarifa");
 
         Tarifa tarifa = new Tarifa(); 
 

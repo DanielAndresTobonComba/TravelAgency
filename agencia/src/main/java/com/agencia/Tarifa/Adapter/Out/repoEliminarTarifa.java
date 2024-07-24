@@ -12,7 +12,6 @@ import com.agencia.Tarifa.Application.Casos.eliminarTarifa;
 import com.agencia.Tarifa.Application.Service.InterfazEliminaTarifa;
 import com.agencia.Tarifa.MainTarifa.MainTarifa;
 import com.agencia.Tarifa.Utilities.imprimirDatosTarifa;
-import com.agencia.TipoDocumento.ImprimirTablaTipoDocumento;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class repoEliminarTarifa implements InterfazEliminaTarifa {
@@ -23,11 +22,11 @@ public class repoEliminarTarifa implements InterfazEliminaTarifa {
         Scanner sc = new Scanner(System.in);
         CallableStatement stmtBuscar = null;
         CallableStatement stmtEliminar = null;
-        Connection connection = null;
-        connection = DataBaseConfig.DBconnection;
+        DataBaseConfig.getConnection();
+        
 
         try {
-            connection = DataBaseConfig.DBconnection;
+            Connection connection = DataBaseConfig.DBconnection;
 
 
             String sqlBuscar = "{call buscarTarifa (?)}";
@@ -47,7 +46,6 @@ public class repoEliminarTarifa implements InterfazEliminaTarifa {
                 } else {
 
                     ResultSet rs = stmtBuscar.getResultSet();
-
                     imprimirDatosTarifa imprimirDatosTarifa = new imprimirDatosTarifa(); 
                     imprimirDatosTarifa.imprimir(rs);
     

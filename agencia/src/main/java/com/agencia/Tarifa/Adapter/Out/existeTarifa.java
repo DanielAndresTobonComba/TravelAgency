@@ -29,28 +29,30 @@ public class existeTarifa extends verificarExistencia {
             stmt.setInt(1, Integer.valueOf(id));
             System.out.println("Buscando tarifa con la..." + id);
 
-            boolean hasResult = stmt.execute();
-
-            ResultSet rs = stmt.getResultSet();
             
-            if (hasResult) {
+            try {
                 
+                boolean hasResult = stmt.execute();
 
-                if (rs.next()) {
-                    // Si hay resultado, imprimir los datos de la tarifa
+                if (!hasResult) {
+
+                    System.out.println("Error al encontrar la tarifa");
+                    return existe;
+                
+                } else {
+
+                    ResultSet rs = stmt.getResultSet();
                     imprimirDatosTarifa imprimirDatosTarifa = new imprimirDatosTarifa();
                     imprimirDatosTarifa.imprimir(rs);
-
-                    existe = true;
-                } else {
-                    // Si no hay resultados, imprimir el mensaje de error
-                    System.out.println("No se encontró ninguna tarifa con el ID ingresado.");
+                    return true;
                 }
+
                 
-            } else {
-                System.out.println("Error al encontrar la tarifa");
+
+
+            } catch (Exception e) {
+                System.out.println("Error " + e);
             }
-            
             
         } catch (NumberFormatException a) {
             System.out.println("Error con el numero de tarifa ingresado ");
