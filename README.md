@@ -20,6 +20,14 @@
 
 - **Sistema gestor de bases de datos Workbench**: Utilizamos Workbench como sistema gestor de bases de datos para manejar y administrar nuestras bases de datos MySQL.
 
+## Principios SOLID
+
+- **Principio de Abierto/Cerrado**: Este principio se cumple mediante el uso de vistas dinámicas y clases abstractas de `Funcionalidad` y sus derivadas. Esto permite extender el comportamiento del sistema sin modificar el código existente.
+
+- **Principio de Segregación de Interfaces**: Cada caso de uso creado tiene su propia interfaz o clase abstracta, asegurando que las clases dependan solo de las interfaces que realmente utilizan.
+
+- **Principio de Responsabilidad Única y Principio de Inversión de Dependencias**: La mayoría de las clases creadas poseen una única responsabilidad. Cuando se requiere realizar alguna otra acción que dependa de otra clase, se utiliza una clase abstracta que hereda de una clase principal, asegurando en la gran mayoria de acciones  la inversión de dependencias.
+
 ## Arquitectura
 
 Se ha utilizado la arquitectura hexagonal con vertical slicing y screaming, asegurando que cada entidad posea su propia infraestructura, aplicación y dominio.
