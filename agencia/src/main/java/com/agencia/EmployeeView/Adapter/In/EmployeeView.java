@@ -32,6 +32,8 @@ public class EmployeeView {
             System.out.println("\n********************************************");
             System.out.println("  NO HAY FUNCIONES DISPONIBLES PARA TU ROL");
             System.out.println("********************************************");
+            Intro intro = new Intro(listaFuncionesIntro);
+            intro.start();
 
 
         } else {
