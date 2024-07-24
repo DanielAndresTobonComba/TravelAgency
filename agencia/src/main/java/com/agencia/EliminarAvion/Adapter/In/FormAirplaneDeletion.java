@@ -78,7 +78,7 @@ public class FormAirplaneDeletion {
 
             checkDelete = this.deleteAirplaneAction.executeDeletion(placa);
 
-            if (checkDelete == true) {
+            if (checkDelete == false) {
 
                 System.out.println("\n\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
                 System.out.println("   Avión eliminado EXITOSAMENTE");

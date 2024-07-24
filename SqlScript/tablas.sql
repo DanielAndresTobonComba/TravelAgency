@@ -670,16 +670,16 @@ VALUES ("Carlos Jhoan Aguilar Galvis", "2020-01-01", 5, 1, 1, 1, "admin123", "24
 
 
 INSERT INTO `mydb`.`Empleado` (`name`, `fechaIngreso`, `Ciudad_id`, `Aerolinia_id`, `TripulacionRol_id`, `TipoDocumento_id`, `usuario`, `contraseña`) VALUES
-('Juan Pérez', '2022-01-15', 1, 1, 6, 1, 'jperez', 'pwd1'),
-('Ana Gómez', '2021-05-22', 2, 2, 7, 2, 'agomez', 'pwd2'),
-('Carlos López', '2020-03-10', 3, 3, 8, 3, 'clopez', 'pwd3'),
-('María Fernández', '2019-08-05', 4, 4, 9, 4, 'mfernandez', 'pwd4'),
-('Luis Martínez', '2018-12-20', 5, 5, 10, 5, 'lmartinez', 'pwd5'),
-('Carmen Torres', '2017-11-30', 6, 1, 1, 1, 'ctorres', 'pwd6'),
-('José Rodríguez', '2016-06-25', 7, 2, 2, 2, 'jrodriguez', 'pwd7'),
-('Laura Ramírez', '2015-09-12', 8, 3, 3, 3, 'lramirez', 'pwd8'),
-('Miguel Sánchez', '2014-04-17', 9, 4, 4, 4, 'msanchez', 'pwd9'),
-('Elena González', '2013-02-28', 10, 5, 5, 5, 'egonzalez', 'pwd10');
+('Juan Pérez', '2022-01-15', 1, 1, 6, 1, 'jperez', '6EAC1114AA783F6549327E7D01F63752995DA7B31F1F37092B7DCB9F49CF5651'),
+('Ana Gómez', '2021-05-22', 2, 2, 7, 2, 'agomez', '149D2937D1BCE53FA683AE652291BD54CC8754444216A9E278B45776B76375AF'),
+('Carlos López', '2020-03-10', 3, 3, 8, 3, 'clopez', 'FFC169417B4146CEBE09A3E9FFBCA33DB82E3E593B4D04C0959A89C05B87E15D'),
+('María Fernández', '2019-08-05', 4, 4, 9, 4, 'mfernandez', '54775A53A76AE02141D920FD2A4682F6E7D3AEF1F35210B9E4D253AD3DB7E3A8'),
+('Luis Martínez', '2018-12-20', 5, 5, 10, 5, 'lmartinez', '263AFC384461BCEFF1154660F784D26F90C00CA8923AA1A04CEEBBC14F30E253'),
+('Carmen Torres', '2017-11-30', 6, 1, 1, 1, 'ctorres', '1A878E3715DECCE119C93236F2CDCCB9F47F8142397348209F9082C36A7C2524'),
+('José Rodríguez', '2016-06-25', 7, 2, 2, 2, 'jrodriguez', '3FED6B4E386C7A023A849B490EC9E6F9670BB03067136FE561108159F4883BC9'),
+('Laura Ramírez', '2015-09-12', 8, 3, 3, 3, 'lramirez', '82DB9D1CECF58438D72C8033C923EAA7F96BFB0FD20ED83440D8EDDF3A77077A'),
+('Miguel Sánchez', '2014-04-17', 9, 4, 4, 4, 'msanchez', '814FAE7E37DB76D0BB7770DE9E8E3A7B3DC15193F93AE93461C28A5BF4E19206'),
+('Elena González', '2013-02-28', 10, 5, 5, 5, 'egonzalez', 'DE15BBF50716C8AB1680C845F081CF81D3596B08D40CF8C5B726AAC1F9D7A55C');
 
 -- Insertar datos en la tabla Estado
 INSERT INTO Estado(nombre) VALUES
@@ -688,24 +688,11 @@ INSERT INTO Estado(nombre) VALUES
 
 -- Insertar datos en la tabla fabricante
 INSERT INTO `mydb`.`Fabricante` (`nombre`) VALUES 
-('Boeing'),
-('Airbus'),
-('Embraer'),
-('Bombardier'),
-('Cessna');
+('Bombardier'), ('ACJ'), ('Airbus'), ('Beechcraft'), ('Boeing');
 
 -- Insertar datos en la tabla modelo avion
 INSERT INTO `mydb`.`ModeloAvion` (`nombre`, `Fabricante_id`) VALUES 
-('737-800', 1),
-('A320neo', 2),
-('E195-E2', 3),
-('CRJ700', 4),
-('Citation Longitude', 5),
-('787-9', 1),
-('A330-900', 2),
-('E175', 3),
-('Global Express', 4),
-('Citation Mustang', 5);
+('CHALLENGER 350', 1), ('AIRBUS 320', 3), ('ACJ 220', 1), ('A330-200F', 3), ('BOEING 737', 5);
 
 -- Insertar datos en la tabla tarifa
 INSERT INTO `mydb`.`Tarifa` (`descripcion`, `detalle`, `precioBase`, `impuesto`) VALUES 
@@ -718,23 +705,16 @@ INSERT INTO `mydb`.`Tarifa` (`descripcion`, `detalle`, `precioBase`, `impuesto`)
 
 -- Insertar datos en la tabla avion
 INSERT INTO `mydb`.`Avion` (`placa`, `capacidad`, `fechaFabricacion`, `ModeloAvion_id`, `Estado_id`) VALUES 
-('N737800', 189, '2018-05-20', 1, 1),
+('EC-130', 189, '2018-05-20', 1, 1),
 ('F-A320NEO', 195, '2019-03-15', 2, 1),
-('PR-E195E2', 146, '2020-07-10', 3, 2),
-('C-CRJ700', 78, '2016-08-30', 4, 1),
-('N-CLONG', 12, '2021-11-25', 5, 1),
-('N7879', 296, '2017-12-05', 6, 2),
-('F-A330900', 287, '2022-09-18', 7, 1),
-('PR-E175', 88, '2015-02-20', 8, 1),
-('C-GEXPRESS', 19, '2018-10-10', 9, 2),
-('N-MUSTANG', 4, '2020-04-14', 10, 1);
+('PR-E195E2', 146, '2020-07-10', 3, 2);
 
 INSERT INTO `mydb`.`Revision` (`fecha`, `Avion_id`, `descripcion`) VALUES 
 ('2024-01-15', 1, 'Revisión general de mantenimiento con cambio de filtros y aceite.'),
 ('2024-02-10', 2, 'Inspección de motores y pruebas de vuelo después de actualización de software.'),
 ('2024-03-20', 3, 'Revisión de sistema de frenos y reemplazo de llantas.'),
-('2024-04-05', 4, 'Chequeo de sistemas electrónicos y calibración de instrumentos.'),
-('2024-05-18', 5, 'Revisión completa de fuselaje y limpieza profunda de interiores.');
+('2024-04-05', 2, 'Chequeo de sistemas electrónicos y calibración de instrumentos.'),
+('2024-05-18', 1, 'Revisión completa de fuselaje y limpieza profunda de interiores.');
 
 
 INSERT INTO `mydb`.`RevisionEmpleado` (`Revision_id`, `Empleado_id`) VALUES 
@@ -749,8 +729,29 @@ INSERT INTO `mydb`.`RevisionEmpleado` (`Revision_id`, `Empleado_id`) VALUES
 (5, 9),
 (5, 10);
 
--- select * from Revision 
- Select * from Avion;
+
+-- Inserciones en la tabla Viaje
+INSERT INTO Viaje (fecha, idAeropuertoOrigen, idAeropuertoDestino) VALUES 
+('2024-07-28', 3, 2); 
+
+
+-- Inserciones en la tabla VueloConexion
+INSERT INTO VueloConexion (numeroConexion,idAeropuertoOrigen, Viaje_id ,Avion_id, idAeropuertoDestino)
+VALUES ('AUV235', 3, 1, 1, 2);
+
+
+-- Inserciones en la tabla MetodoPago
+INSERT INTO MetodoPago (nombre) VALUES
+('Tarjeta Débito'), ('Tarjeta Crédito'), ('En establecimiento'), ('PayPal');
+
+-- Inserciones en la tabla Reservacion
+INSERT INTO Reservacion (fecha, Viaje_id, Tarifa_id, Cliente_id, MetodoPago_id, estadoPago, nombrePasajero, edad, dni, TipoDocumento_id) VALUES
+('2024-07-12', 1, 1, 1,  1, 1, 'Daniel Alfonso Buitrago', 29, 'AGC235C', 2),
+('2024-06-04', 1, 3, 2, 1, 1, 'Andrea Carolina Delgado Florez', 25, 'ABB152A', 2);
+
+
+
+
 
 
 -- ----------------------------------------------------------------------------- ---------------------------------------------------------------------
@@ -986,6 +987,9 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+
+
 -- Procedure para Actualizar la Edad del Cliente
 
 DELIMITER $$
@@ -1005,12 +1009,7 @@ END $$
 DELIMITER ;
 
 
-<<<<<<< HEAD
--- Procedure para actualizar codumento del cliente
-
-=======
 -- Procedure para Actualizar Numero de Documento del Cliente
->>>>>>> 7519df5a7633b6a54af4bc175ec72f8ec30eaab3
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarNumeroDocumentoCliente $$
@@ -1028,7 +1027,7 @@ END $$
 DELIMITER ;
 
 
-<<<<<<< HEAD
+-- Procedure para Actualizar Contraseña del cliente
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarContraseñaCliente $$
@@ -1046,6 +1045,7 @@ END $$
 DELIMITER ;
 
 
+-- Procedure para Actualizar usuario del Cliente
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarUsuarioCliente $$
@@ -1063,7 +1063,7 @@ END $$
 DELIMITER ;
 
 
-
+-- Procedure para Actualizar Tipo Documento del Cliente
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarTipoDocumentoCliente $$
@@ -1086,7 +1086,7 @@ DELIMITER ;
 -- -----------------------------------------------------------------------------------------------------------------------
 
 
--- BUSCAR TARIFA 
+-- Procedure para BUSCAR TARIFA 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS buscarTarifa $$
@@ -1101,7 +1101,7 @@ END $$
 DELIMITER ;
 
 
--- CREAR TARIFA 
+-- procedure para CREAR TARIFA 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS crearTarifa $$
@@ -1131,7 +1131,7 @@ DELIMITER ;
 select * from Tarifa;
 
 
--- Actualizar descripcion tarifa 
+-- Procedure para Actualizar Descripcion tarifa 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarDescripcionTarifa $$
@@ -1149,7 +1149,7 @@ END $$
 
 DELIMITER ;
 
--- Actualizar detalle tarifa 
+-- Procedure para Actualizar detalle tarifa 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarDetalleTarifa $$
@@ -1168,7 +1168,7 @@ END $$
 DELIMITER ;
 
 
--- Actualizar impuesto tarifa 
+-- Procedure Actualizar impuesto tarifa 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarImpuestoTarifa $$
@@ -1187,7 +1187,7 @@ END $$
 DELIMITER ;
 
 
--- Actualizar precio tarifa 
+-- Procedure Actualizar precio tarifa 
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS actualizarPrecioTarifa $$
@@ -1205,7 +1205,7 @@ END $$
 
 DELIMITER ;
 
-
+-- Procedure para Eliminar Tarifa
 
 DELIMITER $$
 
@@ -1224,6 +1224,7 @@ DELIMITER ;
 -- 										PROCEDIMIENTOS RELACIONADOS CON REVISION MANTENIMIENTO
 -- -----------------------------------------------------------------------------------------------------------------------
 
+-- Procedure para COnsutar Avion (utilizada en Revisión)
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS consultarAvion $$
@@ -1241,6 +1242,7 @@ END $$
 DELIMITER ;
 
 
+-- Procedure para Crear Revisión
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS crearRevision $$
@@ -1334,7 +1336,6 @@ DELIMITER ;
 
 
 -- Procedure para obtener los Modelos de Avion ya registrados
-
 DROP PROCEDURE IF EXISTS ObtainModeloAvion;
 
 delimiter &&
@@ -1507,3 +1508,48 @@ BEGIN
 END &&
 
 delimiter ;
+
+
+-- Procedure para extraer los códigos de la tabla Reservacion
+DROP PROCEDURE IF EXISTS ExtraerReservaciones;
+
+delimiter $$
+
+CREATE PROCEDURE ExtraerReservaciones ()
+BEGIN
+		  SELECT 	id
+      FROM 	Reservacion;
+
+END $$
+
+delimiter ;
+
+
+-- Procedure para extraer Reservación
+DROP PROCEDURE IF EXISTS 	ExtraerInfoReservacion;
+
+delimiter $$
+
+CREATE PROCEDURE ExtraerInfoReservacion(IN idInput INT)
+BEGIN
+		SELECT 	id, Viaje_id, Tarifa_id, Cliente_id, MetodoPago_id, estadoPago, nombrePasajero, edad, dni, TipoDocumento_id
+        FROM 	Reservacion
+        WHERE	id = idInput;
+END $$
+
+delimiter ;
+
+-- Procedure para extraer VueloConexion
+DROP PROCEDURE IF EXISTS ExtraerVueloConexion;
+
+delimiter $$
+
+CREATE PROCEDURE ExtraerVueloConexion (IN numeroConexionInput VARCHAR(20))
+BEGIN
+		SELECT 	id, idAeropuertoOrigen, Viaje_id, Avion_id, idAeropuertoDestino
+        FROM	VueloConexion
+        WHERE	numeroConexion = numeroConexionInput;
+END $$
+
+delimiter ;
+

@@ -1,5 +1,7 @@
 package com.agencia.Main;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 /*import com.agencia.Aeropuerto.Application.actualizarAeropuerto;
 import com.agencia.Aeropuerto.Application.consultarAeropuerto;
 import com.agencia.Aeropuerto.Application.crearAeropuerto;
@@ -35,6 +37,7 @@ import com.agencia.Cliente.MainCliente;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 import com.agencia.IntroView.Adapter.In.Intro;
 import com.agencia.RevisionMantenimiento.MainRevisionMantenimiento;
+import com.agencia.Verifiers.AvailableChairsList;
 
 public class Main {
 
@@ -43,7 +46,11 @@ public class Main {
         
 /*         //Confirmación de la conexión a la Base de datos 
         String RESET = "\u001B[0m";
-        String GREEN = "\u001B[42m";
+        String GREEN = "\u001B[32m";
+        //String RED = "\u001B[31m";
+        String [] chairsReserved = { "C5", "C2", "C3", "G3", "G2", "L1", "O1", "O2", "O3", "O4", "O5"};
+        List<String> listChairsReserved = new ArrayList<>(Arrays.asList(chairsReserved));
+        System.out.println(AvailableChairsList.generate(1010, listChairsReserved));
          System.out.println(GREEN + DataBaseConfig.getConnection().msjConnection + RESET);
 
         // Lanzar la aplicación
