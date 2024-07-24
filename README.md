@@ -14,9 +14,12 @@
 
 - **Controlador**: Utilizando el patrón de diseño Singleton y la clase abstracta `Funcionalidad` (que contiene un enunciado, código y método ejecutable), se crean las funcionalidades de cada rol en el archivo `CasesListController`. Estas funcionalidades se asignan a listas específicas, que son leídas por las vistas dinámicas de cada rol. Esto permite asignar una funcionalidad existente a un rol mediante la modificación del archivo JSON (agregando un código en la lista de la entidad del rol deseado). Si la funcionalidad no existe, solo es necesario crear la clase derivada de `Funcionalidad` sin modificar el código existente.
 
+- **Bases de datos relacional MySQL**: A través del archivo `tablas` se encuentra la creación de las tablas de la base de datos junto con las inserciones de prueba y procedimientos almacenados.
+
+- **Procedimientos almacenados**: Mediante procedimientos almacenados se realizan todas las acciones relacionadas con la búsqueda, actualización, relaciones y eliminaciones de todos los casos de uso desarrollados para el proyecto.
+
+- **Sistema gestor de bases de datos Workbench**: Utilizamos Workbench como sistema gestor de bases de datos para manejar y administrar nuestras bases de datos MySQL.
+
 ## Arquitectura
 
 Se ha utilizado la arquitectura hexagonal con vertical slicing y screaming, asegurando que cada entidad posea su propia infraestructura, aplicación y dominio.
-
-
-
