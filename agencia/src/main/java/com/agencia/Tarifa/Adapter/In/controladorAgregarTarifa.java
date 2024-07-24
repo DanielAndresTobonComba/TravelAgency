@@ -12,13 +12,14 @@ import com.agencia.Verifiers.CheckString;
 
 public class controladorAgregarTarifa { 
 
-/*     private final agregarTarifa servicioAgregarTarifa; 
+
+/*    private final agregarTarifa servicioAgregarTarifa; 
 
     
 
     public controladorAgregarTarifa(agregarTarifa servicioAgregarTarifa) {
         this.servicioAgregarTarifa = servicioAgregarTarifa;
-    } */
+    }  */
 
 
 
@@ -53,6 +54,8 @@ public class controladorAgregarTarifa {
         repoAgregarTarifa repoAgregarTarifa = new repoAgregarTarifa();
 
         repoAgregarTarifa.agregar(tarifa);
+
+    
 
         MainTarifa.main(empleado);
  

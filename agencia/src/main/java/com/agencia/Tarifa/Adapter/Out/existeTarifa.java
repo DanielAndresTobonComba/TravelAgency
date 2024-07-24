@@ -42,6 +42,12 @@ public class existeTarifa extends verificarExistencia {
                 } else {
 
                     ResultSet rs = stmt.getResultSet();
+
+                    if (!rs.isBeforeFirst()) {
+                        System.out.println("Cliente no encontrado en la base de datos");
+                        return false;
+                    }
+                    
                     imprimirDatosTarifa imprimirDatosTarifa = new imprimirDatosTarifa();
                     imprimirDatosTarifa.imprimir(rs);
                     return true;

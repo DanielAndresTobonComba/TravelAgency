@@ -20,6 +20,7 @@ public class controladorEliminarTarifa {
 
         repoEliminarTarifa eliminarTarifa = new repoEliminarTarifa(); 
         eliminarTarifa.eliminar(numeroTarifa);
+        
         MainTarifa.main(empleado);
     }
 }
