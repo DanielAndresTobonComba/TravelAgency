@@ -281,7 +281,6 @@ public class FormCheckIn {
                 if (checkIn == true) {
 
                     listReservedChairs = this.extractReservedChairsAction.extract(numeroConexionInput);
-                    System.out.println(listReservedChairs);
                     capacity = this.extractAirplaneCapacityAction.extract(connectionFlight.getAvion_id());
 
                     System.out.println("\n================================");

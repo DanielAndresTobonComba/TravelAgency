@@ -1642,3 +1642,25 @@ END $$
 
 delimiter ;
 
+-- Procedure para verificar que la persona hizo checking
+ DROP PROCEDURE IF EXISTS VerificarCheckIn;
+ 
+ delimiter $$ 
+
+CREATE PROCEDURE  VerificarCheckIn(IN vueloConexIdInput INT, IN reservacionIdInput INT) 
+BEGIN
+		
+        
+        SELECT 	COUNT(b.Reservacion_id) as rowCounts
+        FROM 	Boleto as b,
+				Reservacion as r,
+                VueloConexion as vc
+		WHERE	vc.id = b.VueloConexion_id and
+				r.id = b.Reservacion_id and
+                r.id = reservacionIdInput and
+                vc.id = vueloConexIdInput;
+  
+END $$
+
+delimiter ;
+
