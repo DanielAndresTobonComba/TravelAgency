@@ -1,8 +1,8 @@
 package com.agencia.Tarifa.Adapter.In;
 
 import com.agencia.LogIn.Domain.Empleado;
-import com.agencia.RevisionMantenimiento.Adapter.Out.repoEliminarRevision;
 import com.agencia.Tarifa.Adapter.Out.repoEliminarTarifa;
+import com.agencia.Tarifa.MainTarifa.MainTarifa;
 import com.agencia.Verifiers.CheckInt;
 
 public class controladorEliminarTarifa {
@@ -20,5 +20,6 @@ public class controladorEliminarTarifa {
 
         repoEliminarTarifa eliminarTarifa = new repoEliminarTarifa(); 
         eliminarTarifa.eliminar(numeroTarifa);
+        MainTarifa.main(empleado);
     }
 }

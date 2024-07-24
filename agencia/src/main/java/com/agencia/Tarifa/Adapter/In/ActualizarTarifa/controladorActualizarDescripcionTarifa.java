@@ -12,6 +12,7 @@ public class controladorActualizarDescripcionTarifa {
 
         repoActualizarDescripcion repoActualizarDescripcion = new repoActualizarDescripcion(); 
         repoActualizarDescripcion.ejecutarActualizarDescripcion(numeroTarifa , descripcion);
+        
     }
 
 }
