@@ -7,31 +7,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.agencia.CheckIn.Domain.Service.ExtractReservationsService;
+import com.agencia.CheckIn.Domain.Service.ExtractConnectionNumbersService;
 import com.agencia.DataBaseConfig.DataBaseConfig;
 
-public class ExtractReservationsRepository implements ExtractReservationsService{
+public class ExtractConnectionNumbersList implements ExtractConnectionNumbersService {
 
     @Override
-    public List<Integer> extractCodes() {
-        
-        List<Integer> listRservationsCodes = new ArrayList<>();
+    public List<String> extractConnections(int Viaje_id) {
+        List<String> listConnectionNumbers = new ArrayList<>();
 
         try {
-                String SQLprocedure = "{CALL ExtraerReservaciones()}";
+
+                String SQLprocedure = "{CALL TraerVuelosConexion(?)}";
                 Connection connection = DataBaseConfig.getConnection().DBconnection;
                 CallableStatement cs = connection.prepareCall(SQLprocedure);
+                cs.setInt(1, Viaje_id);
                 cs.execute();
 
                 ResultSet resultSet = cs.getResultSet();
 
                 while (resultSet.next()) {
 
-                    int code = resultSet.getInt("id");
-                    listRservationsCodes.add(code);
-            }
+                    String connectionNumber = resultSet.getString("numeroConexion");
+                    listConnectionNumbers.add(connectionNumber);
 
-
+                }
 
         } catch (SQLException e) {
 
@@ -39,9 +39,7 @@ public class ExtractReservationsRepository implements ExtractReservationsService
 
         }
 
-        return listRservationsCodes;
+        return listConnectionNumbers;
     }
-
-    
 
 }

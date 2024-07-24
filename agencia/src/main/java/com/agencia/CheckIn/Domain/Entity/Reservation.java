@@ -3,6 +3,7 @@ package com.agencia.CheckIn.Domain.Entity;
 public class Reservation {
 
     private int id;
+    private String fecha;
     private int Viaje_id;
     private int Tarifa_id;
     private int Cliente_id;
@@ -15,8 +16,9 @@ public class Reservation {
 
     public Reservation() {}
 
-    public Reservation(int viaje_id, int tarifa_id, int cliente_id, int metodoPago_id, int estadoPago,
+    public Reservation( String fecha, int viaje_id, int tarifa_id, int cliente_id, int metodoPago_id, int estadoPago,
             String nombrePasajero, int edad, String dni, int tipoDocumento_id) {
+        this.fecha = fecha;
         this.Viaje_id = viaje_id;
         this.Tarifa_id = tarifa_id;
         this.Cliente_id = cliente_id;
@@ -28,9 +30,10 @@ public class Reservation {
         this.TipoDocumento_id = tipoDocumento_id;
     }
 
-    public Reservation(int id, int viaje_id, int tarifa_id, int cliente_id, int metodoPago_id, int estadoPago,
+    public Reservation(int id, String fecha, int viaje_id, int tarifa_id, int cliente_id, int metodoPago_id, int estadoPago,
             String nombrePasajero, int edad, String dni, int tipoDocumento_id) {
         this.id = id;
+        this.fecha = fecha;
         this.Viaje_id = viaje_id;
         this.Tarifa_id = tarifa_id;
         this.Cliente_id = cliente_id;

@@ -37,6 +37,7 @@ import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDetallesT
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarImpuestoTarifa;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarPrecioTarifa;
 import com.agencia.Tarifa.Domain.actualizarDatosTarifa;
+import com.agencia.IntroView.Domain.CheckIn;
 import com.agencia.IntroView.Domain.Exit;
 
 public class CasesListController {
@@ -95,6 +96,7 @@ public class CasesListController {
         // Instanciación funciones del Login Inicial
         Funcionalidad introLogin = new IntroLogIn("Iniciar Sesión", "");
         Funcionalidad logOut = new Exit("Salir", "");
+        Funcionalidad checkIn = new CheckIn("Realizar Check-In", "");
 
         // Instanciación funciones del empleado
         Funcionalidad gestionarAvion = new GestionarAvion("Gestionar Avión", "gav");
@@ -134,7 +136,9 @@ public class CasesListController {
 
         // FUNCIONES DEL MENÚ INICIAL
         lstIntro.add(introLogin);
+        lstIntro.add(checkIn);
         lstIntro.add(logOut);
+        
 
         // FUNCIONALIDADES DE LOS EMPLEADOS
         lstFuncionalidades.add(gestionarAvion);

@@ -1532,7 +1532,7 @@ delimiter $$
 
 CREATE PROCEDURE ExtraerInfoReservacion(IN idInput INT)
 BEGIN
-		SELECT 	id, Viaje_id, Tarifa_id, Cliente_id, MetodoPago_id, estadoPago, nombrePasajero, edad, dni, TipoDocumento_id
+		SELECT 	id, fecha, Viaje_id, Tarifa_id, Cliente_id, MetodoPago_id, estadoPago, nombrePasajero, edad, dni, TipoDocumento_id
         FROM 	Reservacion
         WHERE	id = idInput;
 END $$
@@ -1549,6 +1549,95 @@ BEGIN
 		SELECT 	id, idAeropuertoOrigen, Viaje_id, Avion_id, idAeropuertoDestino
         FROM	VueloConexion
         WHERE	numeroConexion = numeroConexionInput;
+END $$
+
+delimiter ;
+
+-- Procedure para traer los tipos de Documento
+DROP PROCEDURE IF EXISTS TraerTipoDocumento;
+
+delimiter $$
+
+CREATE PROCEDURE TraerTipoDocumento()
+BEGIN
+		SELECT id, nombre
+        FROM TipoDocumento;
+
+END $$
+
+delimiter ;
+
+call TraerTipoDocumento();
+
+
+-- Procedure para traer los numeros de Vuelos de Conexion
+DROP PROCEDURE IF EXISTS TraerVuelosConexion;
+
+delimiter $$
+
+CREATE PROCEDURE TraerVuelosConexion(IN ViajeIdInput INT)
+BEGIN
+		SELECT 	vc.numeroConexion
+		FROM 	VueloConexion as vc,
+                Viaje as v
+		WHERE	v.id = vc.Viaje_id and
+                v.id = ViajeIdInput;
+END $$
+
+delimiter ;
+
+
+-- Procedure  para extraer asientos ocupados del vuelo
+DROP PROCEDURE IF EXISTS ExtraerAsientos;
+
+delimiter $$
+
+CREATE PROCEDURE ExtraerAsientos(IN vueloConexionInput VARCHAR(12))
+BEGIN
+		SELECT 	b.asiento
+        FROM 	Boleto as b,
+				VueloConexion as vc
+		WHERE 	b.VueloConexion_id = vc.id and
+				vc.numeroConexion = vueloConexionInput;
+END $$
+
+delimiter ;
+
+
+-- Procedure para traer la capacidad del Avion
+DROP PROCEDURE IF EXISTS 	CapacidadAvion;
+
+delimiter $$
+
+CREATE PROCEDURE CapacidadAvion(IN AvionIdInput INT)
+BEGIN
+		SELECT 	capacidad
+        FROM	Avion
+        WHERE	id = AvionIdInput;
+END $$
+
+delimiter ;
+
+
+-- Procedure para asignar Asiento
+DROP PROCEDURE IF EXISTS AsignarAsiento;
+
+delimiter $$ 
+
+CREATE PROCEDURE  AsignarAsiento(IN asiento VARCHAR(12), IN vueloConexIdInput INT, IN reservacionIdInput INT) 
+BEGIN
+		DECLARE TIME_BEFORE DATETIME;
+		DECLARE TIME_AFTER DATETIME;
+        
+		SELECT UPDATE_TIME INTO TIME_BEFORE FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Boleto';
+		
+        INSERT INTO Boleto (asiento, VueloConexion_id, Reservacion_id) VALUES
+        (asiento, vueloConexIdInput, reservacionIdInput);
+        
+        SELECT UPDATE_TIME INTO TIME_BEFORE FROM information_schema.tables WHERE table_schema = 'mydb' AND TABLE_NAME = 'Boleto';
+		
+        SELECT TIME_BEFORE, TIME_AFTER;
+        
 END $$
 
 delimiter ;

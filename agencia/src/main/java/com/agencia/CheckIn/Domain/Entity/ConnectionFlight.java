@@ -7,22 +7,25 @@ public class ConnectionFlight {
     private int idAeropuertoOrigen;
     private int Viaje_id;
     private int Avion_id;
+    private int idAeropuertoDestino;
 
     public ConnectionFlight() {}
 
-    public ConnectionFlight(String numerConexion, int idAeropuertoOrigen, int viaje_id, int avion_id) {
+    public ConnectionFlight(String numerConexion, int idAeropuertoOrigen, int viaje_id, int avion_id, int idAeropuertoDestino) {
         this.numerConexion = numerConexion;
         this.idAeropuertoOrigen = idAeropuertoOrigen;
         this.Viaje_id = viaje_id;
         this.Avion_id = avion_id;
+        this.idAeropuertoDestino = idAeropuertoDestino;
     }
 
-    public ConnectionFlight(int id, String numerConexion, int idAeropuertoOrigen, int viaje_id, int avion_id) {
+    public ConnectionFlight(int id, String numerConexion, int idAeropuertoOrigen, int viaje_id, int avion_id, int idAeropuertoDestino) {
         this.id = id;
         this.numerConexion = numerConexion;
         this.idAeropuertoOrigen = idAeropuertoOrigen;
         this.Viaje_id = viaje_id;
         this.Avion_id = avion_id;
+        this.idAeropuertoDestino = idAeropuertoDestino;
     }
 
     public int getId() {
