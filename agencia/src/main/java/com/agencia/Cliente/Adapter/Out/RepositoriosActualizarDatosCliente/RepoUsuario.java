@@ -43,7 +43,7 @@ public class RepoUsuario {
                     imprimirTablaCliente.imprimir(rs);
                 }
             
-                stmt.close();
+                
                 
             } catch (SQLIntegrityConstraintViolationException b) {
                 String mensaString = b.getMessage();

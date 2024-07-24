@@ -22,7 +22,7 @@ public class controladorActualizarAeropuerto {
 
     public void actualizarAeropuerto() {
 
-        System.out.println("Digita el numero del aeropuerto");
+        System.out.print("Numero del aeropuerto >>>> ");
 
         String numeroAeropuerto = CheckString.check("Digita de nuevo el numero del aeropuerto");
         int opcion;
@@ -30,14 +30,15 @@ public class controladorActualizarAeropuerto {
         //repositorioActualizarAeropuerto actualizarAeropuertoRepo = new repositorioActualizarAeropuerto();
 
         do {
-
-            System.out.println("\nMenu de eleccion");
+            System.out.println("================================");
+            System.out.println("    MENU ACTUALIZAR AEROPUERTO");
+            System.out.println("================================");
             System.out.println("1. Nombre");
             System.out.println("2. Ciudad");
             System.out.println("3. Numero serial");
             System.out.println("4. Salir");
-
-            opcion = CheckInt.check("Digite de nuevo la opcion a modificar");
+            System.out.println("Opciòn >>>> ");
+            opcion = CheckInt.check("Digita la opcion de nuevo.");
 
             actualizarAeropuerto.ejecutarActualizarDatos(numeroAeropuerto, opcion);
             MainMenuAeropuerto.main(empleado);

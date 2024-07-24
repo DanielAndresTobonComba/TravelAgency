@@ -30,12 +30,12 @@ public class controladorAgregarTarifa {
 
         Tarifa tarifa = new Tarifa(); 
 
-        System.out.println("Digita una descripcion resumida (Opcional)");
+        System.out.println("Digita una descripcion resumida ");
         String descripcion = sc.nextLine();
 
         
-        System.out.println("Digite detalles de la tarifa");
-        String detalles = CheckString.check("Digite de nuevo los detalles");
+        System.out.println("Digite detalles de la tarifa ");
+        String detalles = CheckString.check("Digite de nuevo los detalles ");
 
         System.out.println("Digita el precio base");
         Double precioBase = CheckDecimal.check("Digita de nuevo el precio base");

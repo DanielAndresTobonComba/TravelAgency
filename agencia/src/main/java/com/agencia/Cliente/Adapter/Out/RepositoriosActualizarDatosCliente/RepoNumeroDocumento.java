@@ -47,7 +47,7 @@ public class RepoNumeroDocumento {
                     imprimir.imprimir(rs);
                 }
             
-                stmt.close();
+                
                 
             } catch (SQLIntegrityConstraintViolationException b) {
                 String mensaString = b.getMessage();

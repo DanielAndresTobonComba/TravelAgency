@@ -52,7 +52,7 @@ public class RepoContrasena {
 
                 }
             
-                stmt.close();
+                
                 
             } catch (SQLIntegrityConstraintViolationException b) {
                 String mensaString = b.getMessage();

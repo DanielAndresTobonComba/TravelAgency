@@ -65,7 +65,7 @@ public class repoEliminarTipoDocumento implements interfazEliminarTipoDocumento 
             System.out.println("Error SQL: " + e.getMessage());
         } finally {
             // Cerramos todos los recursos en el bloque finally para asegurar que se liberen correctamente
-            try {
+            /* try {
                 if (stmtBuscar != null) {
                     stmtBuscar.close();
                 }
@@ -77,7 +77,7 @@ public class repoEliminarTipoDocumento implements interfazEliminarTipoDocumento 
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-            }
+            } */
         }
     }
 

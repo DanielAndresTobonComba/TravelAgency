@@ -49,7 +49,7 @@ public class repoCrearTipoDocumento implements interfazCrearTipoDocumento{
 
                 }
             
-                stmt.close();
+                
                 
             } catch (SQLIntegrityConstraintViolationException b) {
                 String mensaString = b.getMessage();
