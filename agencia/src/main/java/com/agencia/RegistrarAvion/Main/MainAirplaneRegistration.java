@@ -24,17 +24,24 @@ public class MainAirplaneRegistration {
 
         PlatesExtractionService platesExtractionService = new PlatesExtractionRepository();
         ExistentPlatesExtraction existentPlatesExtraction = new ExistentPlatesExtraction(platesExtractionService);
+
         ViewInfoService extractInfoModelService = new ViewInfoModelRepository();
         ViewInfoModelsAction viewModelsInfoAction = new ViewInfoModelsAction(extractInfoModelService);
+
         ExtractRegistersService extractInfoModel = new ExtractAirplaneModelsRepository();
         ExtractRegistersAction extractInfoModelAction = new ExtractRegistersAction(extractInfoModel);
+
         ViewInfoService extractInfoStatusService = new ViewInfoStatusRepository();
         ViewInfoStatusAction viewInfoStatusAction = new ViewInfoStatusAction(extractInfoStatusService);
+
         ExtractRegistersService extractInfoStatus = new ExtractAirplaneStatusesRepository();
         ExtractRegistersAction extractInfoStatusAction = new ExtractRegistersAction(extractInfoStatus);
+
         AirplaneRecordService airplaneRecordService = new MySQLAirplaneRegistrationRepository();
         RecordAirplaneAction recordAirplaneAction = new RecordAirplaneAction(airplaneRecordService);
+
         FormAirplaneRegistration formAirplaneRegistration = new FormAirplaneRegistration(existentPlatesExtraction, viewModelsInfoAction, extractInfoModelAction, viewInfoStatusAction, extractInfoStatusAction, recordAirplaneAction);
+        
         formAirplaneRegistration.SeeResults(empleado);
         
     }
