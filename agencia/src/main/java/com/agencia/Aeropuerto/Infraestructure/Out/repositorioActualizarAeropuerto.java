@@ -46,7 +46,7 @@ public class repositorioActualizarAeropuerto implements interfazActualizarAeropu
                             try (ResultSet rs = stmt.getResultSet()) {
     
                                 System.out.println("+-------------------------------+----------+-------------------+");
-                                System.out.printf("| %-29s | %-8s | %-17s |\n", "Nombre", "Ciudad ID", "Número de Aeropuerto");
+                                System.out.printf("| %-29s | %-8s | %-25s |\n", "Nombre", "Ciudad ID", "Número de Aeropuerto");
                                 System.out.println("+-------------------------------+----------+-------------------+");
     
                                 while (rs.next()) {

@@ -66,7 +66,7 @@ public class existeCliente {
                 }
             }
             
-            stmt.close();
+            
             
         } catch (SQLException e) {
             e.printStackTrace();

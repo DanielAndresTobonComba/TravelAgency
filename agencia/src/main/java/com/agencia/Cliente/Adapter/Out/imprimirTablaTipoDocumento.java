@@ -45,7 +45,7 @@ public class imprimirTablaTipoDocumento {
                     System.out.println("+--------+----------------------------------------------------+");
                 }
             
-                stmt.close();
+                
                 
             } catch (SQLIntegrityConstraintViolationException b) {
                 String mensaString = b.getMessage();

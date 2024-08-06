@@ -24,6 +24,10 @@ public class DataBaseConfig {
     private DataBaseConfig () {
 
         verifyConnection = false;
+
+        String RESET = "\u001B[0m";
+        String GREEN = "\u001B[32m";
+        String RED = "\u001B[31m";
         
         try {
             configProperties = new FileInputStream("./agencia/src/main/java/com/agencia/Resources/Config.properties");
@@ -40,15 +44,13 @@ public class DataBaseConfig {
             DBconnection = DriverManager.getConnection(URL, USER, PASSWORD);
             verifyConnection = true;/*  */
 
-            msjConnection = "\n:: :: :: :: :: :: :: :: :: :: :: ::\n:: Conectado a la Base de Datos  ::\n:: :: :: :: :: :: :: :: :: :: :: ::\n";
+            msjConnection = GREEN + "\n:: :: :: :: :: :: :: :: :: :: :: ::\n:: Conectado a la Base de Datos  ::\n:: :: :: :: :: :: :: :: :: :: :: ::\n" + RESET;
         
         } catch (SQLException msj) {
-            msjConnection = "\n:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::\n:: ERROR AL CONECTAR! Cambie los parámetros  ::\n:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::\n";
+            msjConnection = RED +  "\n:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::\n:: ERROR AL CONECTAR! Cambie los parámetros  ::\n:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::\n" + RESET;
 
         }
-        
-        
-        
+
         
     }
 

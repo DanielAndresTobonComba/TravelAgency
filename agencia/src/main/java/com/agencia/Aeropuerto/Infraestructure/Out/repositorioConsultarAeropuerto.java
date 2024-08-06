@@ -34,9 +34,9 @@ public class repositorioConsultarAeropuerto implements interfazConsultarAeropuer
             if (hasResult) {
                 try (ResultSet rs = stmt.getResultSet()) {
 
-                        System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+");
+                        System.out.println("+-------------------------------+----------+-------------------+-------------------------+");
                         System.out.printf("| %-45s | %-10s | %-25s |\n", "Nombre", "Ciudad ID", "Número de Aeropuerto");
-                        System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+");
+                        System.out.println("+-------------------------------+----------+-------------------+-------------------------+");
                         
                         while (rs.next()) {
                             // Obtener y mostrar los datos del aeropuerto
@@ -47,12 +47,14 @@ public class repositorioConsultarAeropuerto implements interfazConsultarAeropuer
 
                             System.out.printf("| %-45s | %-10d | %-25s |\n", nombre, ciudadId, numero);
                         }
+
+                        System.out.println("+-------------------------------+----------+-------------------+-------------------------+");
                 }
             } 
 
            
 
-            stmt.close();
+            
             
         } catch (SQLException e) {
             e.printStackTrace();

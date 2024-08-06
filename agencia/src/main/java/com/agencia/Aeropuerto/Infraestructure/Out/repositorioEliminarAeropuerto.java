@@ -42,7 +42,7 @@ public class repositorioEliminarAeropuerto implements interfazEliminarAeropuerto
 
                     System.out.println("\tAEROPUERTO ELIMINADO");
                     
-                     System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+");
+/*                      System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+");
                         System.out.printf("| %-45s | %-10s | %-25s |\n", "Nombre", "Ciudad ID", "Número de Aeropuerto");
                         System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+");
                         
@@ -53,14 +53,14 @@ public class repositorioEliminarAeropuerto implements interfazEliminarAeropuerto
                             int ciudadId = rs.getInt("Ciudad_id");
                             String numero = rs.getString("numeroAeropuerto");
 
-                            System.out.printf("| %-45s | %-10d | %-25s |\n", nombre, ciudadId, numero);
-                        }
+                            System.out.printf("| %-45s | %-10d | %-25s |\n", nombre, ciudadId, numero); 
+                        }*/
                 } 
             }
 
            
 
-            stmt.close();
+            
             
         } catch (SQLException e) {
             e.printStackTrace();

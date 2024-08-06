@@ -24,13 +24,13 @@ public class controladorCrearAeropuerto {
     public void tomarDatosAeropuerto (){
 
         try {
-            System.out.println("Digite el numero de identifición del aeropuerto");
+            System.out.print("Nùmero del aeropuerto >>>>");
             String numAeropuerto = CheckString.check("Digita de nuevo numero del aeropuerto");
             
-            System.out.println("Digite el nombre del aeropuerto");
+            System.out.print("Nombre del aeropuerto >>>>");
             String nombreAeropuerto = CheckString.check("Digita de nuevo el nombre del aeropuerto");
 
-            System.out.println("Digite el codigo de la ciudad");
+            System.out.print("Còdigo de la ciudad");
             int idCiudad = CheckInt.check("Digita de nuevo el id de la ciudad");
 
             Aeropuerto aeropuerto = new Aeropuerto(); 

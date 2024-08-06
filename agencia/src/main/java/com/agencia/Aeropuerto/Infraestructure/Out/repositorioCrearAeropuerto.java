@@ -40,6 +40,7 @@ public class repositorioCrearAeropuerto implements interfazCrearAeropuerto {
             String numero = aeropuerto.getNumAeropuerto();
 
             System.out.printf("| %-45s | %-10d | %-25s |\n", nombre, ciudadId, numero);
+            System.out.println("+-------------------------------+----------+-------------------+-------------------+-------------------+");
 
         } catch (SQLIntegrityConstraintViolationException  b) {
             
