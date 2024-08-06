@@ -1,5 +1,6 @@
 package com.agencia.TipoDocumento.Application;
 
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.TipoDocumento.Domain.Entity.TipoDocumento;
 import com.agencia.TipoDocumento.Domain.Service.interfazCrearTipoDocumento;
 
@@ -12,7 +13,7 @@ public class crearTipoDocumento {
         this.servicio = servicio;
     } 
 
-    public void tomarDatosTipoDocumento (TipoDocumento entidadDocumento) {
-        servicio.crearTipoDocumento(entidadDocumento);
+    public void ejecutarCrearTipoDocumento (TipoDocumento entidadDocumento , Empleado empleado) {
+        servicio.crearTipoDocumento(entidadDocumento , empleado);
     }
 }

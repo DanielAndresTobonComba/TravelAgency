@@ -6,15 +6,17 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.TipoDocumento.ImprimirTablaTipoDocumento;
 import com.agencia.TipoDocumento.Domain.Service.interfazEliminarTipoDocumento;
+import com.agencia.TipoDocumento.Main.MainTipoDocumento;
 import com.agencia.Verifiers.PasswordEncripted;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class repoEliminarTipoDocumento implements interfazEliminarTipoDocumento {
 
     @Override
-    public void eliminarTipoDocumento(int numero) {
+    public void eliminarTipoDocumento(int numero , Empleado empleado) {
 
 
 
@@ -64,6 +66,8 @@ public class repoEliminarTipoDocumento implements interfazEliminarTipoDocumento 
         } catch (SQLException e) {
             System.out.println("Error SQL: " + e.getMessage());
         } finally {
+            MainTipoDocumento.main(empleado);
+
             // Cerramos todos los recursos en el bloque finally para asegurar que se liberen correctamente
             /* try {
                 if (stmtBuscar != null) {

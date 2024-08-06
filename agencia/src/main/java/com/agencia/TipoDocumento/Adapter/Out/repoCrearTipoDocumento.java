@@ -5,18 +5,20 @@ import java.sql.ResultSet;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.TipoDocumento.ImprimirTablaTipoDocumento;
 import com.agencia.TipoDocumento.Domain.Entity.TipoDocumento;
 import com.agencia.TipoDocumento.Domain.Service.interfazCrearTipoDocumento;
+import com.agencia.TipoDocumento.Main.Actualizar.MainActualizarTipoDocumento;
 import com.agencia.Verifiers.PasswordEncripted;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class repoCrearTipoDocumento implements interfazCrearTipoDocumento{
 
     @Override
-    public void crearTipoDocumento(TipoDocumento entidad) {
+    public void crearTipoDocumento(TipoDocumento entidad , Empleado empleado) {
 
-                CallableStatement stmt = null;
+        CallableStatement stmt = null;
         DataBaseConfig.getConnection();
 
         try {
@@ -63,6 +65,8 @@ public class repoCrearTipoDocumento implements interfazCrearTipoDocumento{
         
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            MainActualizarTipoDocumento.main(empleado);
         }
       
     }
