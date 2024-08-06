@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.agencia.AbstractClasses.Funcionalidad;
+import com.agencia.AbstractClasses.subFuncionalidad;
 import com.agencia.GestionAvion.Adapter.In.GoToActualizarCapacidadAvion;
 import com.agencia.GestionAvion.Adapter.In.GoToActualizarEstadoAvion;
 import com.agencia.Aeropuerto.Infraestructure.In.GoToActualizarAeropuerto;
@@ -19,6 +20,7 @@ import com.agencia.Cliente.Application.CasosActualizarDatosCliente.Usuario;
 import com.agencia.Cliente.Utilities.actualizarDatosCliente;
 import com.agencia.EmployeeView.Domain.GestionarAeropuerto;
 import com.agencia.EmployeeView.Domain.GestionarAvion;
+import com.agencia.EmployeeView.Domain.GestionarDocumento;
 import com.agencia.GestionAvion.Adapter.In.GoToActualizarAvion;
 import com.agencia.GestionAvion.Adapter.In.GoToConsultarAvion;
 import com.agencia.GestionAvion.Adapter.In.GoToEliminarAvion;
@@ -42,6 +44,10 @@ import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarDetallesT
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarImpuestoTarifa;
 import com.agencia.Tarifa.Application.Casos.ActualizarTarifa.actualizarPrecioTarifa;
 import com.agencia.Tarifa.Domain.actualizarDatosTarifa;
+import com.agencia.TipoDocumento.Application.Actualizar.GoToActualizarNombreTipoDocumento;
+import com.agencia.TipoDocumento.Application.GoTo.GoToActualizarTipoDocumento;
+import com.agencia.TipoDocumento.Application.GoTo.GoToCrearTipoDocumento;
+import com.agencia.TipoDocumento.Application.GoTo.GoToEliminarTipoDocumento;
 import com.agencia.IntroView.Domain.CheckIn;
 import com.agencia.IntroView.Domain.Exit;
 
@@ -59,8 +65,12 @@ public class CasesListController {
     public static List<Funcionalidad> lstGestionarAvion;
 
     public static List<Funcionalidad> lstFuncionalidadesTarifa; 
+    public static List<subFuncionalidad> lstFuncionalidadesTipoDocumento ;
+    public static List<subFuncionalidad> lstFuncionalidadesActualizarTipoDocumento ;
 
     private static CasesListController CONTROLLER = new CasesListController();
+
+   
 
     private CasesListController() {
 
@@ -78,6 +88,10 @@ public class CasesListController {
         lstActualizarAvion = new ArrayList<>();
         lstGestionarAeropuerto = new ArrayList<>();
 
+        // Crea la funciones de tipodocumento
+        lstFuncionalidadesTipoDocumento = new ArrayList<>();
+        lstFuncionalidadesActualizarTipoDocumento = new ArrayList<>();
+
 
         // CREAR LAS FUNCIONALIDADES PARA TARIFA 
 
@@ -90,12 +104,6 @@ public class CasesListController {
         Funcionalidad consultarTarifa = new irConsultarTarifa("Consultar Tarifa", ""); 
 
 
-        // AGREGAR LAS FUNCIONALIDADES AL MENU TARIFA 
-
-        lstFuncionalidadesTarifa.add(crearTarifa);
-        lstFuncionalidadesTarifa.add(eliminarTarifa);
-        lstFuncionalidadesTarifa.add(actualizarTarifa);
-        lstFuncionalidadesTarifa.add(consultarTarifa);
 
 
         // AGREGREGARfUNCIONALIDADE A ACTUALIZAR REVISION MANTENIMIENTO
@@ -126,6 +134,7 @@ public class CasesListController {
         Funcionalidad gestionarAvion = new GestionarAvion("Gestionar Avión", "gav");
         Funcionalidad gestionarAeropuerto = new GestionarAeropuerto("Gestionar Aeropuerto", "gae");
         Funcionalidad gestionTarifa = new GestionTarifa("Gestion Tarifa" , "gta");
+        Funcionalidad gestioDocumento = new GestionarDocumento("Gestion Documento" , "gdoc");
 
         // INSTANCICIÓN FUNCIONALIDADES ACTUALIZAR CLIENTE
         actualizarDatosCliente actualizarNombre = new Nombre("Actualizar nombre");       
@@ -151,6 +160,23 @@ public class CasesListController {
         Funcionalidad consultarAeropuerto = new GoToConsultarAeropuerto("Consultar Aeropuerto", "");
         Funcionalidad eliminarAeropuerto = new GoToEliminarAeropuerto("Eliminar Aeropuerto", "");
 
+        // INSTANCIACIÓN FUNCIONALIDADES PARA GESTIONAR TIPO DOCUMENTO
+        subFuncionalidad crearTipoDocumento = new GoToCrearTipoDocumento("Crear Tipo Documento");
+        subFuncionalidad actualizarTipoDocumentoTabla = new GoToActualizarTipoDocumento("Actualizar Tipo Documento");
+        subFuncionalidad eliminarTipoDocumentoTabla = new GoToEliminarTipoDocumento("Eliminar Tipo Documento");
+
+        subFuncionalidad actualizarNombreTipoDocumento = new GoToActualizarNombreTipoDocumento("Actualizar nombre");
+        
+
+
+        // AGREGAR LAS FUNCIONALIDADES AL MENU TARIFA 
+        lstFuncionalidadesTarifa.add(crearTarifa);
+        lstFuncionalidadesTarifa.add(eliminarTarifa);
+        lstFuncionalidadesTarifa.add(actualizarTarifa);
+        lstFuncionalidadesTarifa.add(consultarTarifa);
+        
+
+
         // AGREGAR LA FUNCIONALIDAD A LA LISTA DE CASOS DE USO DE ACTUALIZAR DATOS DEL CLIENTE 
         lstActualizarDatosClientes.add(actualizarNombre);
         lstActualizarDatosClientes.add(actualizarEdad);
@@ -169,6 +195,7 @@ public class CasesListController {
         lstFuncionalidades.add(gestionarAvion);
         lstFuncionalidades.add(gestionarAeropuerto);
         lstFuncionalidades.add(gestionTarifa);
+        lstFuncionalidades.add(gestioDocumento);
 
         //FUNCIONALIDADES PARA GESTIONAR AVIÓN
         lstGestionarAvion.add(registrarAvion);
@@ -208,6 +235,15 @@ public class CasesListController {
         lstActualizarDatosRevisionMantenimiento.add(actualizarFechaRevision);
         lstActualizarDatosRevisionMantenimiento.add(actualizarDescripcionRevision);
         
+
+        // Agregar funcionalidade a tipo de documento 
+        lstFuncionalidadesTipoDocumento.add(crearTipoDocumento); 
+        lstFuncionalidadesTipoDocumento.add(actualizarTipoDocumentoTabla); 
+        lstFuncionalidadesTipoDocumento.add(eliminarTipoDocumentoTabla); 
+
+
+        // Agregar funcionalidade a actualizar tipo de documento 
+        lstFuncionalidadesActualizarTipoDocumento.add(actualizarNombreTipoDocumento);
         
     }
 

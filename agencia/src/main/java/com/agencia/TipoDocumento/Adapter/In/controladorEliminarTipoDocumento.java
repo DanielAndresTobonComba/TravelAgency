@@ -1,6 +1,7 @@
 package com.agencia.TipoDocumento.Adapter.In;
 
 import com.agencia.Aeropuerto.Application.eliminarAeropuerto;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.TipoDocumento.Application.eliminarTipoDocumento;
 import com.agencia.Verifiers.CheckInt;
 
@@ -14,13 +15,13 @@ public class controladorEliminarTipoDocumento {
     }
 
     
-    public void ejecutarEliminarTipoDocumento () {
+    public void ejecutarEliminarTipoDocumento (Empleado empleado) {
 
         System.out.println("Digita el tipo de documento a eliminar");
 
         int numeroDocumento = CheckInt.check("Digita de nuevo el numero del tipo del documento");
 
-        eliminarTipoDocumento.ejecutarELiminarTipoDocumento(numeroDocumento);
+        eliminarTipoDocumento.ejecutarELiminarTipoDocumento(numeroDocumento , empleado);
     }
 
 

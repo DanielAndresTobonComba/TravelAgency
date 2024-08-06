@@ -5,15 +5,17 @@ import java.sql.ResultSet;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import com.agencia.DataBaseConfig.DataBaseConfig;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.TipoDocumento.ImprimirTablaTipoDocumento;
 import com.agencia.TipoDocumento.Domain.Service.interfazActualizarTipoDocumento;
+import com.agencia.TipoDocumento.Main.MainTipoDocumento;
 import com.mysql.cj.jdbc.CallableStatement;
 
 public class repoActualizarTipoDocumento implements 
 interfazActualizarTipoDocumento {
 
     @Override
-    public void actualizarTipoDocumento(int numeroTipoDocumento , String nuevoNombre ) {
+    public void actualizarTipoDocumento(int numeroTipoDocumento , String nuevoNombre , Empleado empleado ) {
 
 
         CallableStatement stmt = null;
@@ -60,6 +62,9 @@ interfazActualizarTipoDocumento {
         
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            System.out.println("Proceso finalizado");
+            MainTipoDocumento.main(empleado);
         }
 
 

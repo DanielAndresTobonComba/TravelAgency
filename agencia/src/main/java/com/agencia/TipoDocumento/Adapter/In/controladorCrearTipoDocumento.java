@@ -1,4 +1,5 @@
 package com.agencia.TipoDocumento.Adapter.In;
+import com.agencia.LogIn.Domain.Empleado;
 import com.agencia.TipoDocumento.Adapter.Out.repoCrearTipoDocumento;
 import com.agencia.TipoDocumento.Application.crearTipoDocumento;
 import com.agencia.TipoDocumento.Domain.Entity.TipoDocumento;
@@ -13,7 +14,7 @@ public class controladorCrearTipoDocumento {
     } 
 
     
-    public void tomarDatos () {
+    public void tomarDatos (Empleado empleado) {
 
         System.out.println("Digita el nombre del tipo de documento");
         String nombre = CheckString.check("Digita de nuevo el nombre del tipo de documento");
@@ -22,9 +23,13 @@ public class controladorCrearTipoDocumento {
 
         documento.setNombre(nombre);
 
-        repoCrearTipoDocumento repoCrearTipoDocumento = new repoCrearTipoDocumento(); 
+/*         repoCrearTipoDocumento repoCrearTipoDocumento = new repoCrearTipoDocumento(); 
 
-        repoCrearTipoDocumento.crearTipoDocumento(documento);
+        repoCrearTipoDocumento.crearTipoDocumento(documento); */
+
+        crearTipoDocumento.ejecutarCrearTipoDocumento(documento , empleado);
+
+        
 
 
 
