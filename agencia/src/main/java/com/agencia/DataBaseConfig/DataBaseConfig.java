@@ -50,9 +50,7 @@ public class DataBaseConfig {
             msjConnection = RED +  "\n:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::\n:: ERROR AL CONECTAR! Cambie los parámetros  ::\n:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::\n" + RESET;
 
         }
-        
-        
-        
+
         
     }
 
