@@ -1,5 +1,6 @@
 package com.agencia.CheckIn.MainCheckIn;
 
+
 import com.agencia.CheckIn.Adpater.In.ExtractAirplaneCapacityRepository;
 import com.agencia.CheckIn.Adpater.In.ExtractConnFlightEntity;
 import com.agencia.CheckIn.Adpater.In.ExtractConnectionNumbersList;
@@ -28,7 +29,6 @@ import com.agencia.CheckIn.Domain.Service.ExtractReservationsService;
 import com.agencia.CheckIn.Domain.Service.ExtractReservedChairsService;
 import com.agencia.CheckIn.Domain.Service.TakeChairService;
 import com.agencia.CheckIn.Domain.Service.VerifyCheckInService;
-import com.agencia.GestionAvion.Application.ExtractAirplaneAction;
 
 public class MainCheckIn {
 

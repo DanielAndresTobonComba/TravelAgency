@@ -1,0 +1,60 @@
+package com.agencia.Avion.Adapter.Out;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.agencia.Avion.Domain.Entity.Airplane;
+import com.agencia.Avion.Domain.Service.UpdateAirplaneService;
+import com.agencia.DataBaseConfig.DataBaseConfig;
+
+public class MySQLAirplaneUpdateCapacityRepository implements UpdateAirplaneService {
+
+    @Override
+    public boolean updateInfo(Airplane airplane) {
+
+        ResultSet resultSet = null;
+        int capacidadNueva = airplane.getCapacidad();
+        String placa = airplane.getPlaca();
+        String hora_before = "";
+        String hora_after = "";
+        boolean verifyDelete = true;
+
+        try {
+                String sqlProcedure = "{CALL ActualizarCapacidadAvion(?, ?)}";
+                Connection connection = DataBaseConfig.getConnection().DBconnection;
+                CallableStatement cs = connection.prepareCall(sqlProcedure);
+                cs.setString(1, placa);
+                cs.setInt(2, capacidadNueva);
+
+                cs.execute();
+
+                resultSet = cs.getResultSet();
+
+                while (resultSet.next()) {
+
+                    hora_before = resultSet.getString("TIME_BEFORE");
+                    hora_after = resultSet.getString("TIME_AFTER");
+    
+                    
+                }
+
+                if (hora_after.equals(hora_before)) {
+
+                    verifyDelete = false;
+    
+                }  
+            
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+
+        return verifyDelete;
+   
+    }
+
+    
+
+}

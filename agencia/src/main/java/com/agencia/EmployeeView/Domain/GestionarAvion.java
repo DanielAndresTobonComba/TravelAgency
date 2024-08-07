@@ -1,7 +1,7 @@
 package com.agencia.EmployeeView.Domain;
 
 import com.agencia.AbstractClasses.Funcionalidad;
-import com.agencia.GestionAvion.Main.MainMenuGestionAvion;
+import com.agencia.Avion.Main.MainMenuGestionAvion;
 import com.agencia.LogIn.Domain.Empleado;
 
 public class GestionarAvion extends Funcionalidad {
