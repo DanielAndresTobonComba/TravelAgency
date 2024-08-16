@@ -4,6 +4,10 @@
 ### Carlos Jhoan Aguilar 
 ### Daniel Andres Tobon
 
+
+## Para usar el software se debe inciar sesion con las siguientes credenciales
+## usuario: admin123 - contrasela: admin123
+
 ## Tecnologías usadas
 
 - **Archivo JSON**: Se utiliza un archivo JSON para asignar dinámicamente funcionalidades a cada rol disponible. Este archivo contiene entidades y listas con códigos que facilitan esta asignación.
