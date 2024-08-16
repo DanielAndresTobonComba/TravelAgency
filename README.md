@@ -5,8 +5,8 @@
 ### Daniel Andres Tobon
 
 
-## Para usar el software se debe inciar sesion con las siguientes credenciales
-## usuario: admin123 - contrasela: admin123
+### Para usar el software se debe inciar sesion con las siguientes credenciales
+### usuario: admin123 - contrasela: admin123
 
 ## Tecnologías usadas
 
