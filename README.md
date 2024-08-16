@@ -6,7 +6,7 @@
 
 
 ### Para usar el software se debe inciar sesion con las siguientes credenciales
-### usuario: admin123 - contrasela: admin123
+### usuario: admin123 - contraseña: admin123
 
 ## Tecnologías usadas
 
